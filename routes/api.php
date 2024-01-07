@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Admin\Doctor\DoctorController;
 use App\Http\Controllers\Auth\ChangePasswordController;
@@ -27,6 +28,8 @@ use App\Http\Controllers\Auth\ChangeForgotPasswordControllerController;
 
 // Route::post('login', [AuthController::class, 'login'])
 //     ->name('login');
+
+
 
 
 

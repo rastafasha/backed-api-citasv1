@@ -33,6 +33,7 @@ class Appointment extends Model
         "status",
         "date_attention",
         "cron_state",
+        "confimation",
 
     ];
     

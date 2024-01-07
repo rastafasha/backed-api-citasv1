@@ -11,6 +11,7 @@ use App\Models\Doctor\Specialitie;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\ConfirmationAppointment;
 use App\Models\Patient\PatientPerson;
 use App\Models\Appointment\Appointment;
 use App\Mail\NewAppointmentRegisterMail;
@@ -221,11 +222,6 @@ class AppointmentController extends Controller
         $patient = Patient::where("n_doc", $request->n_doc)->first();
         $doctor = User::where("id", $request->doctor_id)->first();
 
-        // $doctor = [
-        //     "id"=> $request->doctor_id,
-        //     "email"=> $appointment->user->email,
-        // ];
-
         if(!$patient){
             $patient = Patient::create([
                 "name"=>$request->name,
@@ -333,16 +329,6 @@ class AppointmentController extends Controller
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -401,6 +387,53 @@ class AppointmentController extends Controller
             "total"=>$appointments->total(),
             "appointments"=> AppointmentCollection::make($appointments)
         ]);
+
+    }
+
+    public function updateConfirmation(Request $request, $id)
+    {
+        $appointment = Appointment::findOrfail($id);
+        $doctor = User::where("id", $request->doctor_id)->first();
+
+        $appointment->confimation = $request->confimation;
+        $appointment->update();
+        
+        // error_log($appointment);
+
+        if($request->confimation === '2'){
+            Mail::to($appointment->patient->email)->send(new ConfirmationAppointment($appointment));
+
+        }
+        return response()->json([
+            "message" => 200,
+            "appointment" => $appointment,
+            "amount" =>$request->amount,
+            "paymentmethod" =>$request->method_payment,
+            "amountadd" =>$request->amount_add,
+            "date_appointment" => Carbon::parse($appointment->date_appointment)->format('d-m-Y'),
+            "patient"=>$appointment->patient_id ? 
+                    [
+                        "id"=> $appointment->patient->id,
+                        "email" =>$appointment->patient->email,
+                        "full_name" =>$appointment->patient->name.' '.$appointment->patient->surname,
+                    ]: NULL,
+            "speciality"=>$appointment->speciality,
+            "speciality"=>$appointment->speciality ? 
+                [
+                    "id"=> $appointment->speciality->id,
+                    "name"=> $appointment->speciality->name,
+                ]: NULL,
+            "doctor_id" => $appointment->doctor_id,
+            "doctor"=>$appointment->doctor_id ? 
+                        [
+                            "id"=> $doctor->id,
+                            "email"=> $doctor->email,
+                            "full_name" =>$doctor->name.' '.$doctor->surname,
+                        ]: NULL,
+            
+        ]);
+        
+        
 
     }
 }

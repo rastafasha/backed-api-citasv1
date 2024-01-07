@@ -17,3 +17,6 @@ Route::delete('appointment/destroy/{id}', [AppointmentController::class, 'destro
 Route::get('appointment/atendidas/{id}', [AppointmentController::class, 'atendidas'])->name('atendidas');
 
 Route::post('appointment/calendar', [AppointmentController::class, 'calendar'])->name('calendar');
+
+Route::put('/appointment/update/cofirmation/{appointment:id}', [AppointmentController::class, 'updateConfirmation'])
+    ->name('appointment.updateConfirmation');

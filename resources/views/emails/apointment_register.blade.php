@@ -219,7 +219,7 @@
 																																<multiline>
 																																<em><strong>Especialidad:</strong> {{$appointment->speciality->name}}</em>
                                                                                                                                     <br>
-                                                                                                                                <!--<em><strong>Fecha de la cita:</strong> {{$appointment->date_appointment}}</em>-->
+                                                                                                                                <em><strong>Doctor:</strong> {{$appointment->doctor->full_name}}</em>
                                                                                                                                     <br>
                                                                                                                                 <!-- <em>"Hora de Inicio: {{$appointment->hour_start_format}}"</em>
                                                                                                                                     <br>
