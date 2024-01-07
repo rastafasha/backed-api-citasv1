@@ -3,21 +3,22 @@
 namespace App\Http\Controllers\Appointment;
 
 use Carbon\Carbon;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Patient\Patient;
+use App\Mail\RegisterAppointment;
 use App\Models\Doctor\Specialitie;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Patient\PatientPerson;
 use App\Models\Appointment\Appointment;
+use App\Mail\NewAppointmentRegisterMail;
 use App\Models\Doctor\DoctorScheduleDay;
 use App\Models\Appointment\AppointmentPay;
 use App\Models\Doctor\DoctorScheduleJoinHour;
 use App\Http\Resources\Appointment\AppointmentResource;
 use App\Http\Resources\Appointment\AppointmentCollection;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\RegisterAppointment;
-use App\Mail\NewAppointmentRegisterMail;
 
 class AppointmentController extends Controller
 {
@@ -218,6 +219,12 @@ class AppointmentController extends Controller
         
         $patient = null;
         $patient = Patient::where("n_doc", $request->n_doc)->first();
+        $doctor = User::where("id", $request->doctor_id)->first();
+
+        // $doctor = [
+        //     "id"=> $request->doctor_id,
+        //     "email"=> $appointment->user->email,
+        // ];
 
         if(!$patient){
             $patient = Patient::create([
@@ -240,7 +247,7 @@ class AppointmentController extends Controller
 
         
         // $user = auth('api')->user();//lo coloco para saber si viene o no
-        // error_log($user);
+        // error_log($doctor);
 
         $appointment = Appointment::create([
             "doctor_id" =>$request->doctor_id,
@@ -261,8 +268,21 @@ class AppointmentController extends Controller
             "method_payment"=>$request->method_payment,
         ]);
         
+        
+        // if($request->doctor_id){
+        //     $doctor = User::findOrFail($id);
+
+        //     return response()->json([
+        //         "doctor"=>[
+        //                 "id"=> $doctor->doctor_id,
+        //                 "email"=> $doctor->email,
+        //                 "full_name" =>$doctor->name.' '.$doctor->user->surname,
+        //             ]
+        //         ]);
+        // }
+
         Mail::to($appointment->patient->email)->send(new RegisterAppointment($appointment));
-        Mail::to($appointment->patient->email)->send(new NewAppointmentRegisterMail($appointment));
+        Mail::to($doctor->email)->send(new NewAppointmentRegisterMail($appointment));
 
         return response()->json([
             "message" => 200,
@@ -283,13 +303,13 @@ class AppointmentController extends Controller
                     "id"=> $appointment->speciality->id,
                     "name"=> $appointment->speciality->name,
                 ]: NULL,
-            // "doctor_id" => $appointment->doctor_id,
-            // "doctor"=>$appointment->doctor_id ? 
-            //         [
-            //             "id"=> $appointment->doctor_id,
-            //             "full_name" =>$appointment->user->name.' '.$appointment->user->surname,
-            //         ]: NULL,
-            
+            "doctor_id" => $appointment->doctor_id,
+            "doctor"=>$appointment->doctor_id ? 
+                        [
+                            "id"=> $doctor->id,
+                            "email"=> $doctor->email,
+                            "full_name" =>$doctor->name.' '.$doctor->surname,
+                        ]: NULL,
             
         ]);
     }

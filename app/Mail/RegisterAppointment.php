@@ -76,7 +76,8 @@ class RegisterAppointment extends Mailable
         }
 
         // $apointment = $this->apointment;
-        return $this->view('emails.apointment_register', compact('appointment'));
+        // return $this->view('emails.apointment_register', compact('appointment'));
+        return $this->view('emails.apointment_register');
     }
 
     /**

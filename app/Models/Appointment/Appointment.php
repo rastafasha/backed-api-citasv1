@@ -42,13 +42,13 @@ class Appointment extends Model
 
     //     parent::boot();
 
-    //     static::store(function($patient){
+    //     static::store(function($appointment){
 
     //         // PaymentRegisterJob::dispatch(
     //         //     $user
     //         // )->onQueue("high");
 
-    //     Mail::to('mercadocreativo@gmail.com')->send(new NewAppointmentRegisterMail($patient));
+    //     Mail::to('mercadocreativo@gmail.com')->send(new NewAppointmentRegisterMail($appointment));
 
     //     });
     // }
