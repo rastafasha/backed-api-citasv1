@@ -53,6 +53,9 @@ class PatientResource extends JsonResource
                 "mobile_responsable"=>$this->resource->person->mobile_responsable,
                 "relationship_responsable"=>$this->resource->person->relationship_responsable,
             ]:NULL,
+            "payments"=>$this->resource->payments ? [
+                "id"=>$this->resource->payments->id,
+            ]:NULL,
 
         ];
     }

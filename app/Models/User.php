@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use App\Models\Payment;
 use App\Traits\HavePermission;
 use App\Jobs\NewUserRegisterJob;
 use Laravel\Sanctum\HasApiTokens;
@@ -129,6 +130,8 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(DoctorScheduleDay::class);
     }
+
+    
     
 
 

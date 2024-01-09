@@ -75,6 +75,7 @@ class AppointmentResource extends JsonResource
             ]: NULL,
             "amount" =>$this->resource->amount,
             "status_pay" =>$this->resource->status_pay,
+            // "deuda" =>$this->resource->deuda,
             "status" =>$this->resource->status,
             "date_attention" =>$this->resource->date_attention,
             "confimation" =>$this->resource->confimation,

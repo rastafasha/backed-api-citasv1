@@ -4,14 +4,15 @@ namespace App\Models\Appointment;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Payment;
 use App\Models\Patient\Patient;
 use App\Models\Doctor\Specialitie;
 use Illuminate\Support\Facades\DB;
+use App\Jobs\AppointmentRegisterJob;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Database\Eloquent\Model;
 use App\Mail\NewAppointmentRegisterMail;
-use Illuminate\Support\Facades\Mail;
 use App\Models\Appointment\AppointmentPay;
-use App\Jobs\AppointmentRegisterJob;
 use App\Models\Doctor\DoctorScheduleJoinHour;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Appointment\AppointmentAttention;
@@ -30,6 +31,7 @@ class Appointment extends Model
         "user_id",
         "amount",
         "status_pay",
+        "deuda",
         "status",
         "date_attention",
         "cron_state",
@@ -100,6 +102,11 @@ class Appointment extends Model
     public function attention()
     {
         return $this->hasOne(AppointmentAttention::class);
+    }
+
+    public function tranferencias()
+    {
+        return $this->hasMany(Payment::class);
     }
 
     // relaciones

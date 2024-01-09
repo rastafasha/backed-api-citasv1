@@ -14,6 +14,7 @@ class AppointmentPay extends Model
     protected $fillable=[
         "appointment_id",
         "amount",
+        "deuda",
         "method_payment",
         // "amount_add",
 

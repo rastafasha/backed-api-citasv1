@@ -43,6 +43,7 @@ class AppointmentPayController extends Controller
     public function store(Request $request)
     {
         $sum_total_pays = AppointmentPay::where("appointment_id",$request->appointment_id)->sum("amount");
+        
         if(($sum_total_pays + $request->amount) > $request->appointment_total){
             return response()->json([
                 "message"=>403,
@@ -69,6 +70,7 @@ class AppointmentPayController extends Controller
                 "id" =>$appointmentpay->id,
                     "appointment_id" =>$appointmentpay->appointment_id,
                     "amount" =>$appointmentpay->amount,
+                    "deuda" =>$appointmentpay->deuda,
                     "method_payment" =>$appointmentpay->method_payment,
                     "created_at"=>$appointmentpay->created_at->format("Y-m-d h:i A"),
             ]
@@ -97,7 +99,10 @@ class AppointmentPayController extends Controller
     public function update(Request $request, $id)
     {
         $sum_total_pays = AppointmentPay::where("appointment_id",$request->appointment_id)->sum("amount");
+        $deuda = AppointmentPay::where("appointment_id",$request->appointment_id)->min("amount");
         
+        error_log($deuda);
+
         $appointmentpay = AppointmentPay::findOrFail($id);
         
         $old_amount = $appointmentpay->amount;

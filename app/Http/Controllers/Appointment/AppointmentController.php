@@ -322,12 +322,19 @@ class AppointmentController extends Controller
     public function show($id)
     {
         $appointment = Appointment::findOrFail($id);
+        $sum_total_pays = AppointmentPay::where("appointment_id",$id)->sum("amount");
+        $costo = $appointment->amount;
+        $deuda = ($costo - $sum_total_pays); 
 
         return response()->json([
+            "costo" => $costo,
+            "deuda" => $deuda,
             "appointment" => AppointmentResource::make($appointment),
         ]);
 
     }
+
+    
 
 
     /**
