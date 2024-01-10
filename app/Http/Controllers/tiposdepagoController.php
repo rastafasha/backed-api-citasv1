@@ -143,7 +143,7 @@ class tiposdepagoController extends Controller
         return response()->json($data, $data['code']);
     }
 
-    public function UpdateStatus(Request $request, $id)
+    public function updateStatus(Request $request, $id)
     {
         $tiposdepago = Tiposdepago::findOrfail($id);
         $tiposdepago->status = $request->status;

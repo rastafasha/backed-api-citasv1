@@ -17,11 +17,7 @@ class Tiposdepago extends Model
 
     protected $fillable = [
         'name', 
-        'image',
-        'type',
-        'paypalSecret',
-        'sandoxMode',
-        'clientId',
+        'tipo',
         'bankAccount',
         'bankName',
         'email',

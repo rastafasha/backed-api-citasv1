@@ -28,7 +28,7 @@ Route::get('/paymentmethods/search/', [tiposdepagoController::class, 'search'])
     ->name('paymentmethod.search');
 
 
-    Route::put('/paymentmethods/update/status/{paymentmethod:id}', [tiposdepagoController::class, 'UpdateStatus'])
-    ->name('paymentmethod.status');
+    Route::put('/paymentmethods/update/status/{paymentmethod:id}', [tiposdepagoController::class, 'updateStatus'])
+    ->name('paymentmethod.updateStatus');
 
 

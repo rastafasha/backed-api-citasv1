@@ -73,6 +73,9 @@ Route::group(['middleware' => 'api'], function ($router) {
     // tipos de pago
     require __DIR__ . '/api_routes/paymentMethod.php';
     
+    // setting
+    require __DIR__ . '/api_routes/setting.php';
+    
     // whatsapp
     // require __DIR__ . '/api_routes/whatsapp.php';
 

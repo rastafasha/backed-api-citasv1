@@ -28,7 +28,6 @@ class PaymentResource extends JsonResource
             "status" =>$this->resource->status,
             "fecha" =>$this->resource->fecha,
             "patient_id" =>$this->resource->patient_id,
-            
             "created_at"=>$this->resource->created_at ? Carbon::parse($this->resource->created_at)->format("Y-m-d h:i A") : NULL,
         ];
     }
