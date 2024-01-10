@@ -4,15 +4,15 @@
 Se has registrado un nuevo pago
 <br><br>
 
-* Nombre del banco ***{{ $payment->referencia}}***
+* Tipo de Pago ***{{ $payment->metodo}}***
 <br>
-* Método de pago ***{{ $payment->metodo}}***
+* Método de pago ***{{ $payment->referencia}}***
 <br>
 * Nombre del banco ***{{ $payment->bank_name}}***
 <br>
 * Monto ***{{ $payment->monto}}***
 <br>
-* Nombre ***{{ $payment->nombre}}***
+* Paciente ***{{ $payment->nombre}}***
 <br>
 * Email ***{{ $payment->email}}***
 
