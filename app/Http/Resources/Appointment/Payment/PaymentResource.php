@@ -21,7 +21,6 @@ class PaymentResource extends JsonResource
             "metodo" =>$this->resource->metodo,
             "bank_name" =>$this->resource->bank_name,
             "monto" =>$this->resource->monto,
-            "validacion" =>$this->resource->validacion,
             "nombre" =>$this->resource->nombre,
             "email" =>$this->resource->email,
             "appointment_id" =>$this->resource->appointment_id,

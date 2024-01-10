@@ -26,7 +26,6 @@ class Payment extends Model
         'metodo',
         'bank_name',
         'monto',
-        'validacion',
         'nombre',
         'email',
         'patient_id',

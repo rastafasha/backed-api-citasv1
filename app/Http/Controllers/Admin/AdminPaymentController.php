@@ -300,6 +300,7 @@ class AdminPaymentController extends Controller
         $payment = Payment::findOrfail($id);
         $payment->status = $request->status;
         $payment->update();
+
         
         $appointment = Appointment::where("patient_id", $request->patient_id)->first();
         $appointmentpay = AppointmentPay::where("appointment_id", $request->appointment_id)->first();
@@ -308,6 +309,7 @@ class AdminPaymentController extends Controller
         
         $costo = $appointment->amount;
         $deuda = ($costo - $sum_total_pays); 
+        
         
         if($request->status === 'APPROVED'){
             // Update Appointment status
@@ -322,9 +324,6 @@ class AdminPaymentController extends Controller
             ]);
         }
 
-        
-        
-        // ?
         
         // error_log($appointment);
 
