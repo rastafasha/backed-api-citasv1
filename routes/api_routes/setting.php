@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\admin\SettingGController;
+use App\Http\Controllers\Admin\SettingGController;
 
 Route::resource('setting', SettingGController::class);
 Route::post('setting/store', [SettingGController::class, 'store'])->name('store');

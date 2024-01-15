@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Settingeneral;
@@ -47,20 +47,13 @@ class SettingGController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show( Settingeneral $id)
     {
-        if (!$setting) {
-            return response()->json([
-                'message' => 'Pago not found.'
-            ], 404);
-        }
-
-
+        $setting = Settingeneral::findOrFail($id);
         return response()->json([
-            'code' => 200,
-            'status' => 'success',
             "setting" => SettingGResource::make($setting),
-        ], 200);
+        ]);
+
     }
 
     /**

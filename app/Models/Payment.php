@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use App\Models\Payment;
 use App\Jobs\PaymentRegisterJob;
 use App\Mail\NewPaymentRegisterMail;
@@ -95,15 +96,34 @@ class Payment extends Model
     |--------------------------------------------------------------------------
     */
 
-    public static function search($query = ''){
-        if(!$query){
-            return self::all();
+
+    public function scopefilterAdvancePayment($query,
+    // $metodo, 
+    $search_referencia, 
+    // $bank_name, 
+    // $nombre, 
+    // $monto,
+    // $fecha,
+    ){
+        
+        // if($metodo){
+        //     $query->where("metodo", $metodo);
+        // }
+        if($search_referencia){
+            $query->where("referencia", $search_referencia);
         }
-        return self::where('referencia', 'like', "%$query%")
-        ->orWhere('monto', 'like', "%$query%")
-        ->orWhere('metodo', 'like', "%$query%")
-        ->orWhere('email', 'like', "%$query%")
-        ->orWhere('nombre', 'like', "%$query%")
-        ->get();
+        // if($bank_name){
+        //     $query->where("bank_name", $bank_name);
+        // }
+        // if($nombre){
+        //     $query->where("nombre", $nombre);
+        // }
+        // if($monto){
+        //     $query->where("monto", $monto);
+        // }
+        // if($fecha){
+        //     $query->whereDate("fecha", Carbon::parse($fecha)->format("Y-m-d"));
+        // }
+        return $query;
     }
 }

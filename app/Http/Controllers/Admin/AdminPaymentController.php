@@ -33,19 +33,29 @@ class AdminPaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // $this->authorize('index', Payment::class);
+        
+        $metodo = $request->metodo;
+        $search_referencia = $request->search_referencia;
+        $bank_name = $request->bank_name;
+        $nombre = $request->nombre;
+        $monto = $request->monto;
+        $fecha = $request->fecha;
 
-        $payments = Payment::orderBy('created_at', 'DESC')
-        ->get();
+        // $payments = Payment::where("referencia","like","%".$referencia."%")
+        // ->orderBy("id","desc")
+        // ->paginate(10);
+        // // ->get();
 
-
+        $payments = Payment::filterAdvancePayment($search_referencia)->orderBy("id", "desc")
+                            ->paginate(10);
+                    
         return response()->json([
-            'code' => 200,
-            'status' => 'Listar todos los Pagos',
-            "payments" => PaymentCollection::make($payments),
-        ], 200);
+            "total"=>$payments->total(),
+            "payments" => PaymentCollection::make($payments) ,
+            
+        ]);  
     }
 
     /**

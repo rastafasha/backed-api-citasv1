@@ -6,8 +6,10 @@ use App\Http\Controllers\Admin\AdminPaymentController;
 use App\Http\Controllers\Admin\AdminPaymentSoftDeletesController;
 
 //pagos
-Route::get('/pagos', [AdminPaymentController::class, 'index'])
-    ->name('payments.index');
+
+Route::resource('payment', AdminPaymentController::class);
+// Route::get('/pagos', [AdminPaymentController::class, 'index'])
+//     ->name('payments.index');
 
 Route::post('/payment/store', [AdminPaymentController::class, 'paymentStore'])
     ->name('payment.store');
