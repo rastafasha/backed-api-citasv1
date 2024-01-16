@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PublicidadController;
 
 Route::get('publicidad', [PublicidadController::class, 'index'])->name('index');
+Route::get('publicidad/activos', [PublicidadController::class, 'activos'])->name('activos');
 Route::post('publicidad/store', [PublicidadController::class, 'store'])->name('store');
 Route::get('publicidad/show/{id}', [PublicidadController::class, 'show'])->name('show');
 Route::post('publicidad/update/{id}', [PublicidadController::class, 'update'])->name('update');

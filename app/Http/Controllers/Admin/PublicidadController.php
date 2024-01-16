@@ -119,4 +119,18 @@ class PublicidadController extends Controller
             
         ]);
     }
+
+    public function activos()
+    {
+
+        $publicidads = Publicidad::orderBy('created_at', 'DESC')
+                
+                ->where('state', $state=2)
+                ->get();
+            return response()->json([
+                'code' => 200,
+                'state' => 'Listar publicidads activas',
+                "publicidads" => PublicidadCollection::make($publicidads),
+            ], 200);
+    }
 }
