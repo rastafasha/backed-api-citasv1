@@ -76,8 +76,8 @@ Route::group(['middleware' => 'api'], function ($router) {
     // setting
     require __DIR__ . '/api_routes/setting.php';
     
-    // publicidad
-    require __DIR__ . '/api_routes/publicidad.php';
+    // pub
+    require __DIR__ . '/api_routes/pub.php';
     
     // whatsapp
     // require __DIR__ . '/api_routes/whatsapp.php';

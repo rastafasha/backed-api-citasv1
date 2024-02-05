@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Publicidad;
+use App\Models\Pub;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Resources\Publicidad\PublicidadResource;
-use App\Http\Resources\Publicidad\PublicidadCollection;
+use App\Http\Resources\Pub\PubResource;
+use App\Http\Resources\Pub\PubCollection;
 
-class PublicidadController extends Controller
+class PubController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,14 +19,14 @@ class PublicidadController extends Controller
      */
     public function index()
     {
-        $publicidads = Publicidad::orderBy('created_at', 'DESC')
+        $pubs = Pub::orderBy('created_at', 'DESC')
         ->get();
 
 
         return response()->json([
             'code' => 200,
-            'status' => 'Listar publicidads',
-            "publicidads" => PublicidadCollection::make($publicidads),
+            'status' => 'Listar pubs',
+            "pubs" => PubCollection::make($pubs),
         ], 200);   
     }
 
@@ -39,15 +39,15 @@ class PublicidadController extends Controller
     public function store(Request $request)
     {
         if($request->hasFile('imagen')){
-            $path = Storage::putFile("publicidads", $request->file('imagen'));
+            $path = Storage::putFile("pubs", $request->file('imagen'));
             $request->request->add(["avatar"=>$path]);
         }
 
-        $publicidad = Publicidad::create($request->all());
+        $pub = Pub::create($request->all());
 
         return response()->json([
             "message" => 200,
-            "publicidad"=>$publicidad
+            "pub"=>$pub
         ]);
     }
 
@@ -59,10 +59,10 @@ class PublicidadController extends Controller
      */
     public function show($id)
     {
-        $publicidad = Publicidad::findOrFail($id);
+        $pub = Pub::findOrFail($id);
 
         return response()->json([
-            "publicidad" => PublicidadResource::make($publicidad),
+            "pub" => PubResource::make($pub),
         ]);
     }
 
@@ -75,19 +75,19 @@ class PublicidadController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $publicidad = Publicidad::findOrFail($id);
+        $pub = Pub::findOrFail($id);
         if($request->hasFile('imagen')){
-            if($publicidad->avatar){
-                Storage::delete($publicidad->avatar);
+            if($pub->avatar){
+                Storage::delete($pub->avatar);
             }
-            $path = Storage::putFile("publicidads", $request->file('imagen'));
+            $path = Storage::putFile("pubs", $request->file('imagen'));
             $request->request->add(["avatar"=>$path]);
         }
-        $publicidad->update($request->all());
+        $pub->update($request->all());
 
         return response()->json([
             "message" => 200,
-            "publicidad" => $publicidad,
+            "pub" => $pub,
         ]);
     }
 
@@ -99,8 +99,8 @@ class PublicidadController extends Controller
      */
     public function destroy($id)
     {
-        $publicidad = Publicidad::findOrFail($id);
-        $publicidad->delete();
+        $pub = Pub::findOrFail($id);
+        $pub->delete();
         return response()->json([
             "message" => 200
         ]);
@@ -109,13 +109,13 @@ class PublicidadController extends Controller
     public function updateStatus(Request $request, $id)
     {
         
-        $publicidad = Publicidad::findOrfail($id);
-        $publicidad->state = $request->state;
-        $publicidad->update();
+        $pub = Pub::findOrfail($id);
+        $pub->state = $request->state;
+        $pub->update();
 
         return response()->json([
             "message" => 200,
-            "publicidad" => $publicidad,
+            "pub" => $pub,
             
         ]);
     }
@@ -123,14 +123,14 @@ class PublicidadController extends Controller
     public function activos()
     {
 
-        $publicidads = Publicidad::orderBy('created_at', 'DESC')
+        $pubs = Pub::orderBy('created_at', 'DESC')
                 
                 ->where('state', $state=2)
                 ->get();
             return response()->json([
                 'code' => 200,
-                'state' => 'Listar publicidads activas',
-                "publicidads" => PublicidadCollection::make($publicidads),
+                'state' => 'Listar pubs activas',
+                "pubs" => PubCollection::make($pubs),
             ], 200);
     }
 }
