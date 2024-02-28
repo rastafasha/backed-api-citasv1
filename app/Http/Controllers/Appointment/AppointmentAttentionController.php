@@ -57,6 +57,7 @@ class AppointmentAttentionController extends Controller
                 "appointment_attention"=>[
                     "id"=>$appointment_attention->id,
                     "description"=>$appointment_attention->description,
+                    "laboratory"=>$appointment_attention->laboratory,
                     "receta_medica"=>$appointment_attention->receta_medica ? json_decode($appointment_attention->receta_medica) : [],
                     "created_at" => $appointment_attention->created_at->format("Y-m-d h:i A"),
                 ]
@@ -66,6 +67,7 @@ class AppointmentAttentionController extends Controller
                 "appointment_attention"=>[
                     "id"=>NULL,
                     "description"=>NULL,
+                    "laboratory"=>1,
                     "receta_medica"=> [],
                     "created_at" => NULL,
                 ]

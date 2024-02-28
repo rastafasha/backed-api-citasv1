@@ -3,6 +3,7 @@
 namespace App\Models\Patient;
 
 use Carbon\Carbon;
+use App\Models\Location;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -31,6 +32,7 @@ class Patient extends Model
         'fr',
         'peso',
         'current_desease',
+        'location_id',
     ];
 
     public function setCreateAttribute($value){
@@ -46,5 +48,10 @@ class Patient extends Model
      public function person()
     {
         return $this->hasOne(PatientPerson::class, 'patient_id');
+    }
+
+    public function location()
+    {
+        return $this->hasMany(Location::class, 'location_id');
     }
 }

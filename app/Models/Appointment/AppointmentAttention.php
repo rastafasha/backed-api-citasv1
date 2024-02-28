@@ -16,6 +16,7 @@ class AppointmentAttention extends Model
         "patient_id",
         "description",
         "receta_medica",
+        "laboratory",
 
     ];
     public function setCreatedAtAttribute($value)
@@ -28,5 +29,24 @@ class AppointmentAttention extends Model
     {
     	date_default_timezone_set("America/Caracas");
         $this->attributes["updated_at"]= Carbon::now();
+    }
+
+    public function scopefilterAdvanceAttention($query,$speciality_id, $name_doctor, $date){
+        
+        if($speciality_id){
+            $query->where("speciality_id", $speciality_id);
+        }
+
+        if($name_doctor){
+            $query->whereHas("doctor", function($q)use($name_doctor){
+                $q->where("name", "like","%".$name_doctor."%")
+                    ->orWhere("surname", "like","%".$name_doctor."%");
+            });
+        }
+
+        if($date){
+            $query->whereDate("date_appointment", Carbon::parse($date)->format("Y-m-d"));
+        }
+        return $query;
     }
 }

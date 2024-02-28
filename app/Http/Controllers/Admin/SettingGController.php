@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Settingeneral;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Resources\SettingGeneral\SettingGResource;
 use App\Http\Resources\SettingGeneral\SettingGCollection;
 
@@ -38,7 +40,19 @@ class SettingGController extends Controller
      */
     public function store(Request $request)
     {
-        return Settingeneral::create($request->all());
+        if($request->hasFile('imagen')){
+            $path = Storage::putFile("settings", $request->file('imagen'));
+            $request->request->add(["avatar"=>$path]);
+        }
+
+        $setting = Settingeneral::create($request->all());
+        
+        
+        return response()->json([
+            "message"=>200,
+        ]);
+        
+        // return Settingeneral::create($request->all());
     }
 
     /**
@@ -65,26 +79,28 @@ class SettingGController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try {
-            DB::beginTransaction();
+        $user_is_valid = User::where("email", $request->email)->first();
 
-            $request = $request->all();
-            $setting = Settingeneral::find($id);
-            $setting->update($request->all());
+        $setting = Settingeneral::findOrFail($id);
 
-
-            DB::commit();
-            return response()->json([
-                'code' => 200,
-                'status' => 'Update setting success',
-                'setting' => $setting,
-            ], 200);
-        } catch (\Throwable $exception) {
-            DB::rollBack();
-            return response()->json([
-                'message' => 'Error no update'  . $exception,
-            ], 500);
+        if($request->hasFile('imagen')){
+            if($setting->avatar){
+                Storage::delete($setting->avatar);
+            }
+            $path = Storage::putFile("settings", $request->file('imagen'));
+            $request->request->add(["avatar"=>$path]);
         }
+        
+        
+       
+        $setting->update($request->all());
+        
+        
+        return response()->json([
+            "message"=>200,
+            "setting"=>$setting,
+            // "assesstments"=>$patient->pa_assessments ? json_decode($patient->pa_assessments) : [],
+        ]);
     }
 
     /**

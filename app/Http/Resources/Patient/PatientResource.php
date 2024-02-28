@@ -34,6 +34,7 @@ class PatientResource extends JsonResource
             "antecedent_alerg"=>$this->resource->antecedent_alerg,
             "ta"=>$this->resource->ta,
             "temperature"=>$this->resource->temperature,
+            "location_id"=>$this->resource->location_id,
             "fc"=>$this->resource->fc,
             "fr"=>$this->resource->fr,
             "peso"=>$this->resource->peso,
