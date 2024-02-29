@@ -3,6 +3,7 @@
 namespace App\Models\Appointment;
 
 use Carbon\Carbon;
+use App\Models\Laboratory\Laboratory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -48,5 +49,9 @@ class AppointmentAttention extends Model
             $query->whereDate("date_appointment", Carbon::parse($date)->format("Y-m-d"));
         }
         return $query;
+    }
+
+    public function files(){
+        return $this->hasMany(Laboratory::class, "appointment_id");
     }
 }

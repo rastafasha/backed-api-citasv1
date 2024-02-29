@@ -9,6 +9,7 @@ use App\Models\Appointment\Appointment;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Appointment\AppointmentAttention;
 use App\Http\Resources\Laboratory\LaboratoryResource;
+use App\Http\Resources\Laboratory\LaboratoryCollection;
 use App\Http\Resources\Appointment\AppointmentCollection;
 
 class LaboratoryController extends Controller
@@ -43,25 +44,30 @@ class LaboratoryController extends Controller
      */
     public function store(Request $request)
     {
-        $appointment = Appointment::findOrFail($request->appointment_id);
-        $appointment_attention = $appointment->attention;
+        // $appointment = Appointment::findOrFail($request->appointment_id);
 
+        $user_is_valid = Laboratory::where("appointment_id", "<>", $request->appointment_id)->first();
 
-        $laboratory = Laboratory::create($request->all());
-        
+        if($user_is_valid){
+            return response()->json([
+                "message"=>403,
+                "message_text"=> 'el Appointment ya existe'
+            ]);
+        }
+
         foreach($request->file("files") as $key=>$file){
             $extension = $file->getClientOriginalExtension();
             $size = $file->getSize();
             $name_file = $file->getClientOriginalName();
             $data = null;
-            if(in_array(strtolower($extension), ["jpeg", "bmp","jpg","png", ])){
+            if(in_array(strtolower($extension), ["jpeg", "bmp","jpg","png" ])){
                 $data = getImageSize($file);
                 
             }
             $path = Storage::putFile("laboratories", $file);
 
             $laboratory = Laboratory::create([
-                'appointment_id' =>$request-> appointment_id,
+                'appointment_id' =>$request->appointment_id,
                 'name_file' =>$name_file,
                 'size' =>$size,
                 'resolution' =>$data ? $data[0]."x".$data[1]: NULL,
@@ -71,7 +77,7 @@ class LaboratoryController extends Controller
         }
 
         // error_log($clase);
-        // error_log($laboratory);
+        error_log($laboratory);
 
         return response()->json([ 'laboratory'=> LaboratoryResource::make($laboratory)]);
     }
@@ -109,6 +115,17 @@ class LaboratoryController extends Controller
                 ]
             ]);
         }
+        
+    }
+
+    public function showByAppointment($appointment_id)
+    {
+        $laboratories = Laboratory::where("appointment_id", $appointment_id)->get();
+    
+        return response()->json([
+            "laboratories" => LaboratoryCollection::make($laboratories),
+        ]);
+
         
     }
 

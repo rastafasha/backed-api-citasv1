@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\Laboratory\LaboratoryController;
 Route::get('/laboratory', [LaboratoryController::class, 'index'] )->name('index');
 
     Route::get('/laboratory/show/{id}', [LaboratoryController::class, 'show'] )->name('show');
+    Route::get('/laboratory/showByAppointment/{id}', [LaboratoryController::class, 'showByAppointment'] )->name('showByAppointment');
     Route::post('/laboratory/store', [LaboratoryController::class, 'store'] )->name('store');
     Route::post('/laboratory/update/{id}', [LaboratoryController::class, 'update'] )->name('update');
     Route::post('/laboratory/add-file', [LaboratoryController::class, 'addFiles'] )->name('addFiles');

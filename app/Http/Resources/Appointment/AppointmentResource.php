@@ -80,6 +80,7 @@ class AppointmentResource extends JsonResource
             "status" =>$this->resource->status,
             "date_attention" =>$this->resource->date_attention,
             "confimation" =>$this->resource->confimation,
+            
             "created_at"=>$this->resource->created_at ? Carbon::parse($this->resource->created_at)->format("Y-m-d h:i A") : NULL,
         ];
     }

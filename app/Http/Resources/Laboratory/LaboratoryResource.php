@@ -16,20 +16,24 @@ class LaboratoryResource extends JsonResource
     {
         return[
             'id'=>$this->resource-> id,
-            'appoinment_id'=>$this->resource->appoinment_id,
-            'files'=>$this->resource-> files->map(function($file){
-                return [
-                    'id'=> $file->id,
-                    'appoinment_id'=> $file->appoinment_id,
-                    'name_file'=> $file->name_file,
-                    'size'=> $file->size,
-                    'time'=> $file->time,
-                    'resolution'=> $file->resolution,
-                    // 'file'=> env("APP_URL")."storage/".$file->file,
-                    'file'=> env("APP_URL").$file->file,
-                    'type'=> $file->type,
-                ];
-            })
+            'appointment_id'=>$this->resource->appointment_id,
+            'name_file'=> $this->resource->name_file,
+                    'size'=> $this->resource->size,
+                    'resolution'=> $this->resource->resolution,
+                    'file'=> env("APP_URL")."storage/".$this->resource->file,
+                    // 'file'=> env("APP_URL").$this->resource->file,
+                    'type'=> $this->resource->type,
+            // 'files'=>$this->resource->files->map(function($file){
+            //     return [
+            //         'id'=> $file->id,
+            //         'name_file'=> $file->name_file,
+            //         'size'=> $file->size,
+            //         'resolution'=> $file->resolution,
+            //         'file'=> env("APP_URL")."storage/".$file->file,
+            //         // 'file'=> env("APP_URL").$file->file,
+            //         'type'=> $file->type,
+            //     ];
+            // })
         ];
     }
 }
