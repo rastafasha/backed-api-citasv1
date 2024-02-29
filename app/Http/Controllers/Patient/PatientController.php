@@ -108,8 +108,8 @@ class PatientController extends Controller
             $money_of_appointments = Appointment::where("patient_id",$id)->sum("amount");
             $num_appointment_pendings = Appointment::where("patient_id",$id)->where("status",1)->count();
             $num_appointment_checkeds = Appointment::where("patient_id",$id)->where("status",2)->count();
-            $appointment_checkeds = Appointment::where("patient_id",$id)->where("status",2)->get();
-            $appointment_pendings = Appointment::where("patient_id",$id)->where("status",1)->get();
+            $appointment_checkeds = Appointment::where("patient_id",$id)->where("status",2)->orderby("id", "desc")->get();
+            $appointment_pendings = Appointment::where("patient_id",$id)->where("status",1)->orderby("id", "desc")->get();
             $appointments = Appointment::where("patient_id",$id)->orderBy("date_appointment", "desc")->get();
             
             $data_patient = [
