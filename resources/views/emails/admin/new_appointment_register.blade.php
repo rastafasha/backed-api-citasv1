@@ -19,7 +19,7 @@
 	<!--[if !mso]><!-->
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&display=swap" rel="stylesheet" />
 	<!--<![endif]-->
-	<title>Register Appointment</title>
+	<title>Register Cita Médica</title>
 	<!--[if gte mso 9]>
 	<style type="text/css" media="all">
 		sup { font-size: 100% !important; }
@@ -119,7 +119,7 @@
 																	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																		<tr>
 																			<td class="img-center p-30 px-15" style="font-size:0pt; line-height:0pt; text-align:center; padding: 30px; padding-left: 15px; padding-right: 15px;">
-																				<a href="#" target="_blank"><img src="https://malcolmcordova.com/Firma_files/logotipo.png" width="150" height="43" editable="true" border="0" alt="" /></a>
+																				<a href="#" target="_blank"><img src="https://malcolmcordova.com/health-connect-items/logoHealthConnect-01.png" width="150" height="100" editable="true" border="0" alt="" /></a>
 																			</td>
 																		</tr>
 																	</table>
@@ -189,7 +189,7 @@
 																																	
 																																<strong>Nombre del Paciente: </strong>
 																																	<br />
-																																	{{$appointment->patient->name.''.$appointment->patient->surname}}
+																																	{{$appointment->patient->name.' '.$appointment->patient->surname}}
 																																	<br />
 																																	<!-- Chicago, IL 60301 -->
 																																</multiline>
@@ -211,13 +211,16 @@
 																															<td class="text-16" style="font-size:16px; line-height:20px; color:#6e6e6e; font-family:'PT Sans', Arial, sans-serif; text-align:left; min-width:auto !important;">
 																																<multiline>
 																																<em><strong>Especialidad:</strong> {{$appointment->speciality->name}}</em>
-                                                                                                                                <!--    <br>-->
-                                                                                                                                <!--<em><strong>Fecha de la cita:</strong> {{$appointment->date_appointment}}</em>-->
+																																<br>
+																																<em><strong>Doctor:</strong> {{$appointment->doctor->name.' '.$appointment->doctor->surname}}</em>
+																																<br>
+                                                                                                                                <em><strong>Fecha de la cita:</strong> <br>
+																																{{$appointment->date_appointment}}</em>
                                                                                                                                     <br>
-                                                                                                                                <!-- <em>"Hora de Inicio: {{$appointment->hour_start_format}}"</em>
+                                                                                                                                	<!-- <em>"Hora de Inicio: {{$appointment->hour_start_format}}"</em> 
                                                                                                                                     <br>
 																																	<em>"Hora de Fin: {{$appointment->hour_end_format}}"</em>
-																																	<br> -->
+																																	<br>  -->
                                                                                                                                 <em><strong>creada:</strong> {{$appointment->created_at}}</em>
 																																</multiline>
 																															</td>
@@ -264,8 +267,8 @@
 																														<tr>
 																															<td class="text-16" style="font-size:16px; line-height:20px; color:#6e6e6e; font-family:'PT Sans', Arial, sans-serif; text-align:left; min-width:auto !important;">
 																																<multiline>
-																																{{$appointment->paymentmethod}}
-																																
+																																<!-- {{$appointment->method_payment}} -->
+																																Pending
 																																</multiline>
 																															</td>
 																														</tr>
@@ -274,7 +277,7 @@
 																												<th class="column-top mpb-15" valign="top" width="30" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;"></th>
 																												<th class="column-top" valign="top" width="230" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
 																													<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																														<tr>
+																														<!-- <tr>
 																															<td align="right" class="pb-15" style="padding-bottom: 15px;">
 																																<table border="0" cellspacing="0" cellpadding="0" class="mw-100p">
 																																	<tr>
@@ -292,7 +295,7 @@
 																																	</tr>
 																																</table>
 																															</td>
-																														</tr>
+																														</tr> -->
 																														<tr>
 																															<td align="right">
 																																<!-- Button -->
@@ -301,7 +304,7 @@
 																																		<td class="btn-20 btn-secondary c-white l-white" bgcolor="#f3189e" style="font-size:20px; line-height:24px; mso-padding-alt:15px 35px; font-family:'PT Sans', Arial, sans-serif; text-align:center; font-weight:bold; text-transform:uppercase; min-width:auto !important; border-radius:10px; background:linear-gradient(to right, #9028df 0%,#f3189e 100%); color:#ffffff;">
 																																			<multiline>
 																																				<a href="#" target="_blank" class="link c-white" style="display: block; padding: 15px 35px; text-decoration:none; color:#ffffff;">
-																																					<span class="link c-white" style="text-decoration:none; color:#ffffff;">TOTAL PAGADO: ${{$appointment->amountadd}}</span>
+																																					<span class="link c-white" style="text-decoration:none; color:#ffffff;">Cita: ${{$appointment->amount}}</span>
 																																				</a>
 																																			</multiline>
 																																		</td>
@@ -332,23 +335,21 @@
 																										</multiline>
 																									</td>
 																								</tr>
-																								<!-- <tr>
+																								<tr>
 																									<td align="center">
-																										<!-- Button -->
 																										<table border="0" cellspacing="0" cellpadding="0" style="min-width: 200px;">
 																											<tr>
 																												<td class="btn-16 c-white l-white" bgcolor="#f3189e" style="font-size:16px; line-height:20px; mso-padding-alt:15px 35px; font-family:'PT Sans', Arial, sans-serif; text-align:center; font-weight:bold; text-transform:uppercase; border-radius:25px; min-width:auto !important; color:#ffffff;">
 																													<multiline>
-																														<a href="https://citasmedicas.malcolmcordova.com" target="_blank" class="link c-white" style="display: block; padding: 15px 35px; text-decoration:none; color:#ffffff;">
+																														<a href="https://csdleondeccs.malcolmcordova.com" target="_blank" class="link c-white" style="display: block; padding: 15px 35px; text-decoration:none; color:#ffffff;">
 																															<span class="link c-white" style="text-decoration:none; color:#ffffff;">Ver Cita</span>
 																														</a>
 																													</multiline>
 																												</td>
 																											</tr>
 																										</table>
-																										<!-- END Button -->
 																									</td>
-																								</tr> -->
+																								</tr> 
 																							</table>
 																						</td>
 																					</tr>
@@ -374,7 +375,7 @@
 																<tr>
 																	<td align="center" class="pb-20" style="padding-bottom: 20px;">
 																		<!-- Socials -->
-																		<table border="0" cellspacing="0" cellpadding="0">
+																		<!-- <table border="0" cellspacing="0" cellpadding="0">
 																			<tr>
 																				<td class="img" width="34" style="font-size:0pt; line-height:0pt; text-align:left;">
 																					<a href="https://facebok.com/" target="_blank"><img src="https://malcolmcordova.com/Firma_files/transp-facebook.png" width="34" height="34" editable="true" border="0" alt="" /></a>
@@ -387,23 +388,25 @@
 																				<td class="img" width="34" style="font-size:0pt; line-height:0pt; text-align:left;">
 																					<a href="https://twitter.com/" target="_blank"><img src="https://malcolmcordova.com/Firma_files/transp-twitter.png" width="34" height="34" editable="true" border="0" alt="" /></a>
 																				</td>
-																				<!-- <td class="img" width="15" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+																				<td class="img" width="15" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
 																				<td class="img" width="34" style="font-size:0pt; line-height:0pt; text-align:left;">
 																					<a href="#" target="_blank"><img src="https://malcolmcodova.com/Firma_files/pinterest.png" width="34" height="34" editable="true" border="0" alt="" /></a>
-																				</td> -->
+																				</td>
 																			</tr>
-																		</table>
+																		</table> -->
 																		<!-- END Socials -->
 																	</td>
 																</tr>
 																<tr>
-																	<td class="text-14 lh-24 a-center c-white l-white pb-20" style="font-size:14px; font-family:'PT Sans', Arial, sans-serif; min-width:auto !important; line-height: 24px; text-align:center; color:#ffffff; padding-bottom: 20px;">
+																<td class="text-14 lh-24 a-center c-white l-white pb-20" style="font-size:14px; font-family:'PT Sans', Arial, sans-serif; min-width:auto !important; line-height: 24px; text-align:center; color:#ffffff; padding-bottom: 20px;">
 																		<multiline>
-																			Address name St. 12, City Name, State, Country Name
+																		Clínica Santiago de Leon.<br>
+																		Av Libertador, entre calle Negrín y Las Delicias, Edif. Clínica Santiago de León
 																			<br />
-																			<a cm_dontconvertlink href="tel:+17384796719" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">(738) 112222</span></a> - <a cm_dontconvertlink href="tel:+13697181973" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">(369) 22233</span></a>
+																			<a cm_dontconvertlink href="tel:+212-308-1900" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">(0212)308-1900</span></a> 
+																			<!-- <a cm_dontconvertlink href="tel:+13697181973" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">(369) 22233</span></a> -->
 																			<br />
-																			<a href="mailto:info@website.com" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">info@website.com</span></a> - <a href="https://malcolmcordova.com" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">malcolmcordova.com</span></a><br>
+																			<!-- <a href="mailto:info@website.com" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">info@website.com</span></a> - <a href="https://malcolmcordova.com" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">malcolmcordova.com</span></a><br> -->
 																			<span class="link c-white" style="text-decoration:none; color:#ffffff;">Desarrollado por:</span>
                                                                             
 																		</multiline>
@@ -417,7 +420,7 @@
 																				
 																				<td class="img" width="117" style="font-size:0pt; line-height:0pt; text-align:center; ">
                                                                                     
-																					<a href="https://malcolmcordova.com/" target="_blank"><img src="https://citasmedicas.malcolmcordova.com/logotipo.png" width="150" height="43" editable="true" border="0" alt="" /></a>
+																					<a href="https://malcolmcordova.com/" target="_blank"><img src="https://malcolmcordova.com/Firma_files/logotipo.png" width="150" height="43" editable="true" border="0" alt="" /></a>
 																				</td>
 																			</tr>
 																		</table>

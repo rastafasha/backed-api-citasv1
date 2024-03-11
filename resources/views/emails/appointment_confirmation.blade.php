@@ -125,7 +125,7 @@
 																	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																		<tr>
 																			<td class="img-center p-30 px-15" style="font-size:0pt; line-height:0pt; text-align:center; padding: 30px; padding-left: 15px; padding-right: 15px;">
-																				<a href="#" target="_blank"><img src="https://malcolmcordova.com/Firma_files/logotipo.png" width="150" height="43" editable="true" border="0" alt="" /></a>
+																				<a href="#" target="_blank"><img src="https://malcolmcordova.com/health-connect-items/logoHealthConnect-01.png" width="150" height="100" editable="true" border="0" alt="" /></a>
 																			</td>
 																		</tr>
 																	</table>
@@ -144,7 +144,7 @@
 																								<tr>
 																									<td class="title-30 a-center pb-10" style="font-size:30px; line-height:34px; color:#282828; font-family:'PT Sans', Arial, sans-serif; min-width:auto !important; text-align:center; padding-bottom: 10px;">
 																										<multiline>
-																											Hola!, "{{$appointment->patient->full_name}}
+																											Hola!, {{$appointment->patient->name.' '.$appointment->patient->surname}}
 																										</multiline>
 																									</td>
 																								</tr>
@@ -167,12 +167,12 @@
 																																<multiline>
 																																	<em>"Especialidad: {{$appointment->speciality->name}}"</em>
                                                                                                                                     <br>
-																																	<em>"Doctor: {{$appointment->doctor->full_name}}"</em>
+																																	<em>"Doctor: {{$appointment->doctor->name.' '.$appointment->doctor->surname}}"</em>
                                                                                                                                     <br>
-																																	<em>"Creada el día": {{$appointment->date_appointment}}"</em>
+																																	<em>"Para el día": {{$appointment->date_appointment}}"</em>
+                                                                                                                                    <br>
+																																	<em>Puede entrar en la app de paciente y pagar la cita, si lo desea</em>
                                                                                                                                     <!-- <br>
-																																	<em>"Hora de Inicio: {{$appointment ["hour_start_format"]}}"</em>
-                                                                                                                                    <br>
 																																	<em>"Hora de Fin: {{$appointment ["hour_end_format"]}}"</em> -->
 																																</multiline>
 																															</td>
@@ -225,7 +225,7 @@
 																<tr>
 																	<td align="center" class="pb-20" style="padding-bottom: 20px;">
 																		<!-- Socials -->
-																		<table border="0" cellspacing="0" cellpadding="0">
+																		<!-- <table border="0" cellspacing="0" cellpadding="0">
 																			<tr>
 																				<td class="img" width="34" style="font-size:0pt; line-height:0pt; text-align:left;">
 																					<a href="https://facebok.com/" target="_blank"><img src="https://malcolmcordova.com/Firma_files/transp-facebook.png" width="34" height="34" editable="true" border="0" alt="" /></a>
@@ -238,23 +238,25 @@
 																				<td class="img" width="34" style="font-size:0pt; line-height:0pt; text-align:left;">
 																					<a href="https://twitter.com/" target="_blank"><img src="https://malcolmcordova.com/Firma_files/transp-twitter.png" width="34" height="34" editable="true" border="0" alt="" /></a>
 																				</td>
-																				<!-- <td class="img" width="15" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+																				<td class="img" width="15" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
 																				<td class="img" width="34" style="font-size:0pt; line-height:0pt; text-align:left;">
 																					<a href="#" target="_blank"><img src="https://malcolmcodova.com/Firma_files/pinterest.png" width="34" height="34" editable="true" border="0" alt="" /></a>
-																				</td> -->
+																				</td>
 																			</tr>
-																		</table>
+																		</table> -->
 																		<!-- END Socials -->
 																	</td>
 																</tr>
 																<tr>
-																	<td class="text-14 lh-24 a-center c-white l-white pb-20" style="font-size:14px; font-family:'PT Sans', Arial, sans-serif; min-width:auto !important; line-height: 24px; text-align:center; color:#ffffff; padding-bottom: 20px;">
+																<td class="text-14 lh-24 a-center c-white l-white pb-20" style="font-size:14px; font-family:'PT Sans', Arial, sans-serif; min-width:auto !important; line-height: 24px; text-align:center; color:#ffffff; padding-bottom: 20px;">
 																		<multiline>
-																			Address name St. 12, City Name, State, Country Name
+																		Clínica Santiago de Leon.<br>
+																		Av Libertador, entre calle Negrín y Las Delicias, Edif. Clínica Santiago de León
 																			<br />
-																			<a cm_dontconvertlink href="tel:+17384796719" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">(738) 112222</span></a> - <a cm_dontconvertlink href="tel:+13697181973" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">(369) 22233</span></a>
+																			<a cm_dontconvertlink href="tel:+212-308-1900" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">(0212)308-1900</span></a> 
+																			<!-- <a cm_dontconvertlink href="tel:+13697181973" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">(369) 22233</span></a> -->
 																			<br />
-																			<a href="mailto:info@website.com" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">info@website.com</span></a> - <a href="https://malcolmcordova.com" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">malcolmcordova.com</span></a><br>
+																			<!-- <a href="mailto:info@website.com" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">info@website.com</span></a> - <a href="https://malcolmcordova.com" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">malcolmcordova.com</span></a><br> -->
 																			<span class="link c-white" style="text-decoration:none; color:#ffffff;">Desarrollado por:</span>
                                                                             
 																		</multiline>
@@ -268,7 +270,7 @@
 																				
 																				<td class="img" width="117" style="font-size:0pt; line-height:0pt; text-align:center; ">
                                                                                     
-																					<a href="https://malcolmcordova.com/" target="_blank"><img src="https://citasmedicas.malcolmcordova.com/logotipo.png" width="150" height="43" editable="true" border="0" alt="" /></a>
+																					<a href="https://malcolmcordova.com/" target="_blank"><img src="https://malcolmcordova.com/Firma_files/logotipo.png" width="150" height="43" editable="true" border="0" alt="" /></a>
 																				</td>
 																			</tr>
 																		</table>
