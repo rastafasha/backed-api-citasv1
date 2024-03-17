@@ -18,7 +18,10 @@ class AppointmentPayPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        // if($user->can('list_appointment')){
+        //     return false;
+        //    }
+        //    return false;
     }
 
     /**

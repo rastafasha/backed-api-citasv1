@@ -18,7 +18,10 @@ class AppointmentPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        if($user->can('list_appointment')){
+            return false;
+           }
+           return false;
     }
 
     /**
@@ -30,7 +33,10 @@ class AppointmentPolicy
      */
     public function view(User $user, Appointment $appointment)
     {
-        //
+        if($user->can('list_appointment')){
+            return false;
+           }
+           return false;
     }
 
     /**
@@ -41,7 +47,10 @@ class AppointmentPolicy
      */
     public function create(User $user)
     {
-        //
+        if($user->can('register_appointment')){
+            return false;
+           }
+           return false;
     }
 
     /**
@@ -53,7 +62,10 @@ class AppointmentPolicy
      */
     public function update(User $user, Appointment $appointment)
     {
-        //
+        if($user->can('edit_appointment')){
+            return false;
+           }
+           return false;
     }
 
     /**
@@ -65,7 +77,10 @@ class AppointmentPolicy
      */
     public function delete(User $user, Appointment $appointment)
     {
-        //
+        if($user->can('delete_appointment')){
+            return false;
+           }
+           return false;
     }
 
     /**

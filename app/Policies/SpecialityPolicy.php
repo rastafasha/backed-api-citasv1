@@ -18,7 +18,11 @@ class SpecialityPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        // dd("Ya");
+       if($user->can('list_speciality')){
+        return false;
+       }
+       return false;
     }
 
     /**
@@ -28,9 +32,13 @@ class SpecialityPolicy
      * @param  \App\Models\Speciality  $speciality
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Speciality $speciality)
+    public function view(User $user, Speciality $model = null)
     {
         //
+        if($user->can('list_speciality')){
+            return false;
+           }
+           return false;
     }
 
     /**
@@ -41,7 +49,10 @@ class SpecialityPolicy
      */
     public function create(User $user)
     {
-        //
+        if($user->can('register_specialty')){
+            return false;
+           }
+           return false;
     }
 
     /**
@@ -51,9 +62,12 @@ class SpecialityPolicy
      * @param  \App\Models\Speciality  $speciality
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Speciality $speciality)
+    public function update(User $user, Speciality $model = null)
     {
-        //
+        if($user->can('edit_specialty')){
+            return false;
+           }
+           return false;
     }
 
     /**
@@ -63,9 +77,12 @@ class SpecialityPolicy
      * @param  \App\Models\Speciality  $speciality
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Speciality $speciality)
+    public function delete(User $user, Speciality $model = null)
     {
-        //
+        if($user->can('delet_specialty')){
+            return false;
+           }
+           return false;
     }
 
     /**
@@ -75,7 +92,7 @@ class SpecialityPolicy
      * @param  \App\Models\Speciality  $speciality
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Speciality $speciality)
+    public function restore(User $user, Speciality $model = null)
     {
         //
     }
