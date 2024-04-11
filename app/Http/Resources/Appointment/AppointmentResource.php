@@ -41,6 +41,7 @@ class AppointmentResource extends JsonResource
                     "full_name" =>$this->resource->patient->name.' '.$this->resource->patient->surname,
                     "phone" =>$this->resource->patient->phone,
                     "n_doc" =>$this->resource->patient->n_doc,
+                    "antecedent_alerg" =>$this->resource->patient->antecedent_alerg,
                     "name_companion" =>$this->resource->patient->person->name_companion,
                     "surname_companion" =>$this->resource->patient->person->surname_companion,
                 ]: NUll,
@@ -78,6 +79,7 @@ class AppointmentResource extends JsonResource
             "status_pay" =>$this->resource->status_pay,
             // "deuda" =>$this->resource->deuda,
             "status" =>$this->resource->status,
+            "laboratory" =>$this->resource->laboratory,
             "date_attention" =>$this->resource->date_attention,
             "confimation" =>$this->resource->confimation,
             

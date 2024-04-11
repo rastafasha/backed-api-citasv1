@@ -28,7 +28,11 @@ class AppointmentAttentionController extends Controller
 
             if(!$appointment->date_attention){
                 $appointment->update(["status"=>2,"date_attention" =>now()]);
+                
             }
+            $appointment->update(["laboratory" =>$request->laboratory,]);
+            
+            
         }else{
             AppointmentAttention::create($request->all());
 

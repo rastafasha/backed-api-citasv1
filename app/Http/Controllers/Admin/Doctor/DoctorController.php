@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Location;
 use Illuminate\Http\Request;
+use App\Mail\NewUserRegisterMail;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Doctor\Specialitie;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
@@ -246,6 +248,8 @@ class DoctorController extends Controller
 
         $role=  Role::findOrFail($request->role_id);
         $user->assignRole($role);
+
+        Mail::to($user->email)->send(new NewUserRegisterMail($user));
 
         //almacenar la disponibilidad de horario del doctor
         foreach ($schedule_hours as $key => $schedule_hour) {

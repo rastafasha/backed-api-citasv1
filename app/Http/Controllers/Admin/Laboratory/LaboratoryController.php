@@ -28,6 +28,7 @@ class LaboratoryController extends Controller
         $appointments = Appointment::filterAdvance($speciality_id, $name_doctor, $date)
                             ->orderBy("id", "desc")
                             ->where("status", 2)
+                            ->where("laboratory", 2)
                             ->paginate(10);
         return response()->json([
             "total"=>$appointments->total(),
@@ -48,12 +49,12 @@ class LaboratoryController extends Controller
 
         $user_is_valid = Laboratory::where("appointment_id", "<>", $request->appointment_id)->first();
 
-        if($user_is_valid){
-            return response()->json([
-                "message"=>403,
-                "message_text"=> 'el Appointment ya existe'
-            ]);
-        }
+        // if($user_is_valid){
+        //     return response()->json([
+        //         "message"=>403,
+        //         "message_text"=> 'el Appointment ya existe'
+        //     ]);
+        // }
 
         foreach($request->file("files") as $key=>$file){
             $extension = $file->getClientOriginalExtension();

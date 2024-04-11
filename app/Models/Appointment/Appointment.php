@@ -33,6 +33,7 @@ class Appointment extends Model
         "status_pay",
         "deuda",
         "status",
+        "laboratory",
         "date_attention",
         "cron_state",
         "confimation",
