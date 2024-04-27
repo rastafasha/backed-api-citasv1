@@ -11,4 +11,5 @@ Route::get('/laboratory', [LaboratoryController::class, 'index'] )->name('index'
     Route::post('/laboratory/store', [LaboratoryController::class, 'store'] )->name('store');
     Route::post('/laboratory/update/{id}', [LaboratoryController::class, 'update'] )->name('update');
     Route::post('/laboratory/add-file', [LaboratoryController::class, 'addFiles'] )->name('addFiles');
+    Route::delete('/laboratory/destroy/{id}', [LaboratoryController::class, 'destroy'] )->name('destroy');
     Route::delete('/laboratory/delete-file/{id}', [LaboratoryController::class, 'removeFiles'] )->name('removeFiles');
