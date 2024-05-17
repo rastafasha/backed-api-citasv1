@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Patient\PatientPerson;
 use Illuminate\Support\Facades\Redis;
 use App\Models\Appointment\Appointment;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Resources\Patient\PatientResource;
 use App\Http\Resources\Patient\PatientCollection;
@@ -202,6 +203,8 @@ class PatientController extends Controller
         ]);
         PatientPerson::create($request->all());
 
+        Mail::to($patient->email)->send(new NewPatientRegisterMail($patient));
+        
         return response()->json([
             "message"=>200,
         ]);
