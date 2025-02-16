@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             TiposDePagoSeeder::class,
             // AppointmentSeeder::class,
             LocationSeeder::class,
+            PubSeeder::class,
+            SettingeneralSeeder::class,
             DoctorScheduleDaySeeder::class,
             DoctorScheduleHourSeeder::class,
             DoctorScheduleJoinHourSeeder::class,
