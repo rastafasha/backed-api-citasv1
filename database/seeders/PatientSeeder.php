@@ -14,7 +14,7 @@ class PatientSeeder extends Seeder
      */
     public function run(): void
     {
-        Patient::factory()->count(100)->create()->each(function($p) {
+        Patient::factory()->count(20)->create()->each(function($p) {
             $faker = \Faker\Factory::create();
             PatientPerson::create([ 
                 "patient_id" => $p->id,

@@ -33,6 +33,6 @@ class DoctorScheduleJoinHour extends Model
         return $this->belongsTo(DoctorScheduleDay::class)->withTrashed();
     }
     public function doctor_schedule_hour(){
-        return $this->belongsTo(DoctorScheduleHour::class);
+        return $this->belongsTo(DoctorScheduleHour::class, "doctor_schedule_hour_id");
     }
 }
