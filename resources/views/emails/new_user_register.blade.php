@@ -119,7 +119,7 @@
 																	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																		<tr>
 																			<td class="img-center p-30 px-15" style="font-size:0pt; line-height:0pt; text-align:center; padding: 30px; padding-left: 15px; padding-right: 15px;">
-																				<a href="#" target="_blank"><img src="https://malcolmcordova.com/health-connect-items/logoHealthConnect-01.png" width="150" height="100" editable="true" border="0" alt="" /></a>
+																				<a href="#" target="_blank"><img src="https://health-connect.me/varios/logoHealthConnect-01.png" width="150" height="100" editable="true" border="0" alt="" /></a>
 																			</td>
 																		</tr>
 																	</table>
@@ -138,7 +138,7 @@
 																								<tr>
 																									<td class="title-36 a-center pb-15" style="font-size:30px; line-height:40px; color:#282828; font-family:'PT Sans', Arial, sans-serif; min-width:auto !important; text-align:center; padding-bottom: 15px;">
 																										<multiline>
-																											<strong>Bienvenido a la App.</strong>
+																											<strong>Bienvenido a Health Connect me.</strong>
 																										</multiline>
 																									</td>
 																								</tr>
@@ -179,7 +179,7 @@
 																														<tr>
 																															<td class="title-20 pb-10" style="font-size:20px; line-height:24px; color:#282828; font-family:'PT Sans', Arial, sans-serif; text-align:left; min-width:auto !important; padding-bottom: 10px;">
 																																<multiline>
-																																	<strong>Detalles</strong>
+																																	<strong>Se ha registrado tu usuario con los datos siguientes:</strong>
 																																</multiline>
 																															</td>
 																														</tr>
@@ -196,9 +196,31 @@
 																																	{{$user->email}}
 																																	<br />
 																																	<!-- Chicago, IL 60301 -->
+																																	{{-- <strong>Contrase単a: </strong> --}}
+																																	<br />
+																																	{{-- La contraseña inicial teporal con el que se registró.<br>  --}}
+																																	Puede cambiarlo dentro de la aplicación, en el area Editar Perfil en el menú arriba a la derecha.
+																																	Para mejor una mejor experiencia desde computador de escritorio acceder por el navegador Chrome,
+																																	en dispositivos moviles usar su navegador de preferencia 
+																																	<br />
 																																</multiline>
 																															</td>
 																														</tr>
+																														<tr>
+																															<td align="center">
+																																<table border="0" cellspacing="0" cellpadding="0" style="min-width: 200px;">
+																																	<tr>
+																																		<td class="btn-16 c-white l-white" bgcolor="#f3189e" style="font-size:16px; line-height:20px; mso-padding-alt:15px 35px; font-family:'PT Sans', Arial, sans-serif; text-align:center; font-weight:bold; text-transform:uppercase; border-radius:25px; min-width:auto !important; color:#ffffff;">
+																																			<multiline>
+																																				<a href="https://clinica.health-connect.me/" target="_blank" class="link c-white" style="display: block; padding: 15px 35px; text-decoration:none; color:#ffffff;">
+																																					<span class="link c-white" style="text-decoration:none; color:#ffffff;">Acceder a Health Connect me</span>
+																																				</a>
+																																			</multiline>
+																																		</td>
+																																	</tr>
+																																</table>
+																															</td>
+																														</tr> 
 																													</table>
 																												</th>
 																												<th class="column-top mpb-15" valign="top" width="30" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;"></th>
@@ -243,6 +265,21 @@
 																										</multiline>
 																									</td>
 																								</tr>
+																								<tr>
+                            																	<td align="center">
+                            																		<!-- Download App -->
+                            																		<table border="0" cellspacing="0" cellpadding="0">
+                            																			<tr>
+                            																				
+                            																				<td class="img" width="117" style="font-size:0pt; line-height:0pt; text-align:center; ">
+                                                                                                                <a href="https://health-connect.me/" target="_blank"><img src="https://health-connect.me/varios/logoHealthConnect-01.png" width="75" height="50" editable="true" border="0" alt="" /></a>
+                            																					
+                            																				</td>
+                            																			</tr>
+                            																		</table>
+                            																		<!-- END Download App -->
+                            																	</td>
+                            																</tr>
 																							</table>
 																						</td>
 																					</tr>

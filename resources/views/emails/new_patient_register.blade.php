@@ -119,7 +119,7 @@
 																	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																		<tr>
 																			<td class="img-center p-30 px-15" style="font-size:0pt; line-height:0pt; text-align:center; padding: 30px; padding-left: 15px; padding-right: 15px;">
-																				<a href="#" target="_blank"><img src="https://malcolmcordova.com/health-connect-items/logoHealthConnect-01.png" width="150" height="100" editable="true" border="0" alt="" /></a>
+																				<a href="#" target="_blank"><img src="https://health-connect.me/varios/logoHealthConnect-01.png" width="150" height="100" editable="true" border="0" alt="" /></a>
 																			</td>
 																		</tr>
 																	</table>
@@ -138,7 +138,7 @@
 																								<tr>
 																									<td class="title-36 a-center pb-15" style="font-size:30px; line-height:40px; color:#282828; font-family:'PT Sans', Arial, sans-serif; min-width:auto !important; text-align:center; padding-bottom: 15px;">
 																										<multiline>
-																											<strong>Bienvenido a la App.</strong>
+																											<strong>Bienvenido a Health Connect me.</strong>
 																										</multiline>
 																									</td>
 																								</tr>
@@ -179,18 +179,24 @@
 																														<tr>
 																															<td class="title-20 pb-10" style="font-size:20px; line-height:24px; color:#282828; font-family:'PT Sans', Arial, sans-serif; text-align:left; min-width:auto !important; padding-bottom: 10px;">
 																																<multiline>
-																																	<strong>Se ha registrado su usuario en nuestra aplicación, Bienvenid@!</strong>
+																																	<strong>Se ha registrado su usuario en nuestra aplicaci贸n, Bienvenid@!</strong>
 																																</multiline>
 																															</td>
 																														</tr>
                                                                                                                         <tr>
                                                                                                                             <td class="text-16 lh-26 a-center" style="font-size:16px; color:#6e6e6e; font-family:'PT Sans', Arial, sans-serif; min-width:auto !important; line-height: 26px; text-align:center;">
                                                                                                                                 <multiline>
-                                                                                                                                    Registrese en nuestra versión Paciente para que comience a recibir beneficios.<br>
+                                                                                                                                    Puede Acceder a la aplicaci贸n, escaneando el c贸odigo QR.<br>
                                                                                                                                     
                                                                                                                                 </multiline>
                                                                                                                             </td>
                                                                                                                         </tr>
+																														<tr>
+																															<td class="img-center p-30 px-15" style="font-size:0pt; line-height:0pt; text-align:center; padding: 30px; padding-left: 15px; padding-right: 15px;">
+																																<img src="https://health-connect.me/varios/pacientehcApp-1024.jpeg" width="150" height="150" editable="true" border="0" alt="" />
+																																
+																															</td>
+																														</tr>
 																														<tr>
 																															<td class="text-16" style="font-size:16px; line-height:20px; color:#6e6e6e; font-family:'PT Sans', Arial, sans-serif; text-align:left; min-width:auto !important;">
 																																<multiline>
@@ -204,6 +210,8 @@
 																																	{{$patient->email}}
 																																	<br />
 																																	<!-- Chicago, IL 60301 -->
+																																	Para mejor una mejor experiencia desde computador de escritorio acceder por el navegador Chrome,
+																																	en dispositivos moviles usar su navegador de preferencia 
 																																</multiline>
 																															</td>
 																														</tr>
@@ -250,10 +258,28 @@
 																											<em>Gracias por ser parte del equipo. </em>
 																										</multiline>
 																									</td>
+																									
 																								</tr>
 																							</table>
+																						
+																		
 																						</td>
 																					</tr>
+																					<tr>
+																	<td align="center">
+																		<!-- Download App -->
+																		<table border="0" cellspacing="0" cellpadding="0">
+																			<tr>
+																				
+																				<td class="img" width="117" style="font-size:0pt; line-height:0pt; text-align:center; ">
+                                                                                    <a href="https://health-connect.me/" target="_blank"><img src="https://health-connect.me/varios/logoHealthConnect-01.png" width="75" height="50" editable="true" border="0" alt="" /></a>
+																					
+																				</td>
+																			</tr>
+																		</table>
+																		<!-- END Download App -->
+																	</td>
+																</tr>
 																				</table>
 																				<!-- END Section - Order Details -->
 																			</td>

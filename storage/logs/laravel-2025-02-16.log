@@ -1,0 +1,166 @@
+[2025-02-16 02:02:35] local.ERROR: Uncaught ReflectionException: Class "Spatie\Permission\Middlewares\RoleMiddleware" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionMethod->__construct('Spatie\\Permissi...', 'handle')
+#1 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"Spatie\\Permission\\Middlewares\\RoleMiddleware\" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionMethod->__construct('Spatie\\\\Permissi...', 'handle')
+#1 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2025-02-16 02:10:05] local.ERROR: Command "migration" is not defined.
+
+Did you mean one of these?
+    make:migration
+    migrate
+    migrate:fresh
+    migrate:install
+    migrate:refresh
+    migrate:reset
+    migrate:rollback
+    migrate:status {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"migration\" is not defined.
+
+Did you mean one of these?
+    make:migration
+    migrate
+    migrate:fresh
+    migrate:install
+    migrate:refresh
+    migrate:reset
+    migrate:rollback
+    migrate:status at /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/symfony/console/Application.php:720)
+[stacktrace]
+#0 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/symfony/console/Application.php(259): Symfony\\Component\\Console\\Application->find('migration')
+#1 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/laravel/framework/src/Illuminate/Console/Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2025-02-16 02:10:22] local.ERROR: Command "migration" is not defined.
+
+Did you mean one of these?
+    make:migration
+    migrate
+    migrate:fresh
+    migrate:install
+    migrate:refresh
+    migrate:reset
+    migrate:rollback
+    migrate:status {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"migration\" is not defined.
+
+Did you mean one of these?
+    make:migration
+    migrate
+    migrate:fresh
+    migrate:install
+    migrate:refresh
+    migrate:reset
+    migrate:rollback
+    migrate:status at /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/symfony/console/Application.php:720)
+[stacktrace]
+#0 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/symfony/console/Application.php(259): Symfony\\Component\\Console\\Application->find('migration')
+#1 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/laravel/framework/src/Illuminate/Console/Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2025-02-16 02:11:11] local.ERROR: Command "migrate:" is ambiguous.
+Did you mean one of these?
+    migrate:fresh    Drop all tables and re-run all migrations
+    migrate:install  Create the migration repository
+    migrate:refresh  Reset and re-run all migrations
+    migrate:reset    Rollback all database migrations
+    migrate:rollback Rollback the last database migration
+    migrate:status   Show the status of each migration. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"migrate:\" is ambiguous.
+Did you mean one of these?
+    migrate:fresh    Drop all tables and re-run all migrations
+    migrate:install  Create the migration repository
+    migrate:refresh  Reset and re-run all migrations
+    migrate:reset    Rollback all database migrations
+    migrate:rollback Rollback the last database migration
+    migrate:status   Show the status of each migration. at /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/symfony/console/Application.php:761)
+[stacktrace]
+#0 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/symfony/console/Application.php(259): Symfony\\Component\\Console\\Application->find('migrate:')
+#1 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/laravel/framework/src/Illuminate/Console/Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2025-02-16 02:11:24] local.ERROR: Command "migrate:" is ambiguous.
+Did you mean one of these?
+    migrate:fresh    Drop all tables and re-run all migrations
+    migrate:install  Create the migration repository
+    migrate:refresh  Reset and re-run all migrations
+    migrate:reset    Rollback all database migrations
+    migrate:rollback Rollback the last database migration
+    migrate:status   Show the status of each migration. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"migrate:\" is ambiguous.
+Did you mean one of these?
+    migrate:fresh    Drop all tables and re-run all migrations
+    migrate:install  Create the migration repository
+    migrate:refresh  Reset and re-run all migrations
+    migrate:reset    Rollback all database migrations
+    migrate:rollback Rollback the last database migration
+    migrate:status   Show the status of each migration. at /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/symfony/console/Application.php:761)
+[stacktrace]
+#0 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/symfony/console/Application.php(259): Symfony\\Component\\Console\\Application->find('migrate:')
+#1 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/laravel/framework/src/Illuminate/Console/Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2025-02-16 02:11:48] local.ERROR: Command "migrate:" is ambiguous.
+Did you mean one of these?
+    migrate:fresh    Drop all tables and re-run all migrations
+    migrate:install  Create the migration repository
+    migrate:refresh  Reset and re-run all migrations
+    migrate:reset    Rollback all database migrations
+    migrate:rollback Rollback the last database migration
+    migrate:status   Show the status of each migration. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"migrate:\" is ambiguous.
+Did you mean one of these?
+    migrate:fresh    Drop all tables and re-run all migrations
+    migrate:install  Create the migration repository
+    migrate:refresh  Reset and re-run all migrations
+    migrate:reset    Rollback all database migrations
+    migrate:rollback Rollback the last database migration
+    migrate:status   Show the status of each migration. at /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/symfony/console/Application.php:761)
+[stacktrace]
+#0 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/symfony/console/Application.php(259): Symfony\\Component\\Console\\Application->find('migrate:')
+#1 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/laravel/framework/src/Illuminate/Console/Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2025-02-16 02:12:16] local.ERROR: Command "migrate:create_patients_table" is not defined.
+
+Did you mean one of these?
+    migrate
+    migrate:fresh
+    migrate:install
+    migrate:refresh
+    migrate:reset
+    migrate:rollback
+    migrate:status {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"migrate:create_patients_table\" is not defined.
+
+Did you mean one of these?
+    migrate
+    migrate:fresh
+    migrate:install
+    migrate:refresh
+    migrate:reset
+    migrate:rollback
+    migrate:status at /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/symfony/console/Application.php:720)
+[stacktrace]
+#0 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/symfony/console/Application.php(259): Symfony\\Component\\Console\\Application->find('migrate:create_...')
+#1 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/laravel/framework/src/Illuminate/Console/Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /Applications/MAMP/htdocs/proyectos/2024/healthConnectMe/clinicas/backed-api-citasv1/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 

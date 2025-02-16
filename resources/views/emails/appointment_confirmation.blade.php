@@ -19,7 +19,7 @@
 	<!--[if !mso]><!-->
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&display=swap" rel="stylesheet" />
 	<!--<![endif]-->
-	<title>Email Template</title>
+	<title>Appontment Confirmation</title>
 	<!--[if gte mso 9]>
 	<style type="text/css" media="all">
 		sup { font-size: 100% !important; }
@@ -125,7 +125,7 @@
 																	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																		<tr>
 																			<td class="img-center p-30 px-15" style="font-size:0pt; line-height:0pt; text-align:center; padding: 30px; padding-left: 15px; padding-right: 15px;">
-																				<a href="#" target="_blank"><img src="https://malcolmcordova.com/health-connect-items/logoHealthConnect-01.png" width="150" height="100" editable="true" border="0" alt="" /></a>
+																				<a href="https://health-connect.me/" target="_blank"><img src="https://health-connect.me/varios/logoHealthConnect-01.png" width="150" height="100" editable="true" border="0" alt="" /></a>
 																			</td>
 																		</tr>
 																	</table>
@@ -250,10 +250,10 @@
 																<tr>
 																<td class="text-14 lh-24 a-center c-white l-white pb-20" style="font-size:14px; font-family:'PT Sans', Arial, sans-serif; min-width:auto !important; line-height: 24px; text-align:center; color:#ffffff; padding-bottom: 20px;">
 																		<multiline>
-																		Clínica Santiago de Leon.<br>
-																		Av Libertador, entre calle Negrín y Las Delicias, Edif. Clínica Santiago de León
-																			<br />
-																			<a cm_dontconvertlink href="tel:+212-308-1900" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">(0212)308-1900</span></a> 
+																		<!--Clínica Santiago de Leon.<br>-->
+																		<!--Av Libertador, entre calle Negrín y Las Delicias, Edif. Clínica Santiago de León-->
+																		<!--	<br />-->
+																			<!--<a cm_dontconvertlink href="tel:+212-308-1900" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">(0212)308-1900</span></a> -->
 																			<!-- <a cm_dontconvertlink href="tel:+13697181973" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">(369) 22233</span></a> -->
 																			<br />
 																			<!-- <a href="mailto:info@website.com" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">info@website.com</span></a> - <a href="https://malcolmcordova.com" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">malcolmcordova.com</span></a><br> -->
@@ -270,7 +270,7 @@
 																				
 																				<td class="img" width="117" style="font-size:0pt; line-height:0pt; text-align:center; ">
                                                                                     
-																					<a href="https://malcolmcordova.com/" target="_blank"><img src="https://malcolmcordova.com/Firma_files/logotipo.png" width="150" height="43" editable="true" border="0" alt="" /></a>
+																					<a href="https://health-connect.me/" target="_blank"><img src="https://health-connect.me/varios/logoHealthConnect-01.png" width="75" height="50" editable="true" border="0" alt="" /></a>
 																				</td>
 																			</tr>
 																		</table>

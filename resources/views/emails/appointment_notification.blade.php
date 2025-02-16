@@ -125,7 +125,7 @@
 																	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																		<tr>
 																			<td class="img-center p-30 px-15" style="font-size:0pt; line-height:0pt; text-align:center; padding: 30px; padding-left: 15px; padding-right: 15px;">
-																				<a href="#" target="_blank"><img src="https://malcolmcordova.com/health-connect-items/logoHealthConnect-01.png" width="150" height="100" editable="true" border="0" alt="" /></a>
+																				<a href="https://health-connect.me/" target="_blank"><img src="https://malcolmcordova.com/health-connect-items/logoHealthConnect-01.png" width="150" height="100" editable="true" border="0" alt="" /></a>
 																			</td>
 																		</tr>
 																	</table>
@@ -286,8 +286,8 @@
 																			<tr>
 																				
 																				<td class="img" width="117" style="font-size:0pt; line-height:0pt; text-align:center; ">
-                                                                                    
-																					<a href="https://malcolmcordova.com/" target="_blank"><img src="https://malcolmcordova.com/Firma_files/logotipo.png" width="150" height="43" editable="true" border="0" alt="" /></a>
+                                                                                    <a href="https://health-connect.me/" target="_blank"><img src="https://malcolmcordova.com/health-connect-items/logoHealthConnect-01.png" width="75" height="50" editable="true" border="0" alt="" /></a>
+																					
 																				</td>
 																			</tr>
 																		</table>

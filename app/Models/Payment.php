@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use App\Models\Payment;
 use App\Jobs\PaymentRegisterJob;
 use App\Mail\NewPaymentRegisterMail;
 use Illuminate\Support\Facades\Mail;
@@ -99,31 +98,14 @@ class Payment extends Model
 
     public function scopefilterAdvancePayment($query,
     // $metodo, 
-    $search_referencia, 
-    // $bank_name, 
-    // $nombre, 
-    // $monto,
-    // $fecha,
+    $search_referencia
     ){
         
-        // if($metodo){
-        //     $query->where("metodo", $metodo);
-        // }
+        
         if($search_referencia){
             $query->where("referencia", $search_referencia);
         }
-        // if($bank_name){
-        //     $query->where("bank_name", $bank_name);
-        // }
-        // if($nombre){
-        //     $query->where("nombre", $nombre);
-        // }
-        // if($monto){
-        //     $query->where("monto", $monto);
-        // }
-        // if($fecha){
-        //     $query->whereDate("fecha", Carbon::parse($fecha)->format("Y-m-d"));
-        // }
+        
         return $query;
     }
 }

@@ -92,7 +92,7 @@ class LaboratoryController extends Controller
     public function show($id)
     {
         $appointment = Appointment::findOrFail($id);
-        $laboratory = Laboratory::findOrFail($request->appointment_id);
+        // $laboratory = Laboratory::findOrFail($request->appointment_id);
         $appointment_attention = $appointment->attention;
         if($appointment_attention){
             return response()->json([
@@ -106,7 +106,7 @@ class LaboratoryController extends Controller
             ]);
         }else{
             return response()->json([
-                "laboratory" => $laboratory,
+                // "laboratory" => $laboratory,
                 "appointment_attention"=>[
                     "id"=>NULL,
                     "description"=>NULL,

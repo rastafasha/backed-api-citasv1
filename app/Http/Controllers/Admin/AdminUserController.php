@@ -189,16 +189,18 @@ class AdminUserController extends Controller
         
         $user = User::where('n_doc', $n_doc)
         ->orderBy('id', 'desc')
-        ->get();
+        ->first();;
         $patient = Patient::where('n_doc', $n_doc)
         ->orderBy('id', 'desc')
-        ->get();
+        ->first();;
         
             return response()->json([
                 'code' => 200,
                 'status' => 'Listar patient by n_doc',
-                "user" => PatientCollection::make($user) ,
-                "patient" => PatientCollection::make($patient) ,
+                "user" => $user,
+                "patient" => $patient,
+                // "user" => PatientCollection::make($user) ,
+                // "patient" => PatientCollection::make($patient) ,
             ], 200);
     }
 }
