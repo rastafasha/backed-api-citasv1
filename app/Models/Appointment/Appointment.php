@@ -97,7 +97,7 @@ class Appointment extends Model
 
     public function speciality()
     {
-        return $this->belongsTo(Specialitie::class);
+        return $this->belongsTo(Specialitie::class, "speciality_id");
     }
 
     public function attention()

@@ -16,7 +16,7 @@ class CreateDoctorScheduleDaysTable extends Migration
         Schema::create('doctor_schedule_days', function (Blueprint $table) {
             $table->bigIncrements('id');
         
-            $table->string('day	', 50);
+            $table->string('day', 50);
             // Provider IDs
             $table->unsignedBigInteger('user_id')->nullable();
             

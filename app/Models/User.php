@@ -74,7 +74,14 @@ class User extends Authenticatable implements JWTSubject
     ];
 
     const SUPERADMIN = 'SUPERADMIN';
+    const ADMIN = 'ADMIN';
     const GUEST = 'GUEST';
+    const DOCTOR = 'DOCTOR';
+    const LABORATORIO = 'LABORATORIO';
+    const RECEPCION = 'RECEPCION';
+    const ASISTENTE = 'ASISTENTE';
+    const ENFERMERA = 'ENFERMERA';
+    const PERSONAL = 'PERSONAL';
 
     public function setCreatedAtAttribute($value)
     {
@@ -100,9 +107,21 @@ class User extends Authenticatable implements JWTSubject
         return $this->role === User::SUPERADMIN;
     }
 
+    public function isAdmin()
+    {
+        return $this->role === User::ADMIN;
+    }
     public function isGuest()
     {
         return $this->role === User::GUEST;
+    }
+    public function isRecepcion()
+    {
+        return $this->role === User::RECEPCION;
+    }
+    public function isDoctor()
+    {
+        return $this->role === User::DOCTOR;
     }
 
     public function getJWTIdentifier()
@@ -125,7 +144,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function speciality()
     {
-        return $this->belongsTo(Specialitie::class);
+        return $this->belongsTo(Specialitie::class, 'speciality_id');
     }
 
     public function schedule_days()

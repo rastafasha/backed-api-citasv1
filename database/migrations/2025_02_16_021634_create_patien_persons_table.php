@@ -15,15 +15,15 @@ class CreatePatienPersonsTable extends Migration
     {
         Schema::create('patien_persons', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name_companion	', 250);
-            $table->string('surname_companion		', 250);
-            $table->string('mobile_companion	', 250);
-            $table->string('relationship_companion	', 250);
-            $table->string('name_responsable		', 250);
-            $table->string('surname_responsable			', 250);
-            $table->string('mobile_responsable			', 50);
+            $table->string('name_companion', 250);
+            $table->string('surname_companion', 250);
+            $table->string('mobile_companion', 250);
+            $table->string('relationship_companion', 250);
+            $table->string('name_responsable', 250);
+            $table->string('surname_responsable', 250);
+            $table->string('mobile_responsable', 50);
             $table->text('address')->nullable();
-            $table->string('relationship_responsable		', 150);
+            $table->string('relationship_responsable', 150);
 
             
             // Provider IDs

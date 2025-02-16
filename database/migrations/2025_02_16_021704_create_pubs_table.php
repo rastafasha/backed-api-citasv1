@@ -15,7 +15,7 @@ class CreatePubsTable extends Migration
     {
         Schema::create('pubs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('avatar	', 250);
+            $table->string('avatar', 250);
             $table->tinyInteger('state')->default(1);
             
             $table->timestamps();

@@ -15,11 +15,11 @@ class CreateLaboratoriesTable extends Migration
     {
         Schema::create('laboratories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name_file	', 250);
-            $table->string('size	', 50);
-            $table->string('resolution	', 50);
-            $table->string('file	', 250);
-            $table->string('type	', 50);
+            $table->string('name_file', 250);
+            $table->string('size', 50);
+            $table->string('resolution', 50);
+            $table->string('file', 250);
+            $table->string('type', 50);
 
             
             // Provider IDs

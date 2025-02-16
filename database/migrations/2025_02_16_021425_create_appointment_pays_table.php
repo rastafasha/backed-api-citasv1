@@ -16,7 +16,7 @@ class CreateAppointmentPaysTable extends Migration
         Schema::create('appointment_pays', function (Blueprint $table) {
             $table->bigIncrements('id');
         
-            $table->string('method_payment	', 150);
+            $table->string('method_payment', 150);
             $table->double('amount')->nullable();
 
             

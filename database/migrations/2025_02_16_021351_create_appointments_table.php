@@ -40,9 +40,9 @@ class CreateAppointmentsTable extends Migration
             // Foreign keys for provider relationships
             $table->foreign('doctor_id')->references('id')->on('users')->nullOnDelete();
             $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();
-            $table->foreign('speciality_id')->references('id')->on('specialities')->nullOnDelete();
             $table->foreign('patient_id')->references('id')->on('patients')->nullOnDelete();
-            $table->foreign('doctor_schedule_join_hour_id')->references('id')->on('doctor_schedule_join_hours')->nullOnDelete();
+            // $table->foreign('speciality_id')->references('id')->on('specialities')->nullOnDelete();
+            // $table->foreign('doctor_schedule_join_hour_id')->references('id')->on('doctor_schedule_join_hours')->nullOnDelete();
         });
     }
 

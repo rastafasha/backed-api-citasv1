@@ -15,14 +15,14 @@ class CreateSettingeneralsTable extends Migration
     {
         Schema::create('settingenerals', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name	', 250);
-            $table->text('address		');
-            $table->string('phone		', 250);
-            $table->string('city		', 250);
-            $table->string('state		', 250);
-            $table->string('zip			', 250);
-            $table->string('country			', 250);
-            $table->string('avatar			', 250)->nullable();
+            $table->string('name', 250);
+            $table->text('address');
+            $table->string('phone', 250);
+            $table->string('city', 250);
+            $table->string('state', 250);
+            $table->string('zip', 250);
+            $table->string('country', 250);
+            $table->string('avatar', 250)->nullable();
             
             
             $table->timestamps();

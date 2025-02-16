@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('surname',  250);
             $table->string('mobile',  50);
             $table->timestamp('birth_date')->nullable();
-            $table->tinyint('gender');
+            $table->tinyInteger('gender');
             $table->longtext('education')->nullable();
             $table->longtext('designation')->nullable();
             $table->text('address')->nullable();
@@ -32,7 +32,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
 
-            $table->enum('rolename', [User::SUPERADMIN, User::GUEST])->default(User::GUEST);
+            $table->enum('rolename', [
+                User::SUPERADMIN, User::GUEST])->default(User::GUEST);
 
             $table->enum('role', [
                 'MEMBER', 'GUEST'
@@ -47,8 +48,8 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('location_id')->nullable();
 
             // Foreign keys for provider relationships
-            $table->foreign('speciality_id')->references('id')->on('specialities')->nullOnDelete();
-            $table->foreign('location_id')->references('id')->on('locations')->nullOnDelete();
+            // $table->foreign('speciality_id')->references('id')->on('speciality')->nullOnDelete();
+            // $table->foreign('location_id')->references('id')->on('location')->nullOnDelete();
         });
     }
 

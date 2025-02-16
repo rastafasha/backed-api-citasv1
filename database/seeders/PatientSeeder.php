@@ -25,6 +25,7 @@ class PatientSeeder extends Seeder
                 "name_responsable" => $faker->name(),
                 "surname_responsable" => $faker->lastName(),
                 "mobile_responsable" => $faker->phoneNumber(),
+                
                 "relationship_responsable" => $faker->randomElement(["Tio","Mama","Papa","Hermano"]),
             ]);
         });;

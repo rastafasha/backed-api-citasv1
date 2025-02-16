@@ -15,14 +15,14 @@ class CreateTiposdepagoTable extends Migration
     {
         Schema::create('tiposdepago', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('tipo	', 250);
-            $table->string('ciorif	', 250);
-            $table->string('telefono	', 250);
-            $table->string('bankAccount	', 250);
-            $table->string('bankName	', 250);
-            $table->string('bankAccountType	', 250);
-            $table->string('email	', 250);
-            $table->string('user	', 250);
+            $table->string('tipo', 250);
+            $table->string('ciorif', 250);
+            $table->string('telefono', 250);
+            $table->string('bankAccount', 250);
+            $table->string('bankName', 250);
+            $table->string('bankAccountType', 250);
+            $table->string('email', 250);
+            $table->string('user', 250);
             $table->enum('status', [
                 'ACTIVE', 'INACTIVE'
                 ])->default('INACTIVE');

@@ -15,23 +15,25 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('referencia	', 250);
-            $table->string('metodo		', 250);
-            $table->string('bank_name	', 250);
-            $table->double('monto	', 250);
-            $table->string('nombre		', 250);
-            $table->string('email			', 250);
-            $table->string('image			', 250)->nullable();
+            $table->string('referencia', 250);
+            $table->string('metodo', 250);
+            $table->string('bank_name', 250);
+            $table->double('monto', 250);
+            $table->string('nombre', 250);
+            $table->string('email', 250);
+            $table->string('image', 250)->nullable();
             $table->timestamp('fecha');
             $table->enum('status', [
-                'APPROVED', 'PENDING', 'REJECTED'
-                ])->default('PENDING');
-                
-                
+                'APPROVED',
+                'PENDING',
+                'REJECTED'
+            ])->default('PENDING');
+
+
             // Provider IDs
             $table->unsignedBigInteger('patient_id')->nullable();
             $table->unsignedBigInteger('appointment_id')->nullable();
-            
+
             $table->timestamps();
             $table->softDeletes();
 

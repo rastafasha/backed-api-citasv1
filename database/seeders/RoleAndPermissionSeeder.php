@@ -1,0 +1,108 @@
+<?php
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
+class RoleAndPermissionSeeder extends Seeder
+{
+    public function run()
+    {
+        // Create permissions
+        $permissions = [
+            ['id' => 1, 'guard_name' => 'api','name' => 'patient_dashboard'],
+        ['id' => 2, 'guard_name' => 'api','name' => 'admin_dashboard'],
+        ['id' => 3, 'guard_name' => 'api','name' => 'doctor_dashboard'],
+        ['id' => 4, 'guard_name' => 'api','name' => 'register_rol'],
+        ['id' => 5, 'guard_name' => 'api','name' => 'list_rol'],
+        ['id' => 6, 'guard_name' => 'api','name' => 'edit_rol'],
+        ['id' => 7, 'guard_name' => 'api','name' => 'delete_rol'],
+
+        ['id' => 8, 'guard_name' => 'api','name' => 'register_doctor'],
+        ['id' => 9, 'guard_name' => 'api','name' => 'list_doctor'],
+        ['id' => 10, 'guard_name' => 'api','name' => 'edit_doctor'],
+        ['id' => 11, 'guard_name' => 'api','name' => 'delete_doctor'],
+        ['id' => 12, 'guard_name' => 'api','name' => 'profile_doctor'],
+
+        ['id' => 13, 'guard_name' => 'api','name' => 'register_patient'],
+        ['id' => 14, 'guard_name' => 'api','name' => 'list_patient'],
+        ['id' => 15, 'guard_name' => 'api','name' => 'edit_patient'],
+        ['id' => 16, 'guard_name' => 'api','name' => 'delete_patient'],
+        ['id' => 17, 'guard_name' => 'api','name' => 'profile_patient'],
+
+        ['id' => 18, 'guard_name' => 'api','name' => 'register_staff'],
+        ['id' => 19, 'guard_name' => 'api','name' => 'list_staff'],
+        ['id' => 20, 'guard_name' => 'api','name' => 'edit_staff'],
+        ['id' => 21, 'guard_name' => 'api','name' => 'delete_staff'],
+
+        ['id' => 22, 'guard_name' => 'api','name' => 'register_appointment'],
+        ['id' => 23, 'guard_name' => 'api','name' => 'list_appointment'],
+        ['id' => 24, 'guard_name' => 'api','name' => 'edit_appointment'],
+        ['id' => 25, 'guard_name' => 'api','name' => 'delete_appointment'],
+
+        ['id' => 26, 'guard_name' => 'api','name' => 'register_specialty'],
+        ['id' => 27, 'guard_name' => 'api','name' => 'list_specialty'],
+        ['id' => 28, 'guard_name' => 'api','name' => 'edit_specialty'],
+        ['id' => 29, 'guard_name' => 'api','name' => 'delete_specialty'],
+
+        ['id' => 30, 'guard_name' => 'api','name' => 'show_payment'],
+        ['id' => 31, 'guard_name' => 'api','name' => 'edit_payment'],
+        ['id' => 32, 'guard_name' => 'api','name' => 'delete_payment'],
+        ['id' => 33, 'guard_name' => 'api','name' => 'add_payment'],
+
+        ['id' => 34, 'guard_name' => 'api','name' => 'activitie'],
+        ['id' => 35, 'guard_name' => 'api','name' => 'calendar'],
+
+        ['id' => 36, 'guard_name' => 'api','name' => 'expense_report'],
+        ['id' => 37, 'guard_name' => 'api','name' => 'invoice_report'],
+        ['id' => 38, 'guard_name' => 'api','name' => 'show_payment_cobros'],
+        ['id' => 39, 'guard_name' => 'api','name' => 'show_payment_cobrar'],
+
+        ['id' => 40, 'guard_name' => 'api','name' => 'settings'],
+        ];
+
+        foreach ($permissions as $permission) {
+            Permission::create($permission);
+        }
+
+        // Create roles
+        $roles = [
+            ['id' => 1, 'name' => 'SUPERADMIN', 'guard_name' => 'api'],
+            ['id' => 2, 'name' => 'ADMIN', 'guard_name' => 'api'],
+            ['id' => 3, 'name' => 'DOCTOR', 'guard_name' => 'api'],
+            ['id' => 4, 'name' => 'RECEPCION', 'guard_name' => 'api'],
+            ['id' => 5, 'name' => 'LABORATORIO', 'guard_name' => 'api'],
+            ['id' => 6, 'name' => 'ASISTENTE', 'guard_name' => 'api'],
+            ['id' => 7, 'name' => 'ENFERMERA', 'guard_name' => 'api'],
+            ['id' => 8, 'name' => 'PERSONAL', 'guard_name' => 'api'],
+            ['id' => 9, 'name' => 'GUEST', 'guard_name' => 'api'],
+        ];
+
+        foreach ($roles as $role) {
+            Role::create($role);
+        }
+
+        // Give all permissions to SUPERADMIN
+        $superadminRole = Role::find(1);
+        $superadminRole->givePermissionTo(Permission::all());
+
+        // Give all permissions to ADMIN
+        $adminRole = Role::find(2);
+        // $adminRole->givePermissionTo(Permission::all());
+
+        // Assign specific permissions to other roles
+        $doctorRole = Role::find(3);
+        $recepcionRole = Role::find(4);
+        $laboratorioRole = Role::find(5);
+        $doctorasistenteRole = Role::find(5);
+        $enfermeraRole = Role::find(5);
+        $personaladicionalRole = Role::find(5);
+
+        // Assign permissions based on the provided SQL dump
+        $doctorRole->givePermissionTo([10, 11]); // doctor specific permissions
+        // $adminRole->givePermissionTo([12, 13, 14, 19, 20, 21, 22, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]);
+        // $recepcionRole->givePermissionTo([12, 13, 14, 19, 20, 21, 22, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]);
+
+    }
+}

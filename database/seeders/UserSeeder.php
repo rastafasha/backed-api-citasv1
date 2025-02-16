@@ -2,9 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Role;
 use App\Models\User;
-use App\Models\Permission;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -17,50 +15,101 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $users = [
+        
 
-            [
-                "rolename" => User::SUPERADMIN,
-                "name" => "superadministrador",
-                "email" => "superadmin@superadmin.com",
-                "password" => bcrypt("password"),
-                "email_verified_at" => now(),
-                "created_at" => now(),
+        // Create superadmin
+        $superadmin = User::create([
+            'name' => 'Super Admin',
+            'surname' => 'Admin',
+            'email' => 'superadmin@example.com',
+            'password' => Hash::make('password'),
+            'email_verified_at' => now(),
+            'gender' => 1,
+            'mobile' => '1234567893',
+            'n_doc' => '1245319599',
+        ]);
+        $superadmin->assignRole('SUPERADMIN');
+        // Create admin
+        $admin = User::create([
+            'name' => 'Admin',
+            'surname' => 'Howard',
+            'email' => 'admin@example.com',
+            'password' => Hash::make('password'),
+            'email_verified_at' => now(),
+            'gender' => 1,
+            'mobile' => '1234567893',
+            'n_doc' => '1245319599',
+        ]);
+        $admin->assignRole('ADMIN');
 
-            ],
+        // Create manager
+        $doctor = User::create([
+            'name' => 'John Doctor',
+            'surname' => 'Doe',
+            'email' => 'doctor@example.com',
+            'password' => Hash::make('password'),
+            'gender' => 1,
+            'mobile' => '1234567893',
+            'email_verified_at' => now(),
+            'n_doc' => '1497842694',
+        ]);
+        $doctor->assignRole('DOCTOR');
 
-            [
-                "rolename" => User::ADMIN,
-                "name" => "administrador",
-                "email" => "admin@admin.com",
-                "password" => bcrypt("password"),
-                "email_verified_at" => now(),
-                "created_at" => now(),
+        // Create BCBAs
+        $recepcion = User::create([
+            'name' => 'Sarah ',
+            'surname' => 'Howard',
+            'email' => 'recepcion@example.com',
+            'password' => Hash::make('password'),
+            'gender' => 2,
+            'mobile' => '1234567890',
+            'n_doc' => '3309871234',
+        ]);
+        $recepcion->assignRole('RECEPCION');
 
-            ],
-            [
-                "rolename" => User::MEMBER,
-                "name" => "miembro",
-                "email" => "miembro@miembro.com",
-                "password" => bcrypt("password"),
-                "email_verified_at" => now(),
-                "created_at" => now(),
+        $laboratorio = User::create([
+            'name' => 'Mike BCBA',
+            'surname' => 'Smith',
+            'email' => 'laboratorio@example.com',
+            'password' => Hash::make('password'),
+            'gender' => 1,
+            'mobile' => '1234567891',
+            'n_doc' => '3333312334',
+        ]);
+        $laboratorio->assignRole('LABORATORIO');
 
-            ],
-            [
-                "rolename" => User::GUEST,
-                "name" => "invitado",
-                "email" => "invitado@invitado.com",
-                "password" => bcrypt("password"),
-                "email_verified_at" => now(),
-                "created_at" => now(),
+        // Create RBTs
+        $asistente = User::create([
+            'name' => 'Alice RBT',
+            'surname' => 'Brown',
+            'email' => 'asistente@example.com',
+            'password' => Hash::make('password'),
+            'gender' => 2,
+            'mobile' => '1234567892',
+            'n_doc' => '3333345454',
+        ]);
+        $asistente->assignRole('ASISTENTE');
 
-            ],
-        ];
+        $personal = User::create([
+            'name' => 'Bob RBT',
+            'surname' => 'Johnson',
+            'email' => 'personal@example.com',
+            'password' => Hash::make('password'),
+            'gender' => 1,
+            'mobile' => '1234567893',
+            'n_doc' => '5421369874',
+        ]);
+        $personal->assignRole('PERSONAL');
 
-        foreach ($users as $user) {
-
-            $user = User::create($user);
-        }
+        $enfermera = User::create([
+            'name' => 'Bob RBT',
+            'surname' => 'Johnson',
+            'email' => 'enfermera@example.com',
+            'password' => Hash::make('password'),
+            'gender' => 1,
+            'mobile' => '1234567893',
+            'n_doc' => '5421369874',
+        ]);
+        $enfermera->assignRole('ENFERMERA');
     }
 }
