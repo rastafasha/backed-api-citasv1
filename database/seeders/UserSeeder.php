@@ -288,6 +288,10 @@ class UserSeeder extends Seeder
             unset($user['roles']);
             
             // Create user
+            //si no tiene asignado un rol, se le asigna el rol de invitado
+            if (!$roles) {
+                $createdUser->assignRole(User::GUEST);
+                    } 
             $createdUser = User::create($user);
             
             // Attach roles if they exist

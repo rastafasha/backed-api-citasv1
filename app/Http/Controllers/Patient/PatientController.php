@@ -106,6 +106,7 @@ class PatientController extends Controller
         $data_patient = [];
         $patient = Patient::findOrFail($id);
     
+
             $num_appointment = Appointment::where("patient_id",$id)->count();
             $money_of_appointments = Appointment::where("patient_id",$id)->sum("amount");
             $num_appointment_pendings = Appointment::where("patient_id",$id)->where("status",1)->count();
@@ -296,4 +297,52 @@ class PatientController extends Controller
             "message"=>200
         ]);
     }
+
+
+    public function showPatientIdentifier($n_doc)
+    {
+
+        $patient = Patient::where('n_doc', $n_doc)->first();
+        $doctors = Patient::join('users', 'patients.id', '=', 'users.id')
+        ->select(
+            'patients.id as id',
+            'users.name',
+        )
+        ->get();
+
+        return response()->json([
+
+            "patient" => $patient,
+            // "patient" => $patient ? [
+            //     "id" => $patient->id,
+            //     "n_doc" => $patient->n_doc,
+            //     "first_name" => $patient->first_name,
+            //     "last_name" => $patient->last_name,
+            //     "birth_date" => $patient->birth_date,
+            //     "location_id" => $patient->location_id,
+            //     "full_name" => $patient->first_name . ' ' . $patient->last_name,
+            //     "email" => $patient->email,
+            //     "insurer_id" => $patient->insurer_id,
+            //     "insurance_identifier" => $patient->insurance_identifier,
+            //     "rbt_home" => $patient->rbt_home_id,
+            //     "rbt2_school" => $patient->rbt2_school_id,
+            //     "bcba_home" => $patient->bcba_home_id,
+            //     "bcba2_school" => $patient->bcba2_school_id,
+            //     "clin_director_id" => $patient->clin_director_id,
+            //     "diagnosis_code" => $patient->diagnosis_code,
+            //     "pa_services" => $paServices,
+            //     "pos_covered" =>
+            //     is_string($patient->pos_covered)
+            //         ? json_decode($patient->pos_covered)
+            //         : $patient->pos_covered,
+            //     "status" => $patient->status,
+            //     "gender" => $patient->gender,
+            //     "avatar" => $patient->avatar ? env("APP_URL") . "storage/" . $patient->avatar : null,
+            // // "avatar"=> $patient->avatar ? env("APP_URL").$patient->avatar : null,
+            // ] : null,
+            // "doctors" => $doctors,
+
+        ]);
+    }
+
 }

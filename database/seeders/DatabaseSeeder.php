@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             PatientSeeder::class,
             
             TiposDePagoSeeder::class,
-            // AppointmentSeeder::class,
+            AppointmentSeeder::class,
             LocationSeeder::class,
             PubSeeder::class,
             SettingeneralSeeder::class,

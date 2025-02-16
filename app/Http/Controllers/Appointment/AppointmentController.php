@@ -226,6 +226,7 @@ class AppointmentController extends Controller
             $patient = Patient::create([
                 "name"=>$request->name,
                 "surname"=>$request->surname,
+                "email"=>$request->email,
                 "n_doc"=>$request->n_doc,
                 "phone"=>$request->phone,
             ]);

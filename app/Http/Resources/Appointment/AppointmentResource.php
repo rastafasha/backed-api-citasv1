@@ -41,6 +41,7 @@ class AppointmentResource extends JsonResource
                     "full_name" =>$this->resource->patient->name.' '.$this->resource->patient->surname,
                     "phone" =>$this->resource->patient->phone,
                     "n_doc" =>$this->resource->patient->n_doc,
+                    "email" =>$this->resource->patient->email,
                     "antecedent_alerg" =>$this->resource->patient->antecedent_alerg,
                     "name_companion" =>$this->resource->patient->person->name_companion,
                     "surname_companion" =>$this->resource->patient->person->surname_companion,
