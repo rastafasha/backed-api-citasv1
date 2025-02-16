@@ -102,17 +102,20 @@ class RoleAndPermissionSeeder extends Seeder
         // $adminRole->givePermissionTo(Permission::all());
 
         // Assign specific permissions to other roles
-        // $doctorRole = Role::find(3);
-        // $recepcionRole = Role::find(4);
-        // $laboratorioRole = Role::find(5);
-        // $doctorasistenteRole = Role::find(5);
-        // $enfermeraRole = Role::find(5);
+        $doctorRole = Role::find(3);
+        $recepcionRole = Role::find(4);
+        $laboratorioRole = Role::find(5);
+        $asistenteRole = Role::find(6);
+        $enfermeraRole = Role::find(7);
         // $personaladicionalRole = Role::find(5);
 
         // Assign permissions based on the provided SQL dump
-        // $doctorRole->givePermissionTo([10, 11]); // doctor specific permissions
-        // $adminRole->givePermissionTo([12, 13, 14, 19, 20, 21, 22, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]);
-        // $recepcionRole->givePermissionTo([12, 13, 14, 19, 20, 21, 22, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]);
+        $adminRole->givePermissionTo([2,5,8,9,10,12,13.14,18,19,20,22,23,24,26,27,28,29,30,35,38,40,41,42,44]);
+        $doctorRole->givePermissionTo([3,12,14,22,23]); // doctor specific permissions
+        $recepcionRole->givePermissionTo([2,9,13,14,18,19,22,23,24,26,27,30,35,38,40,41,44]);
+        $laboratorioRole->givePermissionTo([12,41,42]); // doctor specific permissions
+        $asistenteRole->givePermissionTo([3,10,12,13,14,22,23,24,30,35,38]); // doctor specific permissions
+        $enfermeraRole->givePermissionTo([13,14,22,23]); // doctor specific permissions
 
     }
 }

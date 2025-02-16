@@ -22,38 +22,24 @@ class CreateUsersTable extends Migration
             $table->string('mobile',  50);
             $table->timestamp('birth_date')->nullable();
             $table->tinyInteger('gender');
+            $table->tinyInteger('status')->default(1);
             $table->longtext('education')->nullable();
             $table->longtext('designation')->nullable();
             $table->text('address')->nullable();
             $table->string('avatar')->nullable();
-            $table->string('n_doc', 50);
+            $table->string('n_doc', 50)->unique();
             
-            $table->string('email')->unique();
+            $table->string('email')->unique()->comment('User email for login');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->comment('Hashed password');
 
-            $table->enum('rolename', [
-                User::SUPERADMIN, User::ADMIN, User::DOCTOR,
-                User::LABORATORIO, User::RECEPCION,
-                User::ASISTENTE, User::PERSONAL,
-                User::ENFERMERA, User::GUEST,
-                ])->default(User::GUEST);
-
-            $table->enum('role', [
-                'MEMBER', 'GUEST'
-                ])->default('GUEST');
-
-            $table->rememberToken();
+            $table->rememberToken()->comment('For "remember me" functionality');
             $table->timestamps();
             $table->softDeletes();
 
             // Provider IDs
             $table->unsignedBigInteger('speciality_id')->nullable();
             $table->unsignedBigInteger('location_id')->nullable();
-
-            // Foreign keys for provider relationships
-            // $table->foreign('speciality_id')->references('id')->on('speciality')->nullOnDelete();
-            // $table->foreign('location_id')->references('id')->on('location')->nullOnDelete();
         });
     }
 

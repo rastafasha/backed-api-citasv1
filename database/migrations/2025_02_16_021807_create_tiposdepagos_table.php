@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTiposdepagoTable extends Migration
+class CreateTiposdepagosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateTiposdepagoTable extends Migration
      */
     public function up()
     {
-        Schema::create('tiposdepago', function (Blueprint $table) {
+        Schema::create('tiposdepagos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('tipo', 250);
-            $table->string('ciorif', 250);
-            $table->string('telefono', 250);
-            $table->string('bankAccount', 250);
-            $table->string('bankName', 250);
-            $table->string('bankAccountType', 250);
-            $table->string('email', 250);
-            $table->string('user', 250);
+            $table->string('ciorif', 250)->nullable();
+            $table->string('telefono', 250)->nullable();
+            $table->string('bankAccount', 250)->nullable();
+            $table->string('bankName', 250)->nullable();
+            $table->string('bankAccountType', 250)->nullable();
+            $table->string('email', 250)->nullable();
+            $table->string('user', 250)->nullable();
             $table->enum('status', [
                 'ACTIVE', 'INACTIVE'
                 ])->default('INACTIVE');
@@ -40,6 +40,6 @@ class CreateTiposdepagoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tiposdepago');
+        Schema::dropIfExists('tiposdepagos');
     }
 }

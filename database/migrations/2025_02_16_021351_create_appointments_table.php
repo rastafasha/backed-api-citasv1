@@ -21,6 +21,7 @@ class CreateAppointmentsTable extends Migration
             $table->double('amount', 250);
 
             $table->tinyInteger('cron_state')->default(1);
+            $table->tinyInteger('status')->default(1);
             $table->tinyInteger('status_pay')->default(1);
             $table->tinyInteger('confimation')->default(1);
             $table->tinyInteger('laboratory')->default(1);

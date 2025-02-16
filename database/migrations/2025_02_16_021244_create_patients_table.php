@@ -45,7 +45,7 @@ class CreatePatientsTable extends Migration
             $table->softDeletes();
 
             // Foreign keys for provider relationships
-            $table->foreign('doctor_id')->references('id')->on('users')->nullOnDelete();
+            // $table->foreign('doctor_id')->references('id')->on('users')->nullOnDelete();
             // $table->foreign('location_id')->references('id')->on('locations')->nullOnDelete();
         });
     }

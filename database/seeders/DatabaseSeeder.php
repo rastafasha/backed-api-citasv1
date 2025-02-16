@@ -8,19 +8,24 @@ class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
-     *
-     * @return void
      */
-    
-
-    public function run()
+    public function run(): void
     {
         $this->call([
             RoleAndPermissionSeeder::class,
             UserSeeder::class,
+            SpecialitySeeder::class,
             PatientSeeder::class,
-            // PermissionsDemoSeeder::class,
+            
+            TiposDePagoSeeder::class,
             // AppointmentSeeder::class,
+            LocationSeeder::class,
+            DoctorScheduleDaySeeder::class,
+            DoctorScheduleHourSeeder::class,
+            DoctorScheduleJoinHourSeeder::class,
+
+
+
         ]);
     }
 }
