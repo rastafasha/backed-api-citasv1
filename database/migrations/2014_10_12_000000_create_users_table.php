@@ -33,7 +33,11 @@ class CreateUsersTable extends Migration
             $table->string('password');
 
             $table->enum('rolename', [
-                User::SUPERADMIN, User::GUEST])->default(User::GUEST);
+                User::SUPERADMIN, User::ADMIN, User::DOCTOR,
+                User::LABORATORIO, User::RECEPCION,
+                User::ASISTENTE, User::PERSONAL,
+                User::ENFERMERA, User::GUEST,
+                ])->default(User::GUEST);
 
             $table->enum('role', [
                 'MEMBER', 'GUEST'

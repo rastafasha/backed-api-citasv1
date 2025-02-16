@@ -11,7 +11,7 @@ class RoleAndPermissionSeeder extends Seeder
     {
         // Create permissions
         $permissions = [
-            ['id' => 1, 'guard_name' => 'api','name' => 'patient_dashboard'],
+        ['id' => 1, 'guard_name' => 'api','name' => 'patient_dashboard'],
         ['id' => 2, 'guard_name' => 'api','name' => 'admin_dashboard'],
         ['id' => 3, 'guard_name' => 'api','name' => 'doctor_dashboard'],
         ['id' => 4, 'guard_name' => 'api','name' => 'register_rol'],
@@ -60,6 +60,13 @@ class RoleAndPermissionSeeder extends Seeder
         ['id' => 39, 'guard_name' => 'api','name' => 'show_payment_cobrar'],
 
         ['id' => 40, 'guard_name' => 'api','name' => 'settings'],
+        ['id' => 41, 'guard_name' => 'api','name' => 'list_laboratory'],
+        ['id' => 42, 'guard_name' => 'api','name' => 'edit_laboratory'],
+        
+        ['id' => 43, 'guard_name' => 'api','name' => 'list_publicidad'],
+        ['id' => 44, 'guard_name' => 'api','name' => 'list_specialty_patient'],
+        ['id' => 45, 'guard_name' => 'api','name' => 'register_location'],
+        ['id' => 46, 'guard_name' => 'api','name' => 'list_location'],
         ];
 
         foreach ($permissions as $permission) {
@@ -83,8 +90,11 @@ class RoleAndPermissionSeeder extends Seeder
             Role::create($role);
         }
 
+        
         // Give all permissions to SUPERADMIN
+        // $role3 = Role::create(['guard_name' => 'api','name' => 'SUPERADMIN']);
         $superadminRole = Role::find(1);
+        
         $superadminRole->givePermissionTo(Permission::all());
 
         // Give all permissions to ADMIN
@@ -92,15 +102,15 @@ class RoleAndPermissionSeeder extends Seeder
         // $adminRole->givePermissionTo(Permission::all());
 
         // Assign specific permissions to other roles
-        $doctorRole = Role::find(3);
-        $recepcionRole = Role::find(4);
-        $laboratorioRole = Role::find(5);
-        $doctorasistenteRole = Role::find(5);
-        $enfermeraRole = Role::find(5);
-        $personaladicionalRole = Role::find(5);
+        // $doctorRole = Role::find(3);
+        // $recepcionRole = Role::find(4);
+        // $laboratorioRole = Role::find(5);
+        // $doctorasistenteRole = Role::find(5);
+        // $enfermeraRole = Role::find(5);
+        // $personaladicionalRole = Role::find(5);
 
         // Assign permissions based on the provided SQL dump
-        $doctorRole->givePermissionTo([10, 11]); // doctor specific permissions
+        // $doctorRole->givePermissionTo([10, 11]); // doctor specific permissions
         // $adminRole->givePermissionTo([12, 13, 14, 19, 20, 21, 22, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]);
         // $recepcionRole->givePermissionTo([12, 13, 14, 19, 20, 21, 22, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]);
 
