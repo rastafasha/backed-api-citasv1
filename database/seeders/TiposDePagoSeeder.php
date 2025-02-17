@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\TiposDePago;
+use App\Models\Tiposdepago;
 use Illuminate\Database\Seeder;
 
 class TiposDePagoSeeder extends Seeder
@@ -128,7 +128,7 @@ class TiposDePagoSeeder extends Seeder
         ];
 
         foreach ($tiposDePago as $tipoDePago) {
-            TiposDePago::updateOrCreate(
+            Tiposdepago::updateOrCreate(
                 ['id' => $tipoDePago['id']],
                 $tipoDePago
             );
