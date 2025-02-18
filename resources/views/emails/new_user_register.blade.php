@@ -191,7 +191,7 @@
 																																	<br />
 																																	{{$user->name.' '.$user->surname}}
 																																	<br />
-																																<strong>Email Registrado: </strong>
+																																	<strong>Email Registrado: </strong>
 																																	<br />
 																																	{{$user->email}}
 																																	<br />

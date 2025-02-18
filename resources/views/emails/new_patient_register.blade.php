@@ -179,14 +179,14 @@
 																														<tr>
 																															<td class="title-20 pb-10" style="font-size:20px; line-height:24px; color:#282828; font-family:'PT Sans', Arial, sans-serif; text-align:left; min-width:auto !important; padding-bottom: 10px;">
 																																<multiline>
-																																	<strong>Se ha registrado su usuario en nuestra aplicaci贸n, Bienvenid@!</strong>
+																																	<strong>Se ha registrado su usuario en nuestra aplicación, Bienvenid@!</strong>
 																																</multiline>
 																															</td>
 																														</tr>
                                                                                                                         <tr>
                                                                                                                             <td class="text-16 lh-26 a-center" style="font-size:16px; color:#6e6e6e; font-family:'PT Sans', Arial, sans-serif; min-width:auto !important; line-height: 26px; text-align:center;">
                                                                                                                                 <multiline>
-                                                                                                                                    Puede Acceder a la aplicaci贸n, escaneando el c贸odigo QR.<br>
+                                                                                                                                    Puede Acceder a la aplicación, escaneando el cóodigo QR.<br>
                                                                                                                                     
                                                                                                                                 </multiline>
                                                                                                                             </td>
@@ -266,20 +266,20 @@
 																						</td>
 																					</tr>
 																					<tr>
-																	<td align="center">
-																		<!-- Download App -->
-																		<table border="0" cellspacing="0" cellpadding="0">
-																			<tr>
-																				
-																				<td class="img" width="117" style="font-size:0pt; line-height:0pt; text-align:center; ">
-                                                                                    <a href="https://health-connect.me/" target="_blank"><img src="https://health-connect.me/varios/logoHealthConnect-01.png" width="75" height="50" editable="true" border="0" alt="" /></a>
-																					
-																				</td>
-																			</tr>
-																		</table>
-																		<!-- END Download App -->
-																	</td>
-																</tr>
+																						<td align="center">
+																							<!-- Download App -->
+																							<table border="0" cellspacing="0" cellpadding="0">
+																								<tr>
+																									
+																									<td class="img" width="117" style="font-size:0pt; line-height:0pt; text-align:center; ">
+																										<a href="https://health-connect.me/" target="_blank"><img src="https://health-connect.me/varios/logoHealthConnect-01.png" width="75" height="50" editable="true" border="0" alt="" /></a>
+																										
+																									</td>
+																								</tr>
+																							</table>
+																							<!-- END Download App -->
+																						</td>
+																					</tr>
 																				</table>
 																				<!-- END Section - Order Details -->
 																			</td>

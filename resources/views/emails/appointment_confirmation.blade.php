@@ -19,7 +19,7 @@
 	<!--[if !mso]><!-->
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&display=swap" rel="stylesheet" />
 	<!--<![endif]-->
-	<title>Appontment Confirmation</title>
+	<title>Confirmación de Cita</title>
 	<!--[if gte mso 9]>
 	<style type="text/css" media="all">
 		sup { font-size: 100% !important; }
@@ -174,6 +174,13 @@
 																																	<em>Puede entrar en la app de paciente y pagar la cita, si lo desea</em>
                                                                                                                                     <!-- <br>
 																																	<em>"Hora de Fin: {{$appointment ["hour_end_format"]}}"</em> -->
+																																</multiline>
+																															</td>
+																														</tr>
+																														<tr>
+																															<td class="text-16 lh-26 a-center pb-25" style="font-size:16px; color:#6e6e6e; font-family:'PT Sans', Arial, sans-serif; min-width:auto !important; line-height: 26px; text-align:center; padding-bottom: 25px;">
+																																<multiline>
+																																	<em>Health-connect.me no es entidad financiera, las trasnferencias se hacen directo entre la cuenta creada, que se puede ver en la app paciente, de las cuentas bancarias la clínica o consultorio. </em>
 																																</multiline>
 																															</td>
 																														</tr>
