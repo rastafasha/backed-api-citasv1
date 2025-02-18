@@ -8,6 +8,7 @@ use App\Models\Presupuesto;
 use Illuminate\Http\Request;
 use App\Models\Patient\Patient;
 use App\Mail\Registerpresupuesto;
+use App\Models\Doctor\Specialitie;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Confirmationpresupuesto;
@@ -30,6 +31,16 @@ class PresupuestoController extends Controller
             "presupuestos"=> PresupuestoCollection::make($presupuestos)
         ]);
 
+    }
+
+    public function config()
+    {
+        
+        $specialities = Specialitie::where("state",1)->get();
+
+        return response()->json([
+            "specialities" => $specialities,
+        ]);
     }
     
     public function query_patient(Request $request)

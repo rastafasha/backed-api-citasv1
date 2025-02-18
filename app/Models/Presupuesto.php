@@ -24,7 +24,6 @@ class Presupuesto extends Model
         "user_id",
         "amount",
         "status",
-        "laboratory",
         "confimation",
         "description",
 
