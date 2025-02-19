@@ -17,7 +17,13 @@ class NotificationAppoint extends Mailable
      * @return void
      */
     public $patient;
-    public function __construct($patient)
+    
+    /**
+     * Create a new message instance.
+     *
+     * @param mixed $patient The patient information for the appointment
+     */
+    public function __construct(mixed $patient = null)
     {
         $this->patient = $patient;
     }
