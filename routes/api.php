@@ -111,9 +111,15 @@ Route::group(['middleware' => 'api'], function ($router) {
     });
 
 
+    Route::get('/migrate-fresh', function () {
+        Artisan::call('migrate:refresh');
+        return "Migrate: Actualizando sin borrar";
+    });
+
+
     Route::get('/migrate-seed', function () {
         Artisan::call('migrate:refresh --seed');
-        return "Migrate seed";
+        return "Migrate: creacion con datos, para uso";
     });
     
     Route::get('/send-notification', function () {
