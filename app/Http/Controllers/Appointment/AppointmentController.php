@@ -437,6 +437,17 @@ class AppointmentController extends Controller
         ]);
 
     }
+     public function pendientes()
+    {
+        
+        $appointments = Appointment::where('status', 1)->orderBy("id", "desc")
+                            ->paginate(10);
+        return response()->json([
+            "total"=>$appointments->total(),
+            "appointments"=> AppointmentCollection::make($appointments)
+        ]);
+
+    }
 
     public function updateConfirmation(Request $request, $id)
     {

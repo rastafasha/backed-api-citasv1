@@ -374,4 +374,16 @@ class AdminPaymentController extends Controller
             "payments" => PaymentCollection::make($payments),
         ], 200);
     }
+
+    public function pagosPendientes()
+    {
+        
+        $payments = Payment::where('status', 1)->orderBy("id", "desc")
+                            ->paginate(10);
+        return response()->json([
+            "total"=>$payments->total(),
+            "payments"=> PaymentCollection::make($payments)
+        ]);
+
+    }
 }
