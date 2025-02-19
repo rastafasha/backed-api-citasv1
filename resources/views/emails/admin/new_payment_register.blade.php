@@ -198,7 +198,7 @@ Notificaciones automatizadas desde la app
 																												<td class="btn-20 btn-secondary c-white l-white" bgcolor="#f3189e" style="font-size:20px; line-height:24px; mso-padding-alt:15px 35px; font-family:'PT Sans', Arial, sans-serif; text-align:center; font-weight:bold; text-transform:uppercase; min-width:auto !important; border-radius:10px; background:linear-gradient(to right, #9028df 0%,#f3189e 100%); color:#ffffff;">
 																													<multiline>
 																														<a href="#" target="_blank" class="link c-white" style="display: block; padding: 15px 35px; text-decoration:none; color:#ffffff;">
-																															<span class="link c-white" style="text-decoration:none; color:#ffffff;">ORDER: #{{$appointment->id}}</span>
+																															<span class="link c-white" style="text-decoration:none; color:#ffffff;">ORDER: #{{$payment->appointment_id}}</span>
 																														</a>
 																													</multiline>
 																												</td>
@@ -220,18 +220,6 @@ Notificaciones automatizadas desde la app
 																																</multiline>
 																															</td>
 																														</tr>
-																														<tr>
-																															<td class="text-16" style="font-size:16px; line-height:20px; color:#6e6e6e; font-family:'PT Sans', Arial, sans-serif; text-align:left; min-width:auto !important;">
-																																<multiline>
-																																	
-																																{{-- <strong>Nombre del Paciente: </strong>
-																																	<br />
-																																	{{$appointment->patient->name.' '.$appointment->patient->surname}}
-																																	<br /> --}}
-																																	<!-- Chicago, IL 60301 -->
-																																</multiline>
-																															</td>
-																														</tr>
 																													</table>
 																												</th>
 																												<th class="column-top mpb-15" valign="top" width="30" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;"></th>
@@ -247,17 +235,17 @@ Notificaciones automatizadas desde la app
 																														<tr>
 																															<td class="text-16" style="font-size:16px; line-height:20px; color:#6e6e6e; font-family:'PT Sans', Arial, sans-serif; text-align:left; min-width:auto !important;">
 																																<multiline>
-                                                                                                                                    * Tipo de Pago ***{{ $payment->metodo}}***
+                                                                                                                                     Tipo de Pago {{ $payment->metodo}}
                                                                                                                                     <br>
-                                                                                                                                    * Método de pago ***{{ $payment->referencia}}***
+                                                                                                                                     Método de pago {{ $payment->referencia}}
                                                                                                                                     <br>
-                                                                                                                                    * Nombre del banco ***{{ $payment->bank_name}}***
+                                                                                                                                     Nombre del banco {{ $payment->bank_name}}
                                                                                                                                     <br>
-                                                                                                                                    * Monto ***{{ $payment->monto}}***
+                                                                                                                                     Monto {{ $payment->monto}}
                                                                                                                                     <br>
-                                                                                                                                    * Paciente ***{{ $payment->nombre}}***
+                                                                                                                                     Paciente {{ $payment->nombre}}
                                                                                                                                     <br>
-                                                                                                                                    * Email ***{{ $payment->email}}***
+                                                                                                                                     Email {{ $payment->email}}
 																																</multiline>
 																															</td>
 																														</tr>
@@ -276,57 +264,7 @@ Notificaciones automatizadas desde la app
 																										</table>
 																									</td>
 																								</tr>
-																								<tr>
-																									<td class="pb-30" style="padding-bottom: 30px;">
-																										<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																											<tr>
-																												<th class="column-top" valign="top" width="230" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
-																													<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																														<tr>
-																															<td class="title-20 pb-10" style="font-size:20px; line-height:24px; color:#282828; font-family:'PT Sans', Arial, sans-serif; text-align:left; min-width:auto !important; padding-bottom: 10px;">
-																																<!--<multiline>-->
-																																<!--	<strong>Payment method</strong>-->
-																																<!--</multiline>-->
-																															</td>
-																														</tr>
-																														<tr>
-																															<td class="text-16" style="font-size:16px; line-height:20px; color:#6e6e6e; font-family:'PT Sans', Arial, sans-serif; text-align:left; min-width:auto !important;">
-																																<multiline>
-																																{{$appointment ["paymentmethod"]}}
-																																
-																																
-																																</multiline>
-																															</td>
-																														</tr>
-																													</table>
-																												</th>
-																												<th class="column-top mpb-15" valign="top" width="30" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;"></th>
-																												<th class="column-top" valign="top" width="230" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top;">
-																													<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																														
-																														<tr>
-																															<td align="right">
-																																<!-- Button -->
-																																<table border="0" cellspacing="0" cellpadding="0" class="mw-100p" style="min-width: 200px;">
-																																	<tr>
-																																		<td class="btn-20 btn-secondary c-white l-white" bgcolor="#f3189e" style="font-size:20px; line-height:24px; mso-padding-alt:15px 35px; font-family:'PT Sans', Arial, sans-serif; text-align:center; font-weight:bold; text-transform:uppercase; min-width:auto !important; border-radius:10px; background:linear-gradient(to right, #9028df 0%,#f3189e 100%); color:#ffffff;">
-																																			<multiline>
-																																				<a href="#" target="_blank" class="link c-white" style="display: block; padding: 15px 35px; text-decoration:none; color:#ffffff;">
-																																					<span class="link c-white" style="text-decoration:none; color:#ffffff;">Monto de la transferencia: ${{$payment->monto}}</span>
-																																				</a>
-																																			</multiline>
-																																		</td>
-																																	</tr>
-																																</table>
-																																<!-- END Button -->
-																															</td>
-																														</tr>
-																													</table>
-																												</th>
-																											</tr>
-																										</table>
-																									</td>
-																								</tr>
+																								
 																								<tr>
 																									<td class="pb-30" style="padding-bottom: 30px;">
 																										<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -339,27 +277,12 @@ Notificaciones automatizadas desde la app
 																								<tr>
 																									<td class="text-16 lh-26 a-center pb-25" style="font-size:16px; color:#6e6e6e; font-family:'PT Sans', Arial, sans-serif; min-width:auto !important; line-height: 26px; text-align:center; padding-bottom: 25px;">
 																										<multiline>
-																											<em>Health-connect.me no es entidad financiera, las trasnferencias se hacen directo entre la cuenta creada desde la app directo al paciente. </em>
+																											<em>Health-connect.me no es entidad financiera, las trasnferencias se hacen directo entre la cuenta creada desde la app directo al paciente.
+																												La App Health Connect solo es un medio de comunicación entre el paciente y el doctor,
+        no somos entidades de salud, no somos entidad financiera. </em>
 																										</multiline>
 																									</td>
 																								</tr>
-																								<!-- <tr>
-																									<td align="center">
-																										Button
-																										<table border="0" cellspacing="0" cellpadding="0" style="min-width: 200px;">
-																											<tr>
-																												<td class="btn-16 c-white l-white" bgcolor="#f3189e" style="font-size:16px; line-height:20px; mso-padding-alt:15px 35px; font-family:'PT Sans', Arial, sans-serif; text-align:center; font-weight:bold; text-transform:uppercase; border-radius:25px; min-width:auto !important; color:#ffffff;">
-																													<multiline>
-																														<a href="#" target="_blank" class="link c-white" style="display: block; padding: 15px 35px; text-decoration:none; color:#ffffff;">
-																															<span class="link c-white" style="text-decoration:none; color:#ffffff;">VIEW MY ORDER</span>
-																														</a>
-																													</multiline>
-																												</td>
-																											</tr>
-																										</table>
-																										END Button
-																									</td>
-																								</tr> -->
 																							</table>
 																						</td>
 																					</tr>

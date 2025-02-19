@@ -45,22 +45,23 @@ class Payment extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected static function boot(){
+    //recibe los pagos al correo 
+    // protected static function boot(){
 
-        parent::boot();
+    //     parent::boot();
 
-        static::created(function($payment){
+    //     static::created(function($payment){
 
-            // PaymentRegisterJob::dispatch(
-            //     $user
-            // )->onQueue("high");
+    //         // PaymentRegisterJob::dispatch(
+    //         //     $user
+    //         // )->onQueue("high");
 
-        Mail::to('mercadocreativo@gmail.com')->send(new NewPaymentRegisterMail($payment));
+    //     Mail::to('mercadocreativo@gmail.com')->send(new NewPaymentRegisterMail($payment));
 
-        });
+    //     });
 
 
-    }
+    // }
 
     public static function statusTypes()
     {

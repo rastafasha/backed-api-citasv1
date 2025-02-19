@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use App\Models\Payment;
 use App\Helpers\Uploader;
 use Illuminate\Support\Str;
@@ -9,6 +10,9 @@ use Illuminate\Http\Request;
 use App\Models\Patient\Patient;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Mail\NewPaymentRegisterMail;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ConfirmationAppointment;
 use App\Models\Appointment\Appointment;
 use App\Http\Requests\PaymentStoreRequest;
 use App\Models\Appointment\AppointmentPay;
@@ -66,34 +70,38 @@ class AdminPaymentController extends Controller
      */
     public function paymentStore(Request $request)
     {
-        // $this->authorize('paymentStore', Payment::class);
+        $doctor = User::where("id", $request->doctor_id)->first();
+        //reviso si viene el id del appointment
+        $appointment = Appointment::
+        where("id", $request->appointment_id)
+        ->first();
+        if (!$appointment) {
+            return response()->json(['message' => 'Appointment not found.'], 404);
+        }
 
-        // try {
-        //     DB::beginTransaction();
-
-        //     $payment = new Payment();
-
-        //     $file = null;
-        //     if ($request->hasFile('image')) {
-        //         $file = Uploader::uploadFile('image', 'public/payments');
-        //     }
-
-        //     $input = $this->paymentInput($file);
-        //     $payment->fill($input)->save();
-
-        //     DB::commit();
-        //     return response()->json([
-        //         'message' => 'Payment created successfully',
-        //         'payment' => $payment,
-        //     ], 201);
-        // } catch (\Throwable $exception) {
-        //     DB::rollBack();
-        //     return response()->json([
-        //         'message' => 'Error no crated' . $exception,
-        //     ], 500);
-        // }
-
-        return Payment::create($request->all());
+        //extraigo el email del doctor seleccionado de la cita
+        // $email_doctor = $appointment->doctor->email;
+        
+        $payment = Payment::create([
+            "patient_id" =>$request->patient_id,
+            "appointment_id" =>$request->appointment_id,
+            "nombre" => $request->nombre,
+            "monto" =>$request->monto,
+            "email" =>$request->email,
+            "bank_name" =>$request->bank_name,
+            "metodo" =>$request->metodo,
+            "referencia" =>$request->referencia,
+            "status" =>$request->status,
+            // "status_pay" =>$request->amount != $request->amount_add ? 2 : 1,
+        ]);
+        //envio de correo al doctor
+        Mail::to($appointment->doctor->email)->send(new NewPaymentRegisterMail($payment));
+        // Mail::to($email_doctor)->send(new NewPaymentRegisterMail($payment));
+        
+        return response()->json([
+            "message"=>200,
+            "payment"=>$payment,
+        ]);
     }
 
     /**
@@ -337,10 +345,10 @@ class AdminPaymentController extends Controller
         
         // error_log($appointment);
 
-        // if($request->status === '2'){
-        //     Mail::to($appointment->patient->email)->send(new ConfirmationAppointment($appointment));
+        if($request->status === '2'){
+            Mail::to($appointment->patient->email)->send(new ConfirmationAppointment($appointment));
 
-        // }
+        }
         return response()->json([
             "message" => 200,
             "payment" => $payment,

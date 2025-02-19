@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->longtext('designation')->nullable();
             $table->text('address')->nullable();
             $table->string('avatar')->nullable();
-            $table->string('n_doc', 50)->unique();
+            $table->string('n_doc', 50)->unique()->nullable();
             
             $table->string('email')->unique()->comment('User email for login');
             $table->timestamp('email_verified_at')->nullable();

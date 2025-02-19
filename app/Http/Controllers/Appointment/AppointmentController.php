@@ -15,6 +15,7 @@ use App\Mail\ConfirmationAppointment;
 use App\Models\Patient\PatientPerson;
 use App\Models\Appointment\Appointment;
 use App\Mail\NewAppointmentRegisterMail;
+use App\Mail\CancellationAppointmentMail;
 use App\Models\Doctor\DoctorScheduleDay;
 use App\Models\Appointment\AppointmentPay;
 use App\Models\Doctor\DoctorScheduleJoinHour;
@@ -380,9 +381,48 @@ class AppointmentController extends Controller
     public function destroy($id)
     {
         $appointment = Appointment::findOrFail($id);
+        
+        
         $appointment->delete();
         return response()->json([
             "message" => 200,
+        ]);
+    }
+    public function cancelarCita($id)
+    {
+        $appointment = Appointment::findOrFail($id);
+        
+        // Send cancellation emails
+        Mail::to($appointment->patient->email)
+            ->send(new CancellationAppointmentMail($appointment));
+            
+        Mail::to($appointment->doctor->email)
+            ->send(new CancellationAppointmentMail($appointment));
+
+        $appointment->delete();
+        return response()->json([
+            "message" => 200,
+        ]);
+    }
+
+    public function cancel(Request $request, $id)
+    {
+        $appointment = Appointment::findOrFail($id);
+        $reason = $request->input('reason', null);
+
+        // Send cancellation emails
+        Mail::to($appointment->patient->email)
+            ->send(new CancellationAppointmentMail($appointment, $reason));
+            
+        Mail::to($appointment->doctor->email)
+            ->send(new CancellationAppointmentMail($appointment, $reason));
+
+        // Update status instead of deleting
+        $appointment->update(['status' => 3]); // 3 = cancelled status
+
+        return response()->json([
+            "message" => 200,
+            "appointment" => $appointment
         ]);
     }
     

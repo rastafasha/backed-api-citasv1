@@ -20,3 +20,8 @@ Route::post('appointment/calendar', [AppointmentController::class, 'calendar'])-
 
 Route::put('/appointment/update/cofirmation/{appointment:id}', [AppointmentController::class, 'updateConfirmation'])
     ->name('appointment.updateConfirmation');
+
+
+
+Route::post('/appointment/{id}/cancel', [AppointmentController::class, 'cancelarCita'])
+    ->name('appointment.cancelarCita');

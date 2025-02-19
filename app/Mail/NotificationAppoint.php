@@ -33,9 +33,9 @@ class NotificationAppoint extends Mailable
      */
     public function envelope(): Envelope
     {
-        return new Envelope(
-            subject: 'Recordatorio de Cita Médica',
-        );
+        return new Envelope([
+            'subject' => 'Recordatorio de Cita Médica',
+        ]);
     }
 
     /**

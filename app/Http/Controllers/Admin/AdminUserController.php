@@ -95,7 +95,7 @@ class AdminUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function userUpdate(UserUpdateRequest $request, User $user)
+    public function userUpdate( $request, User $user)
     {
         // $this->authorize('update', User::class);
 
