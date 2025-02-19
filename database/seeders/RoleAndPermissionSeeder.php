@@ -68,8 +68,8 @@ class RoleAndPermissionSeeder extends Seeder
         ['id' => 45, 'guard_name' => 'api','name' => 'register_location'],
         ['id' => 46, 'guard_name' => 'api','name' => 'list_location'],
         ['id' => 47, 'guard_name' => 'api','name' => 'view_patient'],
-        ['id' => 48, 'guard_name' => 'api','name' => 'list_Presupuesto'],
-        ['id' => 49, 'guard_name' => 'api','name' => 'register_Presupuesto'],
+        ['id' => 48, 'guard_name' => 'api','name' => 'list_presupuesto'],
+        ['id' => 49, 'guard_name' => 'api','name' => 'register_presupuesto'],
         ];
 
         foreach ($permissions as $permission) {
@@ -101,10 +101,11 @@ class RoleAndPermissionSeeder extends Seeder
         $superadminRole->givePermissionTo(Permission::all());
 
         // Give all permissions to ADMIN
-        $adminRole = Role::find(2);
+        // $adminRole = Role::find(2);
         // $adminRole->givePermissionTo(Permission::all());
-
+        
         // Assign specific permissions to other roles
+        $adminRole = Role::find(2);
         $doctorRole = Role::find(3);
         $recepcionRole = Role::find(4);
         $laboratorioRole = Role::find(5);

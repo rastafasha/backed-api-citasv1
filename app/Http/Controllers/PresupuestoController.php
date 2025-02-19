@@ -102,11 +102,10 @@ class PresupuestoController extends Controller
         $presupuesto = Presupuesto::create([
             "doctor_id" =>$request->doctor_id,
             "patient_id" =>$patient->id,
-            "date_presupuesto" => Carbon::parse($request->date_presupuesto)->format("Y-m-d h:i:s"),
             "speciality_id" => $request->speciality_id,
+            "description" => $request->description,
             "user_id" => $request->user_id,
             "amount" =>$request->amount,
-            "status_pay" =>$request->amount != $request->amount_add ? 2 : 1,
         ]);
 
         
@@ -196,17 +195,11 @@ class PresupuestoController extends Controller
        
         $presupuesto = Presupuesto::findOrFail($id);
 
-        if($presupuesto->payments->sum("amount") > $request->amount){
-            return response()->json([
-                "message" => 403,
-                "message_text"=> "Los Pagos ingresados superan al nuevo monto que quiere guardar"
-            ]);
-        }
 
         $presupuesto->update([
             "doctor_id" =>$request->doctor_id,
-            "date_presupuesto" => Carbon::parse($request->date_presupuesto)->format("Y-m-d h:i:s"),
             "speciality_id" => $request->speciality_id,
+            "description" =>$request->description,
             "amount" =>$request->amount,
         ]);
 
