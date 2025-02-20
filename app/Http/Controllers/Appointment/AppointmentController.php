@@ -429,7 +429,10 @@ class AppointmentController extends Controller
      public function atendidas()
     {
         
-        $appointments = Appointment::where('status', 2)->orderBy("id", "desc")
+        $appointments = Appointment::
+        where('status', 2)
+        ->where('confimation', 2)
+        ->orderBy("id", "desc")
                             ->paginate(10);
         return response()->json([
             "total"=>$appointments->total(),
@@ -440,7 +443,10 @@ class AppointmentController extends Controller
      public function pendientes()
     {
         
-        $appointments = Appointment::where('status', 1)->orderBy("id", "desc")
+        $appointments = Appointment::
+        where('status', 1)
+        // ->orWhere('confimation', 1)
+        ->orderBy("id", "desc")
                             ->paginate(10);
         return response()->json([
             "total"=>$appointments->total(),

@@ -14,7 +14,7 @@ Route::get('appointment/show/{id}', [AppointmentController::class, 'show'])->nam
 Route::put('appointment/update/{appointment}', [AppointmentController::class, 'update'])->name('update');
 Route::delete('appointment/destroy/{id}', [AppointmentController::class, 'destroy'])->name('destroy');
 
-Route::get('appointment/atendidas/{id}', [AppointmentController::class, 'atendidas'])->name('atendidas');
+Route::get('appointment/atendidas/', [AppointmentController::class, 'atendidas'])->name('atendidas');
 Route::get('appointment/pendientes', [AppointmentController::class, 'pendientes'])
 ->name('appointment.pendientes');
 

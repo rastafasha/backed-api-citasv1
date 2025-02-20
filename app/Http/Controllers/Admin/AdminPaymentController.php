@@ -378,7 +378,7 @@ class AdminPaymentController extends Controller
     public function pagosPendientes()
     {
         
-        $payments = Payment::where('status', 1)->orderBy("id", "desc")
+        $payments = Payment::where('status', 'PENDING')->orderBy("id", "desc")
                             ->paginate(10);
         return response()->json([
             "total"=>$payments->total(),
