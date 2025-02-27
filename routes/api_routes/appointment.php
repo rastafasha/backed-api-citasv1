@@ -8,7 +8,11 @@ Route::post('appointment/filter', [AppointmentController::class, 'filter'])->nam
 Route::get('appointment/config', [AppointmentController::class, 'config'])->name('config');
 Route::get('appointment/patient', [AppointmentController::class, 'query_patient'])->name('query_patient');
 
+
 Route::get('appointment', [AppointmentController::class, 'index'])->name('index');
+Route::get('appointment/byDoctor/{doctor_id}/', [AppointmentController::class, 'appointmentByDoctor'])
+->name('appointment.appointmentByDoctor');
+
 Route::post('appointment/store', [AppointmentController::class, 'store'])->name('appointment.store');
 Route::get('appointment/show/{id}', [AppointmentController::class, 'show'])->name('show');
 Route::put('appointment/update/{appointment}', [AppointmentController::class, 'update'])->name('update');
