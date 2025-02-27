@@ -18,6 +18,7 @@ class SettingeneralSeeder extends Seeder
                 'name' => 'Clinica DEMO-HCME',
                 'address' => 'AV. Ppal',
                 'phone' => '12324354677',
+                'email' => 'seeder@seeder.com',
                 'city' => 'Caracas',
                 'state' => 'Capital',
                 'zip' => '1010',

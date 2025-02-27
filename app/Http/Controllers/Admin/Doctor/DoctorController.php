@@ -498,4 +498,17 @@ class DoctorController extends Controller
             "message" => 200
         ]);
     }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $user = User::findOrfail($id);
+        $user->status = $request->status;
+        $user->update();
+        if($request->status ===2){
+            Mail::to($user->email)->send(new UpdateStatusMail($user));
+        }
+
+        return $user;
+        
+    }
 }

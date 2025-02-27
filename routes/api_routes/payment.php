@@ -26,9 +26,11 @@ Route::delete('/payment/destroy/{payment:id}', [AdminPaymentController::class, '
 
 Route::get('payment/recientes/', [AdminPaymentController::class, 'recientes'])
     ->name('payment.recientes');
+
 Route::get('payment/pendientes', [AdminPaymentController::class, 'pagosPendientes'])
     ->name('payment.pagosPendientes');
-
+Route::get('payment/pendientesbydoctor/{doctor_id}', [AdminPaymentController::class, 'pagosPendientesShowId'])
+    ->name('payment.pagosPendientesShowId');
 
 Route::post('/payment/upload', [AdminPaymentController::class, 'upload'])
     ->name('payment.upload');

@@ -18,6 +18,7 @@ class CreateSettingeneralsTable extends Migration
             $table->string('name', 250);
             $table->text('address');
             $table->string('phone', 250);
+            $table->string('email', 250);
             $table->string('city', 250);
             $table->string('state', 250);
             $table->string('zip', 250);

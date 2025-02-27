@@ -267,7 +267,7 @@
 																			<!-- <a cm_dontconvertlink href="tel:+13697181973" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">(369) 22233</span></a> -->
 																			<br />
 																			<!-- <a href="mailto:info@website.com" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">info@website.com</span></a> - <a href="https://malcolmcordova.com" target="_blank" class="link c-white" style="text-decoration:none; color:#ffffff;"><span class="link c-white" style="text-decoration:none; color:#ffffff;">malcolmcordova.com</span></a><br> -->
-																			<span class="link c-white" style="text-decoration:none; color:#ffffff;">Desarrollado por:</span>
+																			<span class="link c-white" style="text-decoration:none; color:#ffffff;">Gracias por ser parte del equipo.</span>
                                                                             
 																		</multiline>
 																	</td>

@@ -18,6 +18,9 @@ Route::get('appointment/atendidas/', [AppointmentController::class, 'atendidas']
 Route::get('appointment/pendientes', [AppointmentController::class, 'pendientes'])
 ->name('appointment.pendientes');
 
+Route::get('appointments/pendientesbydoctor/{doctor_id}', [AppointmentController::class, 'pagosPendientesShowId'])
+    ->name('appointment.pagosPendientesShowId');
+    
 Route::post('appointment/calendar', [AppointmentController::class, 'calendar'])->name('calendar');
 
 Route::put('/appointment/update/cofirmation/{appointment:id}', [AppointmentController::class, 'updateConfirmation'])
