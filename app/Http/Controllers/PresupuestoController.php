@@ -104,6 +104,7 @@ class PresupuestoController extends Controller
             $presupuesto = Presupuesto::create([
                 "doctor_id" =>$request->doctor_id,
                 "patient_id" =>$patient->id,
+                "n_doc" =>$request->n_doc,
                 "speciality_id" => $request->speciality_id,
                 "description" => $request->description,
                 "diagnostico" => $request->diagnostico,
@@ -171,6 +172,7 @@ class PresupuestoController extends Controller
         $presupuesto->update([
             "doctor_id" =>$request->doctor_id,
             "patient_id" =>$request->patient_id,
+            "n_doc" =>$request->n_doc,
             "speciality_id" => $request->speciality_id,
             "description" =>$request->description,
             "diagnostico" =>$request->diagnostico,
@@ -268,4 +270,29 @@ class PresupuestoController extends Controller
             // "total"=>$appointments->total(),
         ]);
     }
+    public function bypatient(Request $request, $n_doc)
+        {
+            $patient = Patient::where("n_doc", $n_doc)->first();
+
+            if (!$patient) {
+                return response()->json([
+                    'code' => 404,
+                    'status' => 'error',
+                    'message' => 'Patient not found',
+                ], 404);
+            }
+
+            $presupuestos = Presupuesto::where("patient_id", '=', $patient->id)
+                ->orderBy('created_at', 'DESC')
+                ->get();
+
+            return response()->json([
+                'code' => 200,
+                'status' => 'success',
+                // 'presupuestos' => $presupuestos,
+                 "presupuestos"=> PresupuestoCollection::make($presupuestos)
+            ], 200);
+        }
+
+    
 }

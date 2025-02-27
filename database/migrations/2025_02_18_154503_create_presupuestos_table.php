@@ -23,10 +23,12 @@ class CreatePresupuestosTable extends Migration
             
             $table->tinyInteger('confimation')->default(1);
             $table->tinyInteger('status')->default(1);
+            $table->json('n_doc')->nullable();
             
             
             // Provider IDs
             $table->unsignedBigInteger('patient_id')->nullable();
+            // $table->unsignedBigInteger('n_doc')->nullable();
             $table->unsignedBigInteger('doctor_id')->nullable();
             $table->unsignedBigInteger('speciality_id')->nullable();
 
@@ -37,6 +39,7 @@ class CreatePresupuestosTable extends Migration
             // Foreign keys for provider relationships
             $table->foreign('doctor_id')->references('id')->on('users')->nullOnDelete();
             $table->foreign('patient_id')->references('id')->on('patients')->nullOnDelete();
+            // $table->foreign('n_doc')->references('n_doc')->on('patients')->nullOnDelete();
             // $table->foreign('speciality_id')->references('id')->on('specialities')->nullOnDelete();
             // $table->foreign('doctor_schedule_join_hour_id')->references('id')->on('doctor_schedule_join_hours')->nullOnDelete();
         });
