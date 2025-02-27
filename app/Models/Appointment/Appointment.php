@@ -132,6 +132,13 @@ class Appointment extends Model
         }
         return $query;
     }
+
+    public function scopefilterAdvanceDoctor($query, $date){
+        if($date){
+            $query->whereDate("date_appointment", Carbon::parse($date)->format("Y-m-d"));
+        }
+        return $query;
+    }
     public function scopefilterAdvancePay($query,$speciality_id, $search_doctor, $search_patient,
     $date_start,$date_end){
         
@@ -160,6 +167,31 @@ class Appointment extends Model
         }
         return $query;
     }
+
+    public function scopefilterAdvanceDoc($query, $search_doctor, $search_patient, $date, $search  ){
+        
+        if($search_doctor){
+            $query->whereHas("doctor", function($q)use($search_doctor){
+                $q->where(DB::raw("CONCAT(users.name,' ',IFNULL(users.surname,''),' ',IFNULL(users.email,''))"),"like","%".$search_doctor."%");
+                   
+            });
+        }
+        
+        if($search_patient){
+            $query->whereHas("patient", function($q)use($search_patient){
+                $q->where(DB::raw("CONCAT(patients.name,' ',IFNULL(patients.surname,''),' ',IFNULL(patients.email,''))"),"like","%".$search_patient."%");
+                
+            });
+        }
+
+    
+
+        if($date){
+            $query->whereDate("date_appointment", Carbon::parse($date)->format("Y-m-d"));
+        }
+        return $query;
+    }
+   
     
     
 }

@@ -237,7 +237,7 @@ Notificaciones automatizadas desde la app
 																																<multiline>
                                                                                                                                      Tipo de Pago {{ $payment->metodo}}
                                                                                                                                     <br>
-                                                                                                                                     Método de pago {{ $payment->referencia}}
+                                                                                                                                     Referencia {{ $payment->referencia}}
                                                                                                                                     <br>
                                                                                                                                      Nombre del banco {{ $payment->bank_name}}
                                                                                                                                     <br>

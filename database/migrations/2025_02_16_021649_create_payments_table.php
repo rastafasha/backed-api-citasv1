@@ -32,6 +32,7 @@ class CreatePaymentsTable extends Migration
 
             // Provider IDs
             $table->unsignedBigInteger('patient_id')->nullable();
+            $table->unsignedBigInteger('doctor_id')->nullable();
             $table->unsignedBigInteger('appointment_id')->nullable();
 
             $table->timestamps();
@@ -39,6 +40,7 @@ class CreatePaymentsTable extends Migration
 
             // Foreign keys for provider relationships
             $table->foreign('patient_id')->references('id')->on('patients')->nullOnDelete();
+            $table->foreign('doctor_id')->references('id')->on('users')->nullOnDelete();
             $table->foreign('appointment_id')->references('id')->on('appointments')->nullOnDelete();
         });
     }

@@ -61,6 +61,7 @@ Route::group(['middleware' => 'api'], function ($router) {
     
     // appointmentpay
     require __DIR__ . '/api_routes/appointmentpay.php';
+    
     // citamedica
     require __DIR__ . '/api_routes/citamedica.php';
     
@@ -121,6 +122,12 @@ Route::group(['middleware' => 'api'], function ($router) {
         Artisan::call('migrate:refresh --seed');
         return "Migrate: creacion con datos, para uso";
     });
+    
+    Route::get('/migrate-make', function () {
+        Artisan::call('make:migration agregar_campo_x');
+        return "Migrate:agregar campos a tablas";
+    });
+
     
     Route::get('/send-notification', function () {
         Artisan::call('command:notification-appointments');
