@@ -19,13 +19,16 @@ class Presupuesto extends Model
     protected $fillable=[
         "doctor_id",
         "patient_id",
+        "n_doc",
         "date_appointment",
         "speciality_id",
         "user_id",
-        "amount",
         "status",
         "confimation",
         "description",
+        "diagnostico",
+        "medical",
+        "amount",
 
     ];
     
