@@ -200,7 +200,7 @@
 																														<tr>
                                                                                                                             <td class="text-16 lh-26 a-center" style="font-size:16px; color:#6e6e6e; font-family:'PT Sans', Arial, sans-serif; min-width:auto !important; line-height: 26px; text-align:center;">
                                                                                                                                 <multiline>
-                                                                                                                                    Puede Acceder a la aplicaci贸n, escaneando el c贸odigo QR.<br>
+                                                                                                                                    Puede Acceder a la aplicación, escaneando el cóodigo QR.<br>
                                                                                                                                     
                                                                                                                                 </multiline>
                                                                                                                             </td>
