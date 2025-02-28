@@ -190,7 +190,7 @@
                                                                                                                                 </multiline>
                                                                                                                             </td>
                                                                                                                         </tr>
-																														{{-- <tr>
+																														<tr>
 																															<td class="img-center p-30 px-15" style="font-size:0pt; line-height:0pt; text-align:center; padding: 30px; padding-left: 15px; padding-right: 15px;">
 																																<img src="https://clinica.health-connect.me/QR/PacienteClinicaDemo.png" width="150" height="150" editable="true" border="0" alt="" />
 																																
@@ -204,8 +204,8 @@
 																																				</a>
 																																			</multiline>
 																																		</td>
-																														</tr> --}}
-																														<tr>
+																														</tr>
+																														{{-- <tr>
 																															<td class="img-center p-30 px-15" style="font-size:0pt; line-height:0pt; text-align:center; padding: 30px; padding-left: 15px; padding-right: 15px;">
 																																<img src="https://aramayrangel.health-connect.me/QR/HC-AramayRangel-Pacientes.png" width="150" height="150" editable="true" border="0" alt="" />
 																																
@@ -219,7 +219,7 @@
 																																				</a>
 																																			</multiline>
 																																		</td>
-																														</tr>
+																														</tr> --}}
 																														<tr>
 																															<td class="text-16 lh-26 a-center pb-25" style="font-size:16px; color:#6e6e6e; font-family:'PT Sans', Arial, sans-serif; min-width:auto !important; line-height: 26px; text-align:center; padding-bottom: 25px;">
 																																<multiline>

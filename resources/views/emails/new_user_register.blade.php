@@ -218,7 +218,7 @@
                                                                                                                                             </multiline>
                                                                                                                                         </td>
                                                                                                                                     </tr>
-            																														{{-- <tr>
+            																														<tr>
             																															<td class="img-center p-30 px-15" style="font-size:0pt; line-height:0pt; text-align:center; padding: 30px; padding-left: 15px; padding-right: 15px;">
             																																<img src="https://clinica.health-connect.me/QR/ClinicaHCME.png" width="150" height="150" editable="true" border="0" alt="" />
             																																
@@ -232,8 +232,8 @@
 																																				</a>
 																																			</multiline>
 																																		</td>
-																																	</tr> --}}
-            																														<tr>
+																																	</tr>
+            																														{{-- <tr>
             																															<td class="img-center p-30 px-15" style="font-size:0pt; line-height:0pt; text-align:center; padding: 30px; padding-left: 15px; padding-right: 15px;">
             																																<img src="https://aramayrangel.health-connect.me/QR/HC-AramayR-Clinica.png" width="150" height="150" editable="true" border="0" alt="" />
             																																
@@ -247,7 +247,7 @@
 																																				</a>
 																																			</multiline>
 																																		</td>
-																																	</tr>
+																																	</tr> --}}
 																																</table>
 																															</td>
 																														</tr> 
