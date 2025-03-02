@@ -1,33 +1,3 @@
-{{-- @component('mail::message')
-# Hola
-<br>
-Se has registrado un nuevo pago
-<br><br>
-
-* Tipo de Pago ***{{ $payment->metodo}}***
-<br>
-* Método de pago ***{{ $payment->referencia}}***
-<br>
-* Nombre del banco ***{{ $payment->bank_name}}***
-<br>
-* Monto ***{{ $payment->monto}}***
-<br>
-* Paciente ***{{ $payment->nombre}}***
-<br>
-* Email ***{{ $payment->email}}***
-
-<br><br>
-@component('mail::button', [
-    'url' => env('APP_URL')
-])
-    Ir a la web
-@endcomponent
-
-Notificaciones automatizadas desde la app
-***{{ config('app.name') }}***
-@endcomponent --}}
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
