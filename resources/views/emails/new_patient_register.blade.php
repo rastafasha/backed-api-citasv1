@@ -119,7 +119,7 @@
 																	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																		<tr>
 																			<td class="img-center p-30 px-15" style="font-size:0pt; line-height:0pt; text-align:center; padding: 30px; padding-left: 15px; padding-right: 15px;">
-																				<a href="#" target="_blank"><img src="https://health-connect.me/varios/logoHealthConnect-01.png" width="150" height="100" editable="true" border="0" alt="" /></a>
+																				<a href="#" target="_blank"><img src="https://klyntic.com/varios/logoklyntic.png" width="150" height="100" editable="true" border="0" alt="" /></a>
 																			</td>
 																		</tr>
 																	</table>
@@ -138,7 +138,7 @@
 																								<tr>
 																									<td class="title-36 a-center pb-15" style="font-size:30px; line-height:40px; color:#282828; font-family:'PT Sans', Arial, sans-serif; min-width:auto !important; text-align:center; padding-bottom: 15px;">
 																										<multiline>
-																											<strong>Bienvenido a Health Connect me.</strong>
+																											<strong>Bienvenido a Klyntic.</strong>
 																										</multiline>
 																									</td>
 																								</tr>
@@ -194,30 +194,30 @@
                                                                                                                         </tr>
 																														<tr>
 																															<td class="img-center p-30 px-15" style="font-size:0pt; line-height:0pt; text-align:center; padding: 30px; padding-left: 15px; padding-right: 15px;">
-																																<img src="https://clinica.health-connect.me/QR/PacienteClinicaDemo.png" width="150" height="150" editable="true" border="0" alt="" />
+																																<img src="https://clinica.klyntic.com/QR/PacienteClinicaDemo.png" width="150" height="150" editable="true" border="0" alt="" />
 																																
 																															</td>
 																														</tr>
 																														<tr>
 																														    <td class="btn-16 c-white l-white" bgcolor="#f3189e" style="font-size:16px; line-height:20px; mso-padding-alt:15px 35px; font-family:'PT Sans', Arial, sans-serif; text-align:center; font-weight:bold; text-transform:uppercase; border-radius:25px; min-width:auto !important; color:#ffffff;">
 																																			<multiline>
-																																				<a href="https://paciente.health-connect.me/" target="_blank" class="link c-white" style="display: block; padding: 15px 35px; text-decoration:none; color:#ffffff;">
-																																					<span class="link c-white" style="text-decoration:none; color:#ffffff;">Acceder a Health Connect me Pacientes App</span>
+																																				<a href="https://paciente.klyntic.com/" target="_blank" class="link c-white" style="display: block; padding: 15px 35px; text-decoration:none; color:#ffffff;">
+																																					<span class="link c-white" style="text-decoration:none; color:#ffffff;">Acceder a Klyntic Pacientes App</span>
 																																				</a>
 																																			</multiline>
 																																		</td>
 																														</tr>
 																														{{-- <tr>
 																															<td class="img-center p-30 px-15" style="font-size:0pt; line-height:0pt; text-align:center; padding: 30px; padding-left: 15px; padding-right: 15px;">
-																																<img src="https://aramayrangel.health-connect.me/QR/HC-AramayRangel-Pacientes.png" width="150" height="150" editable="true" border="0" alt="" />
+																																<img src="https://aramayrangel.klyntic.com/QR/HC-AramayRangel-Pacientes.png" width="150" height="150" editable="true" border="0" alt="" />
 																																
 																															</td>
 																														</tr>
 																														<tr>
 																														    <td class="btn-16 c-white l-white" bgcolor="#f3189e" style="font-size:16px; line-height:20px; mso-padding-alt:15px 35px; font-family:'PT Sans', Arial, sans-serif; text-align:center; font-weight:bold; text-transform:uppercase; border-radius:25px; min-width:auto !important; color:#ffffff;">
 																																			<multiline>
-																																				<a href="https://pascapp-aramayrangel.health-connect.me/" target="_blank" class="link c-white" style="display: block; padding: 15px 35px; text-decoration:none; color:#ffffff;">
-																																					<span class="link c-white" style="text-decoration:none; color:#ffffff;">Acceder a Health Connect me Pacientes App</span>
+																																				<a href="https://pascapp-aramayrangel.klyntic.com/" target="_blank" class="link c-white" style="display: block; padding: 15px 35px; text-decoration:none; color:#ffffff;">
+																																					<span class="link c-white" style="text-decoration:none; color:#ffffff;">Acceder a Klyntic Pacientes App</span>
 																																				</a>
 																																			</multiline>
 																																		</td>
@@ -297,7 +297,7 @@
 																								<tr>
 																									
 																									<td class="img" width="117" style="font-size:0pt; line-height:0pt; text-align:center; ">
-																										<a href="https://health-connect.me/" target="_blank"><img src="https://health-connect.me/varios/logoHealthConnect-01.png" width="75" height="50" editable="true" border="0" alt="" /></a>
+																										<a href="https://klyntic.com/" target="_blank"><img src="https://klyntic.com/varios/logoklyntic.png" width="75" height="50" editable="true" border="0" alt="" /></a>
 																										
 																									</td>
 																								</tr>
