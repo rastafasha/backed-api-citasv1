@@ -197,7 +197,15 @@
 																																<img src="https://clinica.klyntic.com/QR/PacienteClinicaDemo.png" width="150" height="150" editable="true" border="0" alt="" />
 																																
 																															</td>
-																														</tr>
+																														</tr> --}}
+																														<tr>
+                                                                                                                            <td class="text-16 lh-26 a-center" style="font-size:16px; color:#6e6e6e; font-family:'PT Sans', Arial, sans-serif; min-width:auto !important; line-height: 26px; text-align:center;">
+                                                                                                                                <multiline>
+                                                                                                                                    Puede Acceder a la aplicación, escaneando el cóodigo QR.<br>
+                                                                                                                                    
+                                                                                                                                </multiline>
+                                                                                                                            </td>
+                                                                                                                        </tr>
 																														<tr>
 																														    <td class="btn-16 c-white l-white" bgcolor="#f3189e" style="font-size:16px; line-height:20px; mso-padding-alt:15px 35px; font-family:'PT Sans', Arial, sans-serif; text-align:center; font-weight:bold; text-transform:uppercase; border-radius:25px; min-width:auto !important; color:#ffffff;">
 																																			<multiline>
