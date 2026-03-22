@@ -119,7 +119,7 @@
 																	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																		<tr>
 																			<td class="img-center p-30 px-15" style="font-size:0pt; line-height:0pt; text-align:center; padding: 30px; padding-left: 15px; padding-right: 15px;">
-																				<a href="#" target="_blank"><img src="https://health-connect.me/varios/logoHealthConnect-01.png" width="150" height="100" editable="true" border="0" alt="" /></a>
+																				<a href="#" target="_blank"><img src="https://klyntic.com/varios/logoklyntic.png" width="150" height="100" editable="true" border="0" alt="" /></a>
 																			</td>
 																		</tr>
 																	</table>
@@ -247,8 +247,8 @@
 																								<tr>
 																									<td class="text-16 lh-26 a-center pb-25" style="font-size:16px; color:#6e6e6e; font-family:'PT Sans', Arial, sans-serif; min-width:auto !important; line-height: 26px; text-align:center; padding-bottom: 25px;">
 																										<multiline>
-																											<em>Health-connect.me no es entidad financiera, las trasnferencias se hacen directo entre la cuenta creada desde la app directo al paciente.
-																												La App Health Connect solo es un medio de comunicación entre el paciente y el doctor,
+																											<em>klyntic.com no es entidad financiera, las trasnferencias se hacen directo entre la cuenta creada desde la app directo al paciente.
+																												La App Klyntic solo es un medio de comunicación entre el paciente y el doctor,
         no somos entidades de salud, no somos entidad financiera. </em>
 																										</multiline>
 																									</td>
@@ -315,9 +315,9 @@
 
 																			<td class="img" width="117"
 																				style="font-size:0pt; line-height:0pt; text-align:center; ">
-																				<a href="https://health-connect.me/"
+																				<a href="https://klyntic.com/"
 																					target="_blank"><img
-																						src="https://health-connect.me/varios/logoHealthConnect-01.png"
+																						src="https://klyntic.com/varios/logoklyntic.png"
 																						width="75" height="50"
 																						editable="true" border="0"
 																						alt="" /></a>
