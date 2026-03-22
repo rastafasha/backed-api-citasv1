@@ -30,12 +30,12 @@ class NewPresupuestoRegisterMail extends Mailable
      */
     public function build()
     {
-        // return $this->from('citasmedicas@malcolmcordova.com', 'Registro de una nueva cita desde Health Connect')
+        // return $this->from('citasmedicas@malcolmcordova.com', 'Registro de una nueva cita desde Klyntic')
         //     ->subject('Registro de una nueva cita')
         //     ->markdown('emails.admin.new_presupuesto_register' , ['presupuesto' => $this->presupuesto]);
 
             return $this
-            ->subject('HealthConnectMe: Presupuesto')
+            ->subject('Klyntic: Presupuesto')
             ->view('emails.admin.new_presupuesto_register',['presupuesto' => $this->presupuesto]);
         
     }

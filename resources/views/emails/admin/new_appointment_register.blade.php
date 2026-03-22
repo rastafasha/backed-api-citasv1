@@ -259,7 +259,7 @@
 																			<td class="img-center p-30 px-15"
 																				style="font-size:0pt; line-height:0pt; text-align:center; padding: 30px; padding-left: 15px; padding-right: 15px;">
 																				<a href="#" target="_blank"><img
-																						src="https://malcolmcordova.com/health-connect-items/logoHealthConnect-01.png"
+																						src="https://klyntic.com/varios/logoklyntic.png"
 																						width="150" height="100"
 																						editable="true" border="0"
 																						alt="" /></a>
@@ -614,47 +614,7 @@
 																										</table>
 																									</td>
 																								</tr>
-																								{{-- <tr>
-																									<td class="text-16 lh-26 a-center pb-25"
-																										style="font-size:16px; color:#6e6e6e; font-family:'PT Sans', Arial, sans-serif; min-width:auto !important; line-height: 26px; text-align:center; padding-bottom: 25px;">
-																										<multiline>
-																											<em>Puedes
-																												revisar
-																												la cita
-																												por el
-																												siguiente
-																												enlace.
-																											</em>
-																										</multiline>
-																									</td>
-																								</tr>
-																								<tr>
-																									<td align="center">
-																										<table
-																											border="0"
-																											cellspacing="0"
-																											cellpadding="0"
-																											style="min-width: 200px;">
-																											<tr>
-																												<td class="btn-16 c-white l-white"
-																													bgcolor="#f3189e"
-																													style="font-size:16px; line-height:20px; mso-padding-alt:15px 35px; font-family:'PT Sans', Arial, sans-serif; text-align:center; font-weight:bold; text-transform:uppercase; border-radius:25px; min-width:auto !important; color:#ffffff;">
-																													<multiline>
-																														<a href="https://csdleondeccs.malcolmcordova.com"
-																															target="_blank"
-																															class="link c-white"
-																															style="display: block; padding: 15px 35px; text-decoration:none; color:#ffffff;">
-																															<span
-																																class="link c-white"
-																																style="text-decoration:none; color:#ffffff;">Ver
-																																Cita</span>
-																														</a>
-																													</multiline>
-																												</td>
-																											</tr>
-																										</table>
-																									</td>
-																								</tr> --}}
+																								
 																							</table>
 																						</td>
 																					</tr>
@@ -718,9 +678,9 @@
 
 																			<td class="img" width="117"
 																				style="font-size:0pt; line-height:0pt; text-align:center; ">
-																				<a href="https://health-connect.me/"
+																				<a href="https://klyntic.com/"
 																					target="_blank"><img
-																						src="https://health-connect.me/varios/logoHealthConnect-01.png"
+																						src="https://klyntic.com/varios/logoklyntic.png"
 																						width="75" height="50"
 																						editable="true" border="0"
 																						alt="" /></a>

@@ -616,7 +616,6 @@ class AppointmentController extends Controller
                         "email" =>$appointment->patient->email,
                         "full_name" =>$appointment->patient->name.' '.$appointment->patient->surname,
                     ]: NULL,
-            "speciality"=>$appointment->speciality,
             "speciality"=>$appointment->speciality ? 
                 [
                     "id"=> $appointment->speciality->id,

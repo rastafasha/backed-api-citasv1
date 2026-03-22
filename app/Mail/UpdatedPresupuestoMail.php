@@ -30,12 +30,9 @@ class UpdatedPresupuestoMail extends Mailable
      */
     public function build()
     {
-        // return $this->from('citasmedicas@malcolmcordova.com', 'Registro de una nueva cita desde Health Connect')
-        //     ->subject('Registro de una nueva cita')
-        //     ->markdown('emails.admin.new_presupuesto_register' , ['presupuesto' => $this->presupuesto]);
 
             return $this
-            ->subject('HealthConnectMe: Presupuesto Actualizado')
+            ->subject('Klyntic: Presupuesto Actualizado')
             ->view('emails.admin.new_presupuesto_register',['presupuesto' => $this->presupuesto]);
         
     }
