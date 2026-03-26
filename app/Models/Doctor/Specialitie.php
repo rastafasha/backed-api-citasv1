@@ -2,10 +2,11 @@
 
 namespace App\Models\Doctor;
 
+use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Specialitie extends Model
 {
@@ -32,5 +33,25 @@ class Specialitie extends Model
     {
     	date_default_timezone_set("America/Caracas");
         $this->attributes["updated_at"]= Carbon::now();
+    }
+
+    /**
+     * Doctors associated with this speciality.
+     */
+    public function doctors()
+    {
+        return $this->hasMany(User::class, 'speciality_id');
+    }
+
+    /**
+     * Active doctors with 'doctor' role for this speciality.
+     */
+    public function activeDoctors()
+    {
+        return $this->hasMany(User::class, 'speciality_id')
+            ->whereHas('roles', function ($query) {
+                $query->where('name', 'doctor');
+            })
+            ->where('status', 2); // assuming status=1 means active
     }
 }

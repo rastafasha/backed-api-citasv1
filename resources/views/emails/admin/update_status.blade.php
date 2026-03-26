@@ -425,7 +425,7 @@
 																													bgcolor="#f3189e"
 																													style="font-size:16px; line-height:20px; mso-padding-alt:15px 35px; font-family:'PT Sans', Arial, sans-serif; text-align:center; font-weight:bold; text-transform:uppercase; border-radius:25px; min-width:auto !important; color:#ffffff;">
 																													<multiline>
-																														<a href="https://clinica.health-connect.me/"
+																														<a href="https://clinica.klyntic.com/"
 																															target="_blank"
 																															class="link c-white"
 																															style="display: block; padding: 15px 35px; text-decoration:none; color:#ffffff;">

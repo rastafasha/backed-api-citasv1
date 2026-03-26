@@ -2,23 +2,24 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
-use App\Models\Payment;
-use App\Models\Location;
-use App\Traits\HavePermission;
 use App\Jobs\NewUserRegisterJob;
-use Laravel\Sanctum\HasApiTokens;
-use App\Models\Doctor\Specialitie;
-use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Traits\HasRoles;
-use Tymon\JWTAuth\Contracts\JWTSubject;
 use App\Models\Doctor\DoctorScheduleDay;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Doctor\Specialitie;
+use App\Models\Location;
+use App\Models\Pais;
+use App\Models\Payment;
+use App\Traits\HavePermission;
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Traits\HasRoles;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -50,7 +51,7 @@ class User extends Authenticatable implements JWTSubject
         'address',
         'avatar',
         'speciality_id',
-        'location_id',
+        'pais_id',
         'status',
 
     ];
@@ -152,9 +153,11 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(DoctorScheduleDay::class);
     }
-    public function location()
+   
+
+     public function pais()
     {
-        return $this->hasMany(Location::class, 'location_id');
+        return $this->belongsTo(Pais::class);
     }
 
     
