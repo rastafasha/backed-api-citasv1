@@ -35,4 +35,8 @@ class DoctorScheduleDay extends Model
     public function doctor(){
         return $this->belongsTo(User::class, "user_id");
     }
+     public function user() // Cambiaste de 'doctor' a 'user'
+{
+    return $this->belongsTo(User::class, "user_id");
+}
 }

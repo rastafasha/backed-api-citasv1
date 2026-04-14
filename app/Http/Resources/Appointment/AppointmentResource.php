@@ -17,12 +17,12 @@ class AppointmentResource extends JsonResource
     {
         return [
             "id" =>$this->resource->id,
-            
             "doctor_id" =>$this->resource->doctor_id,
             "doctor" =>$this->resource->doctor ? 
                 [
                     "id" =>$this->resource->doctor->id,
                     "email" =>$this->resource->doctor->email,
+                    "mobile" => $this->resource->doctor->mobile,
                     "full_name" =>$this->resource->doctor->name.' '.$this->resource->doctor->surname,
                     // "avatar"=> $this->resource->doctor->avatar ? env("APP_URL")."storage/".$this->resource->doctor->avatar : null,
                     "avatar"=> $this->resource->doctor->avatar ? env("APP_URL").$this->resource->doctor->avatar : null,
@@ -33,6 +33,7 @@ class AppointmentResource extends JsonResource
                                 "price"=> $this->resource->doctor->speciality->price,
                             ]:NULL,
                 ]: NULL,
+
             "patient_id" =>$this->resource->patient_id,
             "patient" =>$this->resource->patient ?
                 [
@@ -47,36 +48,29 @@ class AppointmentResource extends JsonResource
                     "name_companion" =>$this->resource->patient->person->name_companion,
                     "surname_companion" =>$this->resource->patient->person->surname_companion,
                 ]: NUll,
-            "date_appointment" =>$this->resource->date_appointment,
-            "date_appointment_format" =>Carbon::parse($this->resource->date_appointment)->format("Y-m-d"),
-            "speciality_id" =>$this->resource->speciality_id,
-            "speciality"=>$this->resource->speciality ? 
-                [
-                    "id"=> $this->resource->speciality->id,
-                    "name"=> $this->resource->speciality->name,
-                    "price"=> $this->resource->speciality->price,
-                ]: NULL,
-            "doctor_schedule_join_hour_id" =>$this->resource->doctor_schedule_join_hour_id,
-            "segment_hour"=>$this->resource->doctor_schedule_join_hour ? 
-                [
-                    "id" => $this->resource->doctor_schedule_join_hour->id,
-                    "doctor_schedule_day_id" => $this->resource->doctor_schedule_join_hour->doctor_schedule_day_id,
-                    "doctor_schedule_hour_id" => $this->resource->doctor_schedule_join_hour->doctor_schedule_hour_id,
-                    // "is_appointment"=> $appointment ? true : false,
-                    "format_segment"=>[
-                        "id" => $this->resource->doctor_schedule_join_hour->doctor_schedule_hour->id,
-                        "hour_start" => $this->resource->doctor_schedule_join_hour->doctor_schedule_hour->hour_start,
-                        "hour_end" => $this->resource->doctor_schedule_join_hour->doctor_schedule_hour->hour_end,
-                        "format_hour_start" => Carbon::parse(date("Y-m-d").' '.$this->resource->doctor_schedule_join_hour->doctor_schedule_hour->hour_start)->format("h:i A") ,
-                        "format_hour_end" => Carbon::parse(date("Y-m-d").' '.$this->resource->doctor_schedule_join_hour->doctor_schedule_hour->hour_end)->format("h:i A"),
-                        "hour" => $this->resource->doctor_schedule_join_hour->doctor_schedule_hour->hour,
-                    ],
-                ]: NULL,
-            "user_id" =>$this->resource->user_id,
+            "date_appointment" => $this->resource->date_appointment,
+            "date_appointment_format" => $this->resource->date_appointment ? Carbon::parse($this->resource->date_appointment)->format("Y-m-d") : null,
+            
+            "doctor_schedule_join_hour_id" => $this->resource->doctor_schedule_join_hour_id,
+            "segment_hour" => $this->resource->doctor_schedule_join_hour ? [
+               "id" => $this->resource->doctor_schedule_join_hour->id,
+                "doctor_schedule_day_id" => $this->resource->doctor_schedule_join_hour->doctor_schedule_day_id,
+                "doctor_schedule_hour_id" => $this->resource->doctor_schedule_join_hour->doctor_schedule_hour_id,
+                "format_segment" => $this->resource->doctor_schedule_join_hour->doctor_schedule_hour ? [
+                    "id" => $this->resource->doctor_schedule_join_hour->doctor_schedule_hour->id,
+                    "hour_start" => $this->resource->doctor_schedule_join_hour->doctor_schedule_hour->hour_start,
+                    "hour_end" => $this->resource->doctor_schedule_join_hour->doctor_schedule_hour->hour_end,
+                    "format_hour_start" => Carbon::parse($this->resource->doctor_schedule_join_hour->doctor_schedule_hour->hour_start)->format("h:i A"),
+                    "format_hour_end" => Carbon::parse($this->resource->doctor_schedule_join_hour->doctor_schedule_hour->hour_end)->format("h:i A"),
+                    "hour" => $this->resource->doctor_schedule_join_hour->doctor_schedule_hour->hour,
+                ] : NULL,
+            ] : NULL,
+            "user_id" => $this->resource->user_id,
             "user" => $this->resource->user ? [
-                "id" => $this->resource->doctor->id,
-                "full_name" => $this->resource->doctor->name. ' '.$this->resource->doctor->surname
-            ]: NULL,
+                "id" => $this->resource->user->id,
+                "full_name" => $this->resource->user->name . ' ' . $this->resource->user->surname,
+                "email" => $this->resource->user->email,
+            ] : null,
             "amount" =>$this->resource->amount,
             "status_pay" =>$this->resource->status_pay,
             // "deuda" =>$this->resource->deuda,

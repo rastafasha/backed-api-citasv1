@@ -43,6 +43,36 @@ class AppointmentController extends Controller
         ]);
 
     }
+
+    public function appointmentByDoctor(Request $request, $doctor_id)
+    {
+
+        $search_doctor = $request->search_doctor;
+        $search_patient = $request->search_patient;
+        $search = $request->search;
+        $date = $request->date;
+
+        $doctor_is_valid = User::where("id", $request->doctor_id)->first();
+        // $patients = Patient::Where('doctor_id', $doctor_id)
+
+        $appointments = Appointment::filterAdvanceDoc(
+            $search_doctor,
+            $search_patient,
+            $date,
+            $search
+        )
+            ->Where('doctor_id', $doctor_id)
+            ->orderBy("id", "desc")
+            ->paginate(10);
+
+        return response()->json([
+            "total" => $appointments->total(),
+            "appointments" => AppointmentCollection::make($appointments)
+        ]);
+
+
+
+    }
     public function filter(Request $request)
     {
         $date_appointment = $request->date_appointment;
@@ -531,35 +561,7 @@ class AppointmentController extends Controller
 
     }
 
-    public function appointmentByDoctor(Request $request, $doctor_id)
-    {
-
-        $search_doctor = $request->search_doctor;
-        $search_patient = $request->search_patient;
-        $search = $request->search;
-        $date = $request->date;
-        
-        $doctor_is_valid = User::where("id", $request->doctor_id)->first();
-        // $patients = Patient::Where('doctor_id', $doctor_id)
-
-        $appointments = Appointment::filterAdvanceDoc(
-            $search_doctor,
-            $search_patient, 
-            $date,
-            $search 
-            )
-        ->Where('doctor_id', $doctor_id)
-        ->orderBy("id", "desc")
-        ->paginate(10);
-
-        return response()->json([
-            "total"=>$appointments->total(),
-            "appointments"=> AppointmentCollection::make($appointments)
-        ]);
-
-        
-
-    }
+   
      public function pendientes()
     {
         

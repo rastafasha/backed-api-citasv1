@@ -2,11 +2,13 @@
 
 namespace App\Models\Patient;
 
-use Carbon\Carbon;
+use App\Models\Appointment\Appointment;
 use App\Models\Location;
+use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Patient extends Model
 {
@@ -33,6 +35,7 @@ class Patient extends Model
         'peso',
         'current_desease',
         'location_id',
+        'user_id',
     ];
 
     public function setCreateAttribute($value){
@@ -53,5 +56,20 @@ class Patient extends Model
     public function location()
     {
         return $this->hasMany(Location::class, 'location_id');
+    }
+    public function doctors()
+    {
+        // Relación muchos a muchos con los médicos
+        return $this->belongsToMany(User::class, 'doctor_patient', 'patient_id', 'doctor_id')
+            ->withTimestamps();
+    }
+    public function account()
+    {
+        // Esta se queda igual: es su cuenta de acceso (User ID 12)
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class, 'patient_id');
     }
 }

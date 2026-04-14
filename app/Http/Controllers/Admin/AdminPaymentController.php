@@ -19,7 +19,7 @@ use App\Models\Appointment\AppointmentPay;
 use App\Http\Requests\PaymentUpdateRequest;
 use App\Http\Resources\Appointment\Payment\PaymentResource;
 use App\Http\Resources\Appointment\Payment\PaymentCollection;
-
+use Illuminate\Support\Facades\Storage;
 class AdminPaymentController extends Controller
 {
     // /**
@@ -70,7 +70,7 @@ class AdminPaymentController extends Controller
      */
     public function paymentStore(Request $request)
     {
-        $doctor = User::where("id", $request->doctor_id)->first();
+        
         //reviso si viene el id del appointment
         $appointment = Appointment::
         where("id", $request->appointment_id)
@@ -81,6 +81,12 @@ class AdminPaymentController extends Controller
 
         //extraigo el email del doctor seleccionado de la cita
         // $email_doctor = $appointment->doctor->email;
+
+         if ($request->hasFile('image')) {
+            $path = Storage::putFile("payments", $request->file('image'));
+            $request->request->add(["image" => $path]);
+        }
+
         
         $payment = Payment::create([
             "patient_id" =>$request->patient_id,
@@ -92,6 +98,8 @@ class AdminPaymentController extends Controller
             "metodo" =>$request->metodo,
             "referencia" =>$request->referencia,
             "status" =>$request->status,
+            "tasabcv" => $request->tasabcv,
+            "image" => $path,
             // "status_pay" =>$request->amount != $request->amount_add ? 2 : 1,
         ]);
         //envio de correo al doctor
@@ -192,31 +200,7 @@ class AdminPaymentController extends Controller
         }
     }
 
-    protected function paymentInput(string $file = null): array
-    {
-        return [
-            "referencia" => request("referencia"),
-            "metodo" => request("metodo"),
-            "bank_name" => request("bank_name"),
-            "monto" => request("monto"),
-            "validacion" => request("validacion"),
-            "currency_id" => request("currency_id"),
-            "nombre" => request("nombre"),
-            "email" => request("email"),
-            "user_id" => request("user_id"),
-            "plan_id" => request("plan_id"),
-            "status" => request("status"),
-            "image" => $file,
-        ];
-    }
-
-    protected function paymentInputUpdate(string $file = null): array
-    {
-        return [
-            "validacion" => request("validacion"),
-            "status" => request("status"),
-        ];
-    }
+   
 
     public function recientes()
     {
@@ -232,63 +216,6 @@ class AdminPaymentController extends Controller
 
 
      // subir imagen avatar
-     public function upload(Request $request)
-     {
-         // recoger la imagen de la peticion
-         $image = $request->file('file0');
-         // validar la imagen
-         $validate = \Validator::make($request->all(),[
-             'file0' => 'required|image|mimes:jpg,jpeg,png,gif'
-         ]);
-         //guardar la imagen en un disco
-         if(!$image || $validate->fails()){
-             $data = [
-                 'code' => 400,
-                 'status' => 'error',
-                 'message' => 'Error al subir la imagen'
-             ];
-         }else{
-            $extension = $image->getClientOriginalExtension();
-            $image_name = $image->getClientOriginalName();
-            $pathFileName = trim(pathinfo($image_name, PATHINFO_FILENAME));
-            $secureMaxName = substr(Str::slug($image_name), 0, 90);
-            $image_name = now().$secureMaxName.'.'.$extension;
-
-             \Storage::disk('payments')->put($image_name, \File::get($image));
-
-             $data = [
-                 'code' => 200,
-                 'status' => 'success',
-                 'image' => $image_name
-             ];
-
-         }
-
-         //return response($data, $data['code'])->header('Content-Type', 'text/plain'); //devuelve el resultado
-
-         return response()->json($data, $data['code']);// devuelve un objeto json
-     }
-
-     public function getImage($filename)
-     {
-
-         //comprobar si existe la imagen
-         $isset = \Storage::disk('payments')->exists($filename);
-         if ($isset) {
-             $file = \Storage::disk('payments')->get($filename);
-             return new Response($file, 200);
-         } else {
-             $data = array(
-                 'status' => 'error',
-                 'code' => 404,
-                 'mesaje' => 'Imagen no existe',
-             );
-
-             return response()->json($data, $data['code']);
-         }
-
-     }
-
      public function deleteFotoPayment($id)
      {
          $payment = Payment::findOrFail($id);
@@ -314,47 +241,63 @@ class AdminPaymentController extends Controller
 
     public function updateStatus(Request $request, $id)
     {
-        $patient = Patient::where("id", $request->patient_id)->first();
-        $payment = Payment::findOrfail($id);
+        // 1. Buscamos el pago (siempre viene el ID)
+        $payment = Payment::findOrFail($id);
         $payment->status = $request->status;
-        $payment->update();
+        $payment->motivo_rechazo = $request->motivo_rechazo;
+        $payment->save();
 
-        
-        $appointment = Appointment::where("patient_id", $request->patient_id)->first();
-        $appointmentpay = AppointmentPay::where("appointment_id", $request->appointment_id)->first();
-        $sum_total_pays = AppointmentPay::where("appointment_id",$id)->sum("amount");
-        $monto = Payment::where("appointment_id",$id)->sum("monto");
-        
-        $costo = $appointment->amount;
-        $deuda = ($costo - $sum_total_pays); 
-        
-        
-        if($request->status === 'APPROVED'){
-            // Update Appointment status
-            if($request->monto == $deuda){
-                $appointment->update(["status_pay"=>1]);
-            }
-    
-            $appointmentpay = AppointmentPay::create([
-                "appointment_id" =>$request->appointment_id,
-                "amount"=>$request->monto,
-                "method_payment" =>$request->bank_name,
+        // 2. Si es RECHAZADO, terminamos aquí para evitar errores de null
+        if ($request->status === 'REJECTED') {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Pago rechazado y notificado correctamente'
             ]);
         }
 
-        
-        // error_log($appointment);
+        // 3. Si llega aquí, es porque es APPROVED o PENDIENTE
+        // Buscamos la cita usando el appointment_id que SI enviaste en el JSON
+        $appointment = Appointment::find($request->appointment_id);
 
-        if($request->status === '2'){
+        if (!$appointment) {
+            return response()->json(['message' => 'Cita no encontrada'], 404);
+        }
+
+        // Cálculos solo para aprobaciones
+        $sum_total_pays = AppointmentPay::where("appointment_id", $request->appointment_id)->sum("amount");
+        $costo = $appointment->amount;
+        $deuda = ($costo - $sum_total_pays);
+
+        if ($request->status === 'APPROVED') {
+            // Marcamos pagada si el monto actual completa la deuda
+            if ($request->monto >= $deuda) {
+                $appointment->update(["status_pay" => 1]);
+            }
+
+            // Registramos el pago en la tabla de pagos de citas
+            AppointmentPay::create([
+                "appointment_id" => $request->appointment_id,
+                "amount" => $request->monto,
+                "method_payment" => "TRANSFERENCIA", // O el campo que uses
+            ]);
+            $appointmentpay = AppointmentPay::create([
+                "appointment_id" => $request->appointment_id,
+                "amount" => $request->monto,
+                "method_payment" => $request->bank_name,
+            ]);
+        }
+
+        if ($request->status === 'APPROVED') {
             Mail::to($appointment->patient->email)->send(new ConfirmationAppointment($appointment));
 
         }
+
         return response()->json([
             "message" => 200,
             "payment" => $payment,
             "appointment" => $appointment,
             "appointmentpay" => $appointmentpay,
-            
+
         ]);
         
         

@@ -3,6 +3,7 @@
 namespace Database\Factories\Patient;
 
 use App\Models\Patient\Patient;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,21 +19,25 @@ class PatientFactory extends Factory
      */
     public function definition(): array
     {
+        // Buscamos un doctor, si no existe, creamos uno al vuelo para que no falle el seeder
+        $doctor = User::role('DOCTOR')->inRandomOrder()->first() ?? User::factory();
+
         return [
-            "name" => $this->faker->name(),
+            "name" => $this->faker->firstName(), // Mejor usar firstName para 'name'
             "surname" => $this->faker->lastName(),
+            "user_id" => null,          // Empieza en null hasta que el paciente se registre en la App
             "phone" => $this->faker->phoneNumber(),
-            "email" => $this->faker->email(),
-            "birth_date" => $this->faker->dateTimeBetween("1985-10-01 00:00:00", "2000-10-25 23:59:59"),
+            "email" => $this->faker->unique()->safeEmail(),
+            "birth_date" => $this->faker->dateTimeBetween("1985-10-01", "2000-10-25"),
             "gender" => $this->faker->randomElement([1, 2]),
             "education" => $this->faker->word(),
-            "address" => $this->faker->word(),
-            "antecedent_family" => $this->faker->text($maxNbChars = 300),
-            "antecedent_personal" => $this->faker->text($maxNbChars = 200),
-            "antecedent_alerg" => $this->faker->text($maxNbChars = 150),
-            "current_desease" => $this->faker->text($maxNbChars = 100),
-            "n_doc" => $this->faker->unique()->numberBetween(1000, 999999),
-            "created_at" => $this->faker->dateTimeBetween("2023-01-01 00:00:00", "2023-12-25 23:59:59"),
+            "address" => $this->faker->address(),
+            "antecedent_family" => $this->faker->text(300),
+            "antecedent_personal" => $this->faker->text(200),
+            "antecedent_alerg" => $this->faker->text(150),
+            "current_desease" => $this->faker->text(100),
+            "n_doc" => (string) $this->faker->unique()->numberBetween(1000000, 99999999),
+            "created_at" => $this->faker->dateTimeBetween("2023-01-01", "2023-12-25"),
         ];
     }
 }

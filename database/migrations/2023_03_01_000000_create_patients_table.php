@@ -14,7 +14,9 @@ class CreatePatientsTable extends Migration
     public function up()
     {
         Schema::create('patients', function (Blueprint $table) {
-            $table->bigIncrements('id');
+           $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id')->nullable(); 
+            $table->foreignId('location_id')->nullable();
             $table->string('name', 250);
             $table->string('surname', 250);
             $table->string('email', 250)->nullable();
@@ -36,17 +38,13 @@ class CreatePatientsTable extends Migration
             $table->string('temperature', 25)->nullable();
             $table->string('peso', 250)->nullable();
             
-            // Provider IDs
-            $table->unsignedBigInteger('doctor_id')->nullable();
-            $table->unsignedBigInteger('location_id')->nullable();
 
-
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('location_id')->references('id')->on('locations')->nullOnDelete();
             $table->timestamps();
             $table->softDeletes();
 
-            // Foreign keys for provider relationships
-            // $table->foreign('doctor_id')->references('id')->on('users')->nullOnDelete();
-            // $table->foreign('location_id')->references('id')->on('locations')->nullOnDelete();
+            
         });
     }
 

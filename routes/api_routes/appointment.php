@@ -4,9 +4,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Appointment\AppointmentController;
 
-Route::post('appointment/filter', [AppointmentController::class, 'filter'])->name('filter');
-Route::get('appointment/config', [AppointmentController::class, 'config'])->name('config');
-Route::get('appointment/patient', [AppointmentController::class, 'query_patient'])->name('query_patient');
+Route::post('appointments/filter', [AppointmentController::class, 'filter'])->name('appointment.filter');
+Route::post('appointments/filterbydoctor/{doctor_id}/', [AppointmentController::class, 'filterByDoctor'])->name('appointment.filterByDoctor');
+Route::get('appointments/config', [AppointmentController::class, 'config'])->name('appointment.config');
+Route::get('appointments/patient', [AppointmentController::class, 'query_patient'])->name('appointment.query_patient');
 
 
 Route::get('appointment', [AppointmentController::class, 'index'])->name('index');

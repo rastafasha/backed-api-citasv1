@@ -7,6 +7,7 @@ use App\Models\Doctor\DoctorScheduleDay;
 use App\Models\Doctor\Specialitie;
 use App\Models\Location;
 use App\Models\Pais;
+use App\Models\Patient\Patient;
 use App\Models\Payment;
 use App\Traits\HavePermission;
 use Carbon\Carbon;
@@ -52,6 +53,7 @@ class User extends Authenticatable implements JWTSubject
         'avatar',
         'speciality_id',
         'pais_id',
+        'precio_cita',
         'status',
 
     ];
@@ -157,8 +159,22 @@ class User extends Authenticatable implements JWTSubject
 
      public function pais()
     {
-        return $this->belongsTo(Pais::class);
+        return $this->belongsTo(Country::class);
     }
+
+    // Relación para el Médico: Ahora es belongsToMany
+    public function patients()
+    {
+        return $this->belongsToMany(Patient::class, 'doctor_patient', 'doctor_id', 'patient_id')
+            ->withTimestamps();
+    }
+
+    // Relación para cuando el usuario ES un paciente logueado
+    public function patientProfile()
+    {
+        return $this->hasOne(Patient::class, 'user_id');
+    }
+
 
     
     

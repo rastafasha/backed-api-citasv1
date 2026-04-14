@@ -23,8 +23,7 @@ class PatientResource extends JsonResource
             "email"=>$this->resource->email,
             "n_doc"=>$this->resource->n_doc,
             "phone"=>$this->resource->phone,
-            "avatar"=> $this->resource->avatar ? env("APP_URL")."storage/".$this->resource->avatar : null,
-            // "avatar"=> $this->resource->avatar ? env("APP_URL").$this->resource->avatar : null,
+            
             "birth_date"=>$this->resource->birth_date ? Carbon::parse($this->resource->birth_date)->format("Y/m/d") : NULL,
             "gender"=>$this->resource->gender,
             "education"=>$this->resource->education,
@@ -39,8 +38,8 @@ class PatientResource extends JsonResource
             "fr"=>$this->resource->fr,
             "peso"=>$this->resource->peso,
             "current_desease"=>$this->resource->current_desease,
-            // "avatar"=> $this->resource->avatar ? env("APP_URL")."storage/".$this->resource->avatar : null,
-            "avatar"=> $this->resource->avatar ? env("APP_URL").$this->resource->avatar : null,
+            "avatar"=> $this->resource->avatar ? env("APP_URL")."storage/".$this->resource->avatar : null,
+            // "avatar"=> $this->resource->avatar ? env("APP_URL").$this->resource->avatar : null,
             "created_at"=>$this->resource->created_at ? Carbon::parse($this->resource->created_at)->format("Y-m-d h:i A") : NULL,
             "person"=>$this->resource->person ? [
                 "id"=>$this->resource->person->id,
@@ -57,6 +56,25 @@ class PatientResource extends JsonResource
             "payments"=>$this->resource->payments ? [
                 "id"=>$this->resource->payments->id,
             ]:NULL,
+            "doctor_id" => $this->resource->doctors->first()?->id,
+            "doctor" => $this->resource->doctors->first() ? [
+                "id" => $this->resource->doctors->first()->id,
+                "full_name" => $this->resource->doctors->first()->name . ' ' . $this->resource->doctors->first()->surname,
+            ] : null,
+            "doctors" => $this->resource->appointments ? $this->resource->appointments->map(function ($appointment) {
+                // IMPORTANTE: Aquí usamos $appointment->doctor porque es la relación de la cita
+                return [
+                    "doctor_id" => $appointment->doctor->id,
+                    "full_name" => $appointment->doctor->name . ' ' . $appointment->doctor->surname,
+                    "name" => $appointment->doctor->name,
+                    "surname" => $appointment->doctor->surname,
+                    "email" => $appointment->doctor->email,
+                    "address" => $appointment->doctor->address,
+                    "mobile" => $appointment->doctor->mobile,
+                    "speciality" => $appointment->speciality->name ?? null,
+                    "last_appointment" => $appointment->date_appointment,
+                ];
+            })->unique('doctor_id')->values() : [],
 
         ];
     }

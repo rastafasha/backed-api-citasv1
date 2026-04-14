@@ -45,13 +45,7 @@ class PresupuestoResource extends JsonResource
                     "antecedent_alerg" =>$this->resource->patient->antecedent_alerg,
                 ]: NUll,
             "date_presupuesto_format" =>Carbon::parse($this->resource->date_presupuesto)->format("Y-m-d"),
-            "speciality_id" =>$this->resource->speciality_id,
-            "speciality"=>$this->resource->speciality ? 
-                [
-                    "id"=> $this->resource->speciality->id,
-                    "name"=> $this->resource->speciality->name,
-                    "price"=> $this->resource->speciality->price,
-                ]: NULL,
+           
             
             "status" =>$this->resource->status,
             "n_doc" =>$this->resource->n_doc,

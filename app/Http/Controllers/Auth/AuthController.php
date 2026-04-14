@@ -2,20 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\Role;
+use App\Http\Controllers\Controller;
+use App\Models\Patient\Patient;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use App\Http\Requests\AuthRequest;
-use Tymon\JWTAuth\Facades\JWTAuth;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\RegisterRequest;
-use App\Http\Requests\AuthLoginRequest;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Requests\ChangePasswordRequest;
-use Symfony\Component\HttpFoundation\Response;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 ;
 
@@ -40,13 +34,13 @@ class AuthController extends Controller
     {
         $credentials = request()->only('email', 'password');
 
-        if (! $token = JWTAuth::attempt($credentials)) {
+        if (!$token = JWTAuth::attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized - Credenciales incorrectas'], 401);
         }
 
         $user = User::where('email', request('email'))->firstOrFail();
 
-        $permissions = auth('api')->user()->getAllPermissions()->map(function($perm){
+        $permissions = auth('api')->user()->getAllPermissions()->map(function ($perm) {
             return $perm->name;
         });
         return response()->json([
@@ -54,60 +48,63 @@ class AuthController extends Controller
             'access_token' => $this->respondWithToken($token),
             'token_type' => 'Bearer',
             // 'user' => $user,
-            'user'=>[
-                "id"=>auth('api')->user()->id,
-                "name"=>auth('api')->user()->name,
-                "surname"=>auth('api')->user()->surname,
-                "avatar"=>auth('api')->user()->avatar,
+            'user' => [
+                "id" => auth('api')->user()->id,
+                "name" => auth('api')->user()->name,
+                "surname" => auth('api')->user()->surname,
+                "avatar" => auth('api')->user()->avatar,
                 // "rolename"=>auth('api')->user()->rolename,
-                "roles"=>auth('api')->user()->getRoleNames(),
-                "email"=>auth('api')->user()->email,
-                "n_doc"=>auth('api')->user()->n_doc,
-                "permissions"=>$permissions,
+                "roles" => auth('api')->user()->getRoleNames(),
+                "email" => auth('api')->user()->email,
+                "n_doc" => auth('api')->user()->n_doc,
+                "permissions" => $permissions,
 
             ],
         ], 201);
-        
+
     }
 
     /**
      * Register a User
      * @return \Illuminate\Http\JsonResponse
      */
-    public function register(Request $request) {
-
-        $data = $request->only('name', 'surname', 'email', 'password', 'n_doc');
-
-        $validator = Validator::make($data, [
-            'name' => 'required|string|between:2,100',
-            'surname' => 'required|string|between:2,100',
-            'email' => 'required|string|email|max:100|unique:users',
-            'password' => 'required|string|min:5',
-            'n_doc' => 'required',
-            'role' => Rule::in([User::GUEST]),
+    public function register(Request $request)
+    {
+        // 1. Validaciones mínimas
+        $validator = Validator::make($request->all(), [
+            'n_doc' => 'required|exists:patients,n_doc|unique:users,n_doc',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6',
+        ], [
+            'n_doc.exists' => 'No estás registrado en el consultorio.',
+            'n_doc.unique' => 'Este documento ya tiene una cuenta activa.',
         ]);
-        
 
-        if($validator->fails()){
+
+
+        if ($validator->fails())
             return response()->json($validator->errors(), 422);
-        }
+
+        // 2. Buscamos al paciente del consultorio 
+        $paciente = Patient::where('n_doc', $request->n_doc)->first();
+
 
         $user = User::create([
-            'name' => $request->name,
-            'surname' => $request->surname,
+            'name' => $paciente->name,    // Heredamos del consultorio
+            'surname' => $paciente->surname, // Heredamos del consultorio
             'email' => $request->email,
             'n_doc' => $request->n_doc,
             'password' => Hash::make($request->password),
-            'role' => User::GUEST,
         ]);
 
-        $token = JWTAuth::fromUser($user);
+        // 4. Vinculamos la ficha médica con el nuevo usuario
+        $paciente->update(['user_id' => $user->id]);
+
+        $user->assignRole(User::GUEST);
 
         return response()->json([
-            'message' => 'User registered successfully',
-            'user' => $user,
-            'access_token' => $token,
-            'token_type' => 'Bearer',
+            'message' => 'Cuenta activada correctamente',
+            'access_token' => JWTAuth::fromUser($user),
         ], 201);
 
     }
@@ -121,7 +118,7 @@ class AuthController extends Controller
     {
         return response()->json(auth('api')->user());
     }
-    
+
     /**
      * Log the user out (Invalidate the token).
      *
@@ -153,7 +150,7 @@ class AuthController extends Controller
      */
     protected function respondWithToken($token)
     {
-        $permissions = auth('api')->user()->getAllPermissions()->map(function($perm){
+        $permissions = auth('api')->user()->getAllPermissions()->map(function ($perm) {
             return $perm->name;
         });
         return response()->json([
@@ -161,13 +158,13 @@ class AuthController extends Controller
             'token_type' => 'bearer',
             'expires_in' => auth('api')->factory()->getTTL() * 180,
             // 'user'=>auth('api')->user(),
-            'user'=>[
-                "name"=>auth('api')->user()->name,
-                "surname"=>auth('api')->user()->surname,
-                "rolename"=>auth('api')->user()->rolename,
-                "email"=>auth('api')->user()->email,
-                "n_doc"=>auth('api')->user()->n_doc,
-                "permissions"=>$permissions,
+            'user' => [
+                "name" => auth('api')->user()->name,
+                "surname" => auth('api')->user()->surname,
+                "rolename" => auth('api')->user()->rolename,
+                "email" => auth('api')->user()->email,
+                "n_doc" => auth('api')->user()->n_doc,
+                "permissions" => $permissions,
 
             ],
         ]);

@@ -32,10 +32,7 @@ class CreateLocationsTable extends Migration
             
             $table->timestamps();
             $table->softDeletes();
-
-            // Foreign keys for provider relationships
-            $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();
-            $table->foreign('client_id')->references('id')->on('patients')->nullOnDelete();
+            
         });
     }
 

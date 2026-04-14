@@ -23,13 +23,13 @@ class Appointment extends Model
     use HasFactory;
     use SoftDeletes;
     protected $fillable=[
-        "doctor_id",
+       "doctor_id",
         "patient_id",
+        'doctor_schedule_join_hour_id',
         "date_appointment",
         "speciality_id",
-        "doctor_schedule_join_hour_id",
         "user_id",
-        "amount",
+        "precio_cita",
         "status_pay",
         "deuda",
         "status",
@@ -37,6 +37,7 @@ class Appointment extends Model
         "date_attention",
         "cron_state",
         "confimation",
+        "amount",
 
     ];
     
@@ -71,23 +72,26 @@ class Appointment extends Model
 
     // relaciones
 
-    public function doctor() {
-        return $this->belongsTo(User::class,"doctor_id");
-    }
-
-    public function user() {
-        return $this->belongsTo(User::class);
+     public function doctor()
+    {
+        return $this->belongsTo(User::class, "doctor_id");
     }
 
     public function patient()
     {
-        return $this->belongsTo(Patient::class);
+        // Esto conectará la cita con el ID 21 de patients
+        return $this->belongsTo(Patient::class, 'patient_id');
+    }
+
+    public function user()
+    {
+        // Esto conectará la cita con el ID 12 de users
+        return $this->belongsTo(User::class, 'user_id');
     }
     
-    public function doctor_schedule_join_hour()
-    {   
-        // ->withTrased();
-        return $this->belongsTo(DoctorScheduleJoinHour::class);
+    public function doctor_schedule_join_hour() // <--- Asegúrate que se llame así
+    {
+        return $this->belongsTo(DoctorScheduleJoinHour::class, 'doctor_schedule_join_hour_id');
     }
 
     public function payments()

@@ -19,9 +19,11 @@ class CreatePaymentsTable extends Migration
             $table->string('metodo', 250);
             $table->string('bank_name', 250);
             $table->double('monto', 250);
+            $table->double('tasabcv', 250)->nullable();
             $table->string('nombre', 250);
             $table->string('email', 250);
             $table->string('image', 250)->nullable();
+            $table->text('motivo_rechazo')->nullable();
             $table->timestamp('fecha');
             $table->enum('status', [
                 'APPROVED',

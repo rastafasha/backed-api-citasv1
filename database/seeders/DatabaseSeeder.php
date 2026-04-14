@@ -12,23 +12,26 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            RoleAndPermissionSeeder::class,
-            SpecialitySeeder::class,
-            PaisSeeder::class,
-            LocationSeeder::class,
-            PubSeeder::class,
-            DoctorScheduleDaySeeder::class,
-            DoctorScheduleHourSeeder::class,
-            DoctorScheduleJoinHourSeeder::class,
-            UserSeeder::class,
-            
-            //evitar que se repitan los datos y
-            //  se carque el sistema reescribiendo lo que existe
-            // PatientSeeder::class,
-            // TiposDePagoSeeder::class,
-            // AppointmentSeeder::class,
-            // SettingeneralSeeder::class,
-            // PresupuestoSeeder::class,
+          RoleAndPermissionSeeder::class,
+        PaisSeeder::class,
+        LocationSeeder::class,
+        UserSeeder::class,
+        SpecialitySeeder::class,
+        PatientSeeder::class,
+        TiposDePagoSeeder::class,
+        TasabcvSeeder::class,
+        
+        // 1. Primero configuramos los horarios del doctor
+        SettingeneralSeeder::class,
+        DoctorScheduleDaySeeder::class,
+        DoctorScheduleHourSeeder::class,
+        DoctorScheduleJoinHourSeeder::class, // <--- Este debe ir ANTES
+        
+        // 2. Ahora que hay horarios en la DB, creamos las citas
+        AppointmentSeeder::class, // <--- Este debe ir DESPUÉS
+        
+        PubSeeder::class,
+        PresupuestoSeeder::class,
 
 
 
